@@ -1,23 +1,99 @@
 @import 'variables';
 
 body {
-    background: $color-orange;
-    color: white;
+    background: $color-white;
+    color: $color-text-default;
 }
 
-// font-family: 'Open Sans', sans-serif;
-// font-family: 'Roboto', sans-serif;
-// font-family: 'Lato', sans-serif;
-// font-family: 'Slabo 27px', serif;
-// font-family: 'Oswald', sans-serif;
-// font-family: 'Roboto Condensed', sans-serif;
-// font-family: 'Source Sans Pro', sans-serif;
-// font-family: 'Montserrat', sans-serif;
-// font-family: 'Raleway', sans-serif;
-// font-family: 'PT Sans', sans-serif;
-// font-family: 'Roboto Slab', serif;
-// font-family: 'Open Sans Condensed', sans-serif;
-// font-family: 'Lora', serif;
-// font-family: 'Droid Sans', sans-serif;
-// font-family: 'Ubuntu', sans-serif;
-// font-family: 'Droid Serif', serif;
+.cap-height-measurement__sample-text {
+    background: $color-white;
+    box-sizing: content-box;
+    color: $color-text-default;
+    text-align: center;
+    margin: 0 0 0 60px;
+}
+
+.cap-height-measurement__actions {
+    overflow: hidden;
+    position: relative;
+}
+
+.cap-height-measurement__lines {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    top: 0;
+    bottom: 55%;
+    left: 0;
+    list-style: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.cap-height-measurement__lines--bottom {
+    bottom: 0;
+    flex-direction: column-reverse;
+    top: 55%;
+
+    .cap-height-measurement__line:after {
+        bottom: 0;
+        top: auto;
+    }
+}
+
+.cap-height-measurement__line {
+    counter-increment: stripes;
+    display: block;
+    height: 1px;
+    position: relative;
+    width: 100%;
+
+    &:after {
+        background: white;
+        content: counter(stripes);
+        border: solid 1px $color-blue;
+        color: $color-text-default;
+        display: none;
+        font-family: monospace;
+        font-size: $font-size-sm;
+        left: 60px;
+        padding: 2px;
+        position: absolute;
+        top: 0;
+        z-index: 100;
+    }
+
+    &:hover {
+        background: $color-blue;
+    
+        &:after {
+            display: block;
+        }
+    }
+
+    &.cap-height-measurement__line--locked {
+        &,
+        &:hover {
+            background: red;
+        }
+
+        &:after {
+            display: block;
+        }
+    }
+}
+
+.cap-height-measurement__line:nth-child(even) {
+    
+    &:hover {
+        background: $color-blue;
+    }
+}
+
+.measurement-fine-tune__increment {
+    height: $font-size-sm;
+    width: $font-size-sm;
+}

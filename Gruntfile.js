@@ -96,6 +96,64 @@ module.exports = function(grunt) {
             }
         },
 
+        // SVG Optimization, remove inline style, strip out fill attributes added by Illustrator, etc.
+        svgmin: {
+            options: {
+                plugins: [
+                    {
+                        removeAttrs: {
+                            attrs: ['fill']
+                        }
+                    },
+                    {
+                        removeStyleElement: true
+                    }
+                ]
+            },
+            icons: {
+                files: [
+                    {
+                        expand: true,
+                        cwd: 'src/svg/',
+                        src: '**/*.svg',
+                        dest: 'src/svg/'
+                    }
+                ]
+            }
+        },
+
+        // SVG Sprite creation -> releases/latest/comet
+        svg_sprite: {
+            icons: {
+                expand: true,
+                cwd: 'src/svg/',
+                flatten: true,
+                src: ['**/*.svg'],
+                dest: 'dist/svg',
+                svg: {
+                    namespaceIDs: false
+                },
+                options: {
+                    mode: {
+                        symbol: {
+                            dest: '.',
+                            sprite: 'project.svg',
+                            example: false
+                        }
+                    },
+                    shape: {
+                        id: {
+                            generator: function(name) {
+                                var filename = name.split("/").pop();
+                                // Don't include the parent directory name in the Shape ID
+                                return filename.substring(0, filename.length - 4);
+                            }
+                        }
+                    }
+                }
+            }
+        },
+
         copy: {
             vendor_scripts: {
                 expand: true,
@@ -121,10 +179,10 @@ module.exports = function(grunt) {
                 files: ['src/**/*{.njk,.md}', '!src/components/project.njk'],
                 tasks: 'markup'
             },
-            // svg: {
-            //     files: ['src/library/base/icons/**/*.svg', 'src/library/docs/icons/**/*.svg'],
-            //     tasks: ['svg']
-            // },
+            svg: {
+                files: ['src/svg/**/*.svg'],
+                tasks: ['svg']
+            },
             // project_assets: {
             //     files: ['releases/latest/project/**/*'],
             //     tasks: 'newer:copy:project_to_dist'
@@ -151,10 +209,11 @@ module.exports = function(grunt) {
             // }
         },
     });
+    grunt.registerTask('svg', ['svgmin', 'svg_sprite']);
     grunt.registerTask('styles', ['sasslint', 'sass', 'postcss']);
     grunt.registerTask('scripts', ['eslint:scripts', 'concat:scripts']);
     grunt.registerTask('markup', ['concat:component_macros', 'nunjucks']);
-    grunt.registerTask('build-dist', ['copy:vendor_scripts', 'scripts', 'styles', 'markup']);
+    grunt.registerTask('build-dist', ['svg', 'copy:vendor_scripts', 'scripts', 'styles', 'markup']);
     grunt.registerTask('dev', ['build-dist', 'browserSync', 'watch']);
 
 
