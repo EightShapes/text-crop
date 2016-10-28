@@ -1,0 +1,158 @@
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css?family=Droid+Sans:400,700|Droid+Serif:400,400i,700|Lato:300,400,400i,700|Lora:400,400i,700|Montserrat:400,700|Open+Sans+Condensed:300,700|Open+Sans:400,400i,700|Oswald:400,700|PT+Sans:400,700|Raleway:400,400i,700|Roboto+Condensed:400,400i,700|Roboto+Slab:400,700|Roboto:400,400i,700|Slabo+27px|Source+Sans+Pro:400,400i,700|Ubuntu:400,400i,700|Tangerine" rel="stylesheet">
+        <link rel="stylesheet" href="css/project.css">
+        <meta name="HandheldFriendly" content="True" />
+        <meta name="MobileOptimized" content="320" />
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
+        <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+        <meta http-equiv="cleartype" content="on">
+        <link rel="stylesheet" href="http://eightshapes.com/css/global.css">
+        <script src="scripts/jquery.min.js"></script>
+        <script src="scripts/svg4everybody.min.js"></script>
+        <script src="scripts/project.js"></script>
+    </head>
+    <body>
+        <div class="container-fluid" id="contributions">
+            <div class="container-fluid-inner">
+                <h1>Cap Height Alignment Tool</h1>
+                
+                <div class="typeface-actions tool-section">
+                    <h2 class="tool-section__title">Select a Typeface</h2> 
+                    <div class="typeface-action">
+                        <label for="typeface">Typeface</label>
+                        <select name="typeface" id="typeface">
+                            <option value="Lato" selected>Lato</option>
+                            <option value="Droid Sans">Droid Sans</option>
+                            <option value="Tangerine">Tangerine</option>
+                            <option value="Lora">Lora</option>
+                        </select>
+                    </div>
+                    
+                    <div class="typeface-action tool-section">
+                        <label for="weight">Weight &amp; Style</label>
+                        <select name="weight" id="weight">
+                            <option value="400">400 (normal)</option>
+                            <option value="400i">400 Italic (normal)</option>
+                            <option value="700">700 (bold)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="typeface-action tool-section">
+                        <label for="size">Size</label>
+                        <input name="size" id="size" type="text" value="60">
+                    </div>
+                    
+                    <div class="typeface-action">
+                        <label for="line-height">Default Line Height</label>
+                        <input name="line-height" id="line-height" type="text" value="1.2">
+                    </div>
+                </div>
+
+
+                <div class="cap-height-measurement tool-section">
+                    <h2 class="tool-section__title">Measure the Cap Height</h2> 
+
+                    <label for="top-measurement">Top Measurement</label>
+                    <input type="number" id="top-measurement" name="top-measurement" value="0">
+                        <div class="cap-height-measurement__sample-text">
+                            I try &ldquo;ascenders&rdquo; descending (1).
+                        </div>
+                    <label for="bottom-measurement">Bottom Measurement</label>
+                    <input type="number" id="bottom-measurement" name="bottom-measurement" value="0">
+                
+
+                </div>
+
+                <div class="generated-code">
+                    <h2 class="tool-section__title">Mixin Code</h2> 
+                    <pre>
+                        <code id="scss-code">
+@mixin cap-aligned-line-height($line-height: <span class="code-line-height">1.2</span>) {
+    $offset-top: (<span class="code-top-measurement">0</span> + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
+    $offset-top: (<span class="code-bottom-measurement">0</span> + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
+
+    line-height: <span class="code-line-height">1.2</span>;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+    }
+
+    &::before {
+        margin-bottom: -#{$offset-top}em;
+    }
+
+    &::after {
+        margin-top: -#{$offset-bottom}em;
+    }
+}
+                        </code>
+                    </pre>
+
+
+                    <pre>
+                        <code id="less-code">
+cap-aligned-line-height($line-height = <span class="code-line-height">1.2</span>) {
+    $offset-top = (<span class="code-top-measurement">0</span> + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
+    $offset-top = (<span class="code-bottom-measurement">0</span> + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
+
+    line-height: <span class="code-line-height">1.2</span>;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+    }
+
+    &::before {
+        margin-bottom: -{$offset-top}em;
+    }
+
+    &::after {
+        margin-top: -{$offset-bottom}em;
+    }
+}
+                        </code>
+                    </pre>
+
+
+
+                    <pre>
+                        <code id="stylus-code">
+.cap-aligned-line-height(@line-height: <span class="code-line-height">1.2</span>) {
+    @offset-top: (<span class="code-top-measurement">0</span> + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
+    @offset-top: (<span class="code-bottom-measurement">0</span> + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
+
+    line-height: <span class="code-line-height">1.2</span>;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+    }
+
+    &::before {
+        margin-bottom: -(@offset-top)em;
+    }
+
+    &::after {
+        margin-top: -(@offset-bottom)em;
+    }
+}
+                        </code>
+                    </pre>
+                </div>
+
+
+            </div>
+        </div>
+    </body>
+</html>
