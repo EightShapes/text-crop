@@ -158,8 +158,8 @@ module.exports = function(grunt) {
             vendor_scripts: {
                 expand: true,
                 src: [
-                    'node_modules/jquery/docs/jquery.min.js',
-                    'node_modules/svg4everybody/docs/svg4everybody.min.js'
+                    'node_modules/jquery/dist/jquery.min.js',
+                    'node_modules/svg4everybody/dist/svg4everybody.min.js'
                 ],
                 flatten: true,
                 dest: 'docs/scripts'
@@ -208,11 +208,35 @@ module.exports = function(grunt) {
             //     tasks: 'webfonts'
             // }
         },
+        relativeRoot: {
+            markup: {
+              options: {
+                root: 'docs'
+              },
+              files: [{
+                expand: true,
+                cwd: '<%= relativeRoot.markup.options.root %>',
+                src: ['**/*.html'],
+                dest: 'docs/'
+              }]
+            },
+            styles: {
+              options: {
+                root: 'docs'
+              },
+              files: [{
+                expand: true,
+                cwd: '<%= relativeRoot.styles.options.root %>',
+                src: ['**/*.css'],
+                dest: 'docs/'
+              }]
+            }
+        },
     });
     grunt.registerTask('svg', ['svgmin', 'svg_sprite']);
-    grunt.registerTask('styles', ['sasslint', 'sass', 'postcss']);
+    grunt.registerTask('styles', ['sasslint', 'sass', 'postcss', 'relativeRoot']);
     grunt.registerTask('scripts', ['eslint:scripts', 'concat:scripts']);
-    grunt.registerTask('markup', ['concat:component_macros', 'nunjucks']);
+    grunt.registerTask('markup', ['concat:component_macros', 'nunjucks', 'relativeRoot']);
     grunt.registerTask('build-docs', ['svg', 'copy:vendor_scripts', 'scripts', 'styles', 'markup']);
     grunt.registerTask('dev', ['build-docs', 'browserSync', 'watch']);
 
