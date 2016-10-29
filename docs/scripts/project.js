@@ -38,13 +38,25 @@ CapHeightAlignmentTool = function() {
 
         if ($lineList.hasClass(topMeasurementLineListClass)) {
             // Update the top measurement input
-            var measurement = $target.index() + 1;
+            var measurement = $target.index() - 1;
             $("#top-measurement").val(measurement).trigger("change");
         } else {
             // Update the bottom measurement input
-            var measurement = $target.index() + 1;
+            var measurement = $target.index() - 1;
             $("#bottom-measurement").val(measurement).trigger("change");
         }
+    }
+
+    function increaseFineTune(event) {
+        // var $button = $(event.target),
+        //     $measurementLines = $button.closest(".cap-height-measurement__lines"),
+        //     currentIndex = $measurementLines.index(".cap-height-measurement__line--locked");
+
+        // console.log(currentIndex)
+    }
+
+    function decreaseFineTune(event) {
+        var $button = $(event.target);
     }
 
     function setEventHandlers() {
@@ -54,6 +66,8 @@ CapHeightAlignmentTool = function() {
         $("#bottom-measurement").on('keyup change', syncBottomMeasurement);
         $("#typeface").on('change', setSampleTextStyles);
         $(".cap-height-measurement__line").on('click', lockMeasurementLine);
+        $(".measurement-fine-tune__increment--increase").on('click', increaseFineTune)
+        $(".measurement-fine-tune__increment--decrease").on('click', decreaseFineTune)
     }
 
     function setSampleTextStyles() {

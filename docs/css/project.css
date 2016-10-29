@@ -4,13 +4,13 @@ body {
 
 .cap-height-measurement__sample-text {
   background: #FFFFFF;
+  border: solid 1px #323232;
   box-sizing: content-box;
   color: #323232;
   text-align: center;
   margin: 0 0 0 60px; }
 
 .cap-height-measurement__actions {
-  overflow: hidden;
   position: relative; }
 
 .cap-height-measurement__lines {
@@ -22,18 +22,29 @@ body {
   left: 0;
   list-style: none;
   margin: 0;
-  overflow: hidden;
   padding: 0;
   position: absolute;
   width: 100%; }
+
+.cap-height-measurement__lines--top .measurement-fine-tune__grip,
+.cap-height-measurement__lines--top .measurement-fine-tune__increment {
+  background: #F57026; }
 
 .cap-height-measurement__lines--bottom {
   bottom: 0;
   flex-direction: column-reverse;
   top: 55%; }
-  .cap-height-measurement__lines--bottom .cap-height-measurement__line:after {
-    bottom: 0;
-    top: auto; }
+  .cap-height-measurement__lines--bottom .measurement-fine-tune {
+    left: 25px; }
+  .cap-height-measurement__lines--bottom .measurement-fine-tune__grip,
+  .cap-height-measurement__lines--bottom .measurement-fine-tune__increment {
+    background: #0795aa; }
+
+.measurement-fine-tune__increment--increase {
+  border-radius: 4px 4px 0 0; }
+
+.measurement-fine-tune__increment--decrease {
+  border-radius: 0 0 4px 4px; }
 
 .cap-height-measurement__line {
   counter-increment: stripes;
@@ -44,30 +55,52 @@ body {
   .cap-height-measurement__line:after {
     background: white;
     content: counter(stripes);
-    border: solid 1px #0795aa;
+    border: solid 1px #F57026;
     color: #323232;
     display: none;
     font-family: monospace;
     font-size: 14px;
-    left: 60px;
+    height: 20px;
+    left: 20px;
+    margin-top: -10px;
     padding: 2px;
     position: absolute;
-    top: 0;
+    top: 50%;
     z-index: 100; }
-  .cap-height-measurement__line:hover {
-    background: #0795aa; }
-    .cap-height-measurement__line:hover:after {
+  .cap-height-measurement__line.cap-height-measurement__line--locked, .cap-height-measurement__line:hover {
+    background: #F57026; }
+    .cap-height-measurement__line.cap-height-measurement__line--locked:after, .cap-height-measurement__line:hover:after {
       display: block; }
-  .cap-height-measurement__line.cap-height-measurement__line--locked, .cap-height-measurement__line.cap-height-measurement__line--locked:hover {
-    background: red; }
-  .cap-height-measurement__line.cap-height-measurement__line--locked:after {
-    display: block; }
 
-.cap-height-measurement__line:nth-child(even):hover {
+.cap-height-measurement__lines--bottom .cap-height-measurement__line:after {
+  border-color: #0795aa;
+  left: 45px; }
+
+.cap-height-measurement__lines--bottom .cap-height-measurement__line.cap-height-measurement__line--locked, .cap-height-measurement__lines--bottom .cap-height-measurement__line:hover {
   background: #0795aa; }
 
-.measurement-fine-tune__increment {
+.measurement-fine-tune__increment-icon {
   height: 14px;
   width: 14px; }
+
+.measurement-fine-tune__grip-icon {
+  height: 14px;
+  width: 14px; }
+
+.measurement-fine-tune__increment,
+.measurement-fine-tune__grip {
+  align-items: center;
+  border: solid 1px #323232;
+  display: flex;
+  height: 20px;
+  justify-content: center;
+  width: 20px; }
+
+.measurement-fine-tune {
+  display: inline-block;
+  margin-top: -30px;
+  position: absolute;
+  top: 50%;
+  z-index: 200; }
 
 /*# sourceMappingURL=project.css.map */
