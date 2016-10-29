@@ -18,7 +18,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'src/styles',
                     src: '*.scss',
-                    dest: 'dist/css/',
+                    dest: 'docs/css/',
                     ext: '.css'
                 }]
             }
@@ -31,7 +31,7 @@ module.exports = function(grunt) {
                 ]
             },
             project: {
-                src: 'dist/project.css'
+                src: 'docs/project.css'
             }
         },
 
@@ -43,15 +43,15 @@ module.exports = function(grunt) {
         browserSync: {
             bsFiles: {
                 src: [
-                    'dist/**/*.html',
-                    'dist/**/*.css',
-                    'dist/**/*.js'
+                    'docs/**/*.html',
+                    'docs/**/*.css',
+                    'docs/**/*.js'
                 ]
             },
             options: {
                 watchTask: true,
                 server: {
-                    baseDir: 'dist'
+                    baseDir: 'docs'
                 }
             }
         },
@@ -70,7 +70,7 @@ module.exports = function(grunt) {
                     banner: '// DO NOT EDIT: The contents of this file are dynamically generated and will be overwritten\n'
                 },
                 src: ['src/scripts/**/*.js'],
-                dest: 'dist/scripts/project.js'
+                dest: 'docs/scripts/project.js'
             }
         },
 
@@ -89,7 +89,7 @@ module.exports = function(grunt) {
                         expand: true,
                         cwd: 'src/',
                         src: '**/*.njk',
-                        dest: 'dist',
+                        dest: 'docs',
                         ext: '.html'
                     }
                 ]
@@ -129,7 +129,7 @@ module.exports = function(grunt) {
                 cwd: 'src/svg/',
                 flatten: true,
                 src: ['**/*.svg'],
-                dest: 'dist/svg',
+                dest: 'docs/svg',
                 svg: {
                     namespaceIDs: false
                 },
@@ -158,11 +158,11 @@ module.exports = function(grunt) {
             vendor_scripts: {
                 expand: true,
                 src: [
-                    'node_modules/jquery/dist/jquery.min.js',
-                    'node_modules/svg4everybody/dist/svg4everybody.min.js'
+                    'node_modules/jquery/docs/jquery.min.js',
+                    'node_modules/svg4everybody/docs/svg4everybody.min.js'
                 ],
                 flatten: true,
-                dest: 'dist/scripts'
+                dest: 'docs/scripts'
             }        
         },
 
@@ -213,8 +213,8 @@ module.exports = function(grunt) {
     grunt.registerTask('styles', ['sasslint', 'sass', 'postcss']);
     grunt.registerTask('scripts', ['eslint:scripts', 'concat:scripts']);
     grunt.registerTask('markup', ['concat:component_macros', 'nunjucks']);
-    grunt.registerTask('build-dist', ['svg', 'copy:vendor_scripts', 'scripts', 'styles', 'markup']);
-    grunt.registerTask('dev', ['build-dist', 'browserSync', 'watch']);
+    grunt.registerTask('build-docs', ['svg', 'copy:vendor_scripts', 'scripts', 'styles', 'markup']);
+    grunt.registerTask('dev', ['build-docs', 'browserSync', 'watch']);
 
 
     grunt.registerTask('default', ['dev']);

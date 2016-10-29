@@ -1,0 +1,73 @@
+body {
+  background: #FFFFFF;
+  color: #323232; }
+
+.cap-height-measurement__sample-text {
+  background: #FFFFFF;
+  box-sizing: content-box;
+  color: #323232;
+  text-align: center;
+  margin: 0 0 0 60px; }
+
+.cap-height-measurement__actions {
+  overflow: hidden;
+  position: relative; }
+
+.cap-height-measurement__lines {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  top: 0;
+  bottom: 55%;
+  left: 0;
+  list-style: none;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 100%; }
+
+.cap-height-measurement__lines--bottom {
+  bottom: 0;
+  flex-direction: column-reverse;
+  top: 55%; }
+  .cap-height-measurement__lines--bottom .cap-height-measurement__line:after {
+    bottom: 0;
+    top: auto; }
+
+.cap-height-measurement__line {
+  counter-increment: stripes;
+  display: block;
+  height: 1px;
+  position: relative;
+  width: 100%; }
+  .cap-height-measurement__line:after {
+    background: white;
+    content: counter(stripes);
+    border: solid 1px #0795aa;
+    color: #323232;
+    display: none;
+    font-family: monospace;
+    font-size: 14px;
+    left: 60px;
+    padding: 2px;
+    position: absolute;
+    top: 0;
+    z-index: 100; }
+  .cap-height-measurement__line:hover {
+    background: #0795aa; }
+    .cap-height-measurement__line:hover:after {
+      display: block; }
+  .cap-height-measurement__line.cap-height-measurement__line--locked, .cap-height-measurement__line.cap-height-measurement__line--locked:hover {
+    background: red; }
+  .cap-height-measurement__line.cap-height-measurement__line--locked:after {
+    display: block; }
+
+.cap-height-measurement__line:nth-child(even):hover {
+  background: #0795aa; }
+
+.measurement-fine-tune__increment {
+  height: 14px;
+  width: 14px; }
+
+/*# sourceMappingURL=project.css.map */
