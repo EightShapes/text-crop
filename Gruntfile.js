@@ -159,7 +159,15 @@ module.exports = function(grunt) {
                 expand: true,
                 src: [
                     'node_modules/jquery/dist/jquery.min.js',
-                    'node_modules/svg4everybody/dist/svg4everybody.min.js'
+                    'node_modules/svg4everybody/dist/svg4everybody.min.js',
+                    'node_modules/jquery-ui/ui/widget.js',
+                    'node_modules/jquery-ui/ui/data.js',
+                    'node_modules/jquery-ui/ui/scroll-parent.js',
+                    'node_modules/jquery-ui/ui/plugin.js',
+                    'node_modules/jquery-ui/ui/safe-active-element.js',
+                    'node_modules/jquery-ui/ui/widgets/draggable.js',
+                    'node_modules/jquery-ui/ui/widgets/mouse.js',
+                    'node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.js'
                 ],
                 flatten: true,
                 dest: 'docs/scripts'
@@ -237,7 +245,7 @@ module.exports = function(grunt) {
     grunt.registerTask('styles', ['sasslint', 'sass', 'postcss', 'relativeRoot']);
     grunt.registerTask('scripts', ['eslint:scripts', 'concat:scripts']);
     grunt.registerTask('markup', ['concat:component_macros', 'nunjucks', 'relativeRoot']);
-    grunt.registerTask('build-docs', ['svg', 'copy:vendor_scripts', 'scripts', 'styles', 'markup']);
+    grunt.registerTask('build-docs', ['svg', 'copy', 'scripts', 'styles', 'markup']);
     grunt.registerTask('dev', ['build-docs', 'browserSync', 'watch']);
 
 
