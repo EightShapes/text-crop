@@ -19,46 +19,46 @@ body {
     position: relative;
 }
 
-.cap-height-measurement__lines {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    top: 0;
-    bottom: 55%;
-    left: 0;
-    list-style: none;
-    margin: 0;
-    // overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 100%;
-}
+// .cap-height-measurement__lines {
+//     display: flex;
+//     flex-direction: column;
+//     flex-wrap: wrap;
+//     top: 0;
+//     bottom: 55%;
+//     left: 0;
+//     list-style: none;
+//     margin: 0;
+//     // overflow: hidden;
+//     padding: 0;
+//     position: absolute;
+//     width: 100%;
+// }
 
-.cap-height-measurement__lines--top {
-    .measurement-fine-tune {
+// .cap-height-measurement__lines--top {
+//     .measurement-fine-tune {
 
-    }
+//     }
 
-    .measurement-fine-tune__grip,
-    .measurement-fine-tune__increment {
-        background: $color-orange-light;
-    }
-}
+//     .measurement-fine-tune__grip,
+//     .measurement-fine-tune__increment {
+//         background: $color-orange-light;
+//     }
+// }
 
-.cap-height-measurement__lines--bottom {
-    bottom: 0;
-    flex-direction: column-reverse;
-    top: 55%;
+// .cap-height-measurement__lines--bottom {
+//     bottom: 0;
+//     flex-direction: column-reverse;
+//     top: 55%;
 
-    .measurement-fine-tune {
-        left: 25px;
-    }
+//     .measurement-fine-tune {
+//         left: 25px;
+//     }
 
-    .measurement-fine-tune__grip,
-    .measurement-fine-tune__increment {
-        background: $color-blue;
-    }
-}
+//     .measurement-fine-tune__grip,
+//     .measurement-fine-tune__increment {
+//         background: $color-blue;
+//     }
+// }
 
 .measurement-fine-tune__increment--increase {
     border-radius: $border-radius-default $border-radius-default 0 0;
@@ -147,8 +147,34 @@ body {
 
 .measurement-fine-tune {
     display: inline-block;
+    left: 0;
     margin-top: -45px;
     position: absolute;
     top: 50%;
     z-index: 200;
+
+    .cap-height-measurement__line--bottom & {
+        background: $color-blue;
+        left: 30px;
+    }
+}
+
+.cap-height-measurement__offset {
+    align-items: center;
+    display: flex;
+    background: $color-white;
+    border: solid 1px $color-orange-light;
+    justify-content: center;
+    padding: $spacing-sm;
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    margin-top: -15px;
+    right: 30px;
+
+    .cap-height-measurement__line--bottom & {
+        border-color: $color-blue;
+        right: 0;
+    }
 }

@@ -13,33 +13,6 @@ body {
 .cap-height-measurement__actions {
   position: relative; }
 
-.cap-height-measurement__lines {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  top: 0;
-  bottom: 55%;
-  left: 0;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  width: 100%; }
-
-.cap-height-measurement__lines--top .measurement-fine-tune__grip,
-.cap-height-measurement__lines--top .measurement-fine-tune__increment {
-  background: #F57026; }
-
-.cap-height-measurement__lines--bottom {
-  bottom: 0;
-  flex-direction: column-reverse;
-  top: 55%; }
-  .cap-height-measurement__lines--bottom .measurement-fine-tune {
-    left: 25px; }
-  .cap-height-measurement__lines--bottom .measurement-fine-tune__grip,
-  .cap-height-measurement__lines--bottom .measurement-fine-tune__increment {
-    background: #0795aa; }
-
 .measurement-fine-tune__increment--increase {
   border-radius: 4px 4px 0 0; }
   .cap-height-measurement__line--top .measurement-fine-tune__increment--increase {
@@ -99,9 +72,30 @@ body {
 
 .measurement-fine-tune {
   display: inline-block;
+  left: 0;
   margin-top: -45px;
   position: absolute;
   top: 50%;
   z-index: 200; }
+  .cap-height-measurement__line--bottom .measurement-fine-tune {
+    background: #0795aa;
+    left: 30px; }
+
+.cap-height-measurement__offset {
+  align-items: center;
+  display: flex;
+  background: #FFFFFF;
+  border: solid 1px #F57026;
+  justify-content: center;
+  padding: 8px;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  top: 50%;
+  margin-top: -15px;
+  right: 30px; }
+  .cap-height-measurement__line--bottom .cap-height-measurement__offset {
+    border-color: #0795aa;
+    right: 0; }
 
 /*# sourceMappingURL=project.css.map */

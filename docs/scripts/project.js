@@ -47,24 +47,57 @@ CapHeightAlignmentTool = function() {
         }
     }
 
+    function updateIndicator(event, ui) {
+        var $target = $(event.target),
+            $indicator = $target.closest(".cap-height-measurement__line").find(".cap-height-measurement__offset").text(Math.abs(ui.position.top));
+    }
+
+    function increaseAdjustment(event) {
+        var $target = $(event.target),
+            $offsetIndicator = $target.closest(".cap-height-measurement__line").find(".cap-height-measurement__offset"),
+            currentPosition = $offsetIndicator.text(),
+            $measurementLine = $target.closest(".cap-height-measurement__line"),
+            newPosition = parseInt(currentPosition, 10) + 1;
+
+        $offsetIndicator.text(newPosition);
+        if ($measurementLine.hasClass("cap-height-measurement__line--bottom")) {
+            newPosition = -(newPosition);
+        }
+
+        $measurementLine.css({top: newPosition + "px"});
+    }
+
+    function decreaseAdjustment(event) {
+        var $target = $(event.target),
+            $offsetIndicator = $target.closest(".cap-height-measurement__line").find(".cap-height-measurement__offset"),
+            currentPosition = $offsetIndicator.text(),
+            $measurementLine = $target.closest(".cap-height-measurement__line"),
+            newPosition = Math.max(0, parseInt(currentPosition, 10) - 1);
+
+        $offsetIndicator.text(newPosition);
+        if ($measurementLine.hasClass("cap-height-measurement__line--bottom")) {
+            newPosition = -(newPosition);
+        }
+
+        $measurementLine.css({top: newPosition + "px"});
+    }
+
     function setEventHandlers() {
         $("#line-height").on('keyup change', syncLineHeight);
         $("#size").on('keyup change', syncFontSize);
         $("#top-measurement").on('keyup change', syncTopMeasurement);
         $("#bottom-measurement").on('keyup change', syncBottomMeasurement);
         $("#typeface").on('change', setSampleTextStyles);
+        $(".measurement-fine-tune__increment--increase").on('click', increaseAdjustment)
+        $(".measurement-fine-tune__increment--decrease").on('click', decreaseAdjustment)
         // $(".cap-height-measurement__line").on('click', lockMeasurementLine);
 
         $(".cap-height-measurement__line").draggable({ 
             axis: 'y', 
             containment: 'parent', 
             handle: ".measurement-fine-tune__grip",
-            drag: function(event, ui) {
-                console.log(ui);
-            },
-            stop: function(event, ui) {
-                console.log(ui);
-            }
+            drag: updateIndicator,
+            stop: updateIndicator
         });
     }
 
