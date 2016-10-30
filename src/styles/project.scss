@@ -5,6 +5,15 @@ body {
     color: $color-text-default;
 }
 
+.tool-section {
+    padding: $spacing-sm;
+    margin-bottom: $spacing-lg;
+}
+
+.tool-section__title {
+    text-align: left;
+}
+
 .cap-height-measurement__sample-text {
     background: $color-white;
     border: solid 1px $color-gray-20;
@@ -17,6 +26,10 @@ body {
 .cap-height-measurement__actions {
     // overflow: hidden;
     position: relative;
+}
+
+.cap-height-measurement-wrap {
+    padding: $spacing-lg 0;
 }
 
 // .cap-height-measurement__lines {
@@ -102,6 +115,8 @@ body {
 
     &.cap-height-measurement__line--bottom {
         background: $color-blue;
+        left: 30px;
+        width: calc(100% - 30px);
     }
 }
 
@@ -155,15 +170,16 @@ body {
 
     .cap-height-measurement__line--bottom & {
         background: $color-blue;
-        left: 30px;
     }
 }
 
 .cap-height-measurement__offset {
     align-items: center;
-    display: flex;
     background: $color-white;
     border: solid 1px $color-orange-light;
+    color: $color-orange-light;
+    display: flex;
+    font-family: monospace;
     justify-content: center;
     padding: $spacing-sm;
     height: 30px;
@@ -172,9 +188,56 @@ body {
     top: 50%;
     margin-top: -15px;
     right: 30px;
+    z-index: 20;
 
     .cap-height-measurement__line--bottom & {
         border-color: $color-blue;
+        color: $color-blue;
         right: 0;
     }
+}
+
+.offset-input,
+.offset-input-label {
+    left: -10000px;
+    position: absolute;
+    top: 0;
+}
+
+label {
+    display: block;
+    font-size: $font-size-sm;
+    margin-bottom: $spacing-xs / 2;
+}
+
+input,
+select {
+    font-size: $font-size-default;
+    width: 100%;
+}
+
+.typeface-action {
+    margin-bottom: $spacing-default;
+}
+
+.code-top-measurement {
+    color: $color-orange-light;
+    font-weight: bold;
+}
+
+.code-bottom-measurement {
+    color: $color-blue;
+    font-weight: bold;
+}
+
+.code-size,
+#size {
+    color: $color-green;
+    font-weight: bold;
+}
+
+.code-line-height,
+#line-height {
+    color: $color-red;
+    font-weight: bold;
 }

@@ -26,9 +26,9 @@
         <script src="scripts/project.js"></script>
     </head>
     <body>
-                <h1>Cap Height Alignment Tool</h1>
 
                 <div class="typeface-actions tool-section">
+                    <h1>Cap Height Alignment Tool</h1>
                     <h2 class="tool-section__title">Select a Typeface</h2> 
                     <div class="typeface-action">
                         <label for="typeface">Typeface</label>
@@ -40,7 +40,7 @@
                         </select>
                     </div>
                     
-                    <div class="typeface-action tool-section">
+                    <div class="typeface-action">
                         <label for="weight">Weight &amp; Style</label>
                         <select name="weight" id="weight">
                             <option value="400">400 (normal)</option>
@@ -49,9 +49,9 @@
                         </select>
                     </div>
                     
-                    <div class="typeface-action tool-section">
+                    <div class="typeface-action">
                         <label for="size">Size</label>
-                        <input name="size" id="size" type="text" value="60">
+                        <input name="size" id="size" type="text" value="36">
                     </div>
                     
                     <div class="typeface-action">
@@ -64,80 +64,82 @@
                 <div class="cap-height-measurement tool-section">
                     <h2 class="tool-section__title">Measure the Cap Height</h2> 
 
-                    <label for="top-measurement">Top Measurement</label>
-                    <input type="number" id="top-measurement" name="top-measurement" value="0">
-                    
-                    <div class="cap-height-measurement__actions">
-                        <div class="cap-height-measurement__line cap-height-measurement__line--top">
-                            <div class="measurement-fine-tune measurement-fine-tune--top">
-                                <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
-                                    
+                    <div class="cap-height-measurement-wrap">
+                        <div class="cap-height-measurement__actions">
+                            <div class="cap-height-measurement__line cap-height-measurement__line--top">
+                                <div class="measurement-fine-tune measurement-fine-tune--top">
+                                    <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
+                                        
     <svg  class="measurement-fine-tune__increment-icon"  aria-labelledby="title">
         <title>arrow-circle-up</title>
         <use xlink:href="./svg/project.svg#arrow-circle-up"></use>
     </svg>
 
-                                </div>
-                                <div class="measurement-fine-tune__grip">
+                                    </div>
+                                    <div class="measurement-fine-tune__grip">
     <svg  class="measurement-fine-tune__grip-icon"  aria-labelledby="title">
         <title>bars</title>
         <use xlink:href="./svg/project.svg#bars"></use>
     </svg>
 </div>
-                                <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
-                                    
+                                    <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
+                                        
     <svg  class="measurement-fine-tune__increment-icon"  aria-labelledby="title">
         <title>arrow-circle-down</title>
         <use xlink:href="./svg/project.svg#arrow-circle-down"></use>
     </svg>
 
+                                    </div>
                                 </div>
+                                <div class="cap-height-measurement__offset">
+                                    0
+                                </div>
+                                <label for="top-measurement" class="offset-input-label">Top Measurement</label>
+                                <input class="offset-input" type="number" id="top-measurement" name="top-measurement" value="0">
                             </div>
-                            <div class="cap-height-measurement__offset">
-                                0
+                            <div class="cap-height-measurement__sample-text">
+                                I try &ldquo;ascenders&rdquo; descending (1).
                             </div>
-                        </div>
-                        <div class="cap-height-measurement__sample-text">
-                            I try &ldquo;ascenders&rdquo; descending (1).
-                        </div>
-                        <div class="cap-height-measurement__line cap-height-measurement__line--bottom">
-                            <div class="measurement-fine-tune measurement-fine-tune--bottom">
-                                <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
-                                    
+                            <div class="cap-height-measurement__line cap-height-measurement__line--bottom">
+                                <div class="measurement-fine-tune measurement-fine-tune--bottom">
+                                    <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
+                                        
     <svg  class="measurement-fine-tune__increment-icon"  aria-labelledby="title">
         <title>arrow-circle-up</title>
         <use xlink:href="./svg/project.svg#arrow-circle-up"></use>
     </svg>
 
-                                </div>
-                                <div class="measurement-fine-tune__grip">
+                                    </div>
+                                    <div class="measurement-fine-tune__grip">
     <svg  class="measurement-fine-tune__grip-icon"  aria-labelledby="title">
         <title>bars</title>
         <use xlink:href="./svg/project.svg#bars"></use>
     </svg>
 </div>
-                                <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
-                                    
+                                    <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
+                                        
     <svg  class="measurement-fine-tune__increment-icon"  aria-labelledby="title">
         <title>arrow-circle-down</title>
         <use xlink:href="./svg/project.svg#arrow-circle-down"></use>
     </svg>
 
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="cap-height-measurement__offset">
-                                0
+                                <div class="cap-height-measurement__offset">
+                                    0
+                                </div>
+                                <label for="bottom-measurement" class="offset-input-label">Bottom Measurement</label>
+                                <input class="offset-input" type="number" id="bottom-measurement" name="bottom-measurement" value="0">
                             </div>
                         </div>
                     </div>
-                    <label for="bottom-measurement">Bottom Measurement</label>
-                    <input type="number" id="bottom-measurement" name="bottom-measurement" value="0">
                 
 
                 </div>
 
-                <div class="generated-code">
+                <div class="generated-code tool-section">
                     <h2 class="tool-section__title">Mixin Code</h2> 
+                    <h3>SCSS</h3>
                     <pre>
                         <code id="scss-code">
 @mixin cap-aligned-line-height($line-height: <span class="code-line-height">1.2</span>) {
@@ -165,7 +167,7 @@
                         </code>
                     </pre>
 
-
+                    <h3>LESS</h3>
                     <pre>
                         <code id="less-code">
 cap-aligned-line-height($line-height = <span class="code-line-height">1.2</span>) {
@@ -194,7 +196,7 @@ cap-aligned-line-height($line-height = <span class="code-line-height">1.2</span>
                     </pre>
 
 
-
+                    <h3>Stylus</h3>
                     <pre>
                         <code id="stylus-code">
 .cap-aligned-line-height(@line-height: <span class="code-line-height">1.2</span>) {

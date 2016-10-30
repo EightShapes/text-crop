@@ -8,6 +8,7 @@ CapHeightAlignmentTool = function() {
 
     function syncLineHeight() {
         $(".code-line-height").text($("#line-height").val());
+        setSampleTextStyles();
     }
 
     function syncFontSize() {
@@ -48,8 +49,10 @@ CapHeightAlignmentTool = function() {
     }
 
     function updateIndicator(event, ui) {
-        var $target = $(event.target),
-            $indicator = $target.closest(".cap-height-measurement__line").find(".cap-height-measurement__offset").text(Math.abs(ui.position.top));
+        var $target = $(event.target);
+
+            $target.closest(".cap-height-measurement__line").find(".cap-height-measurement__offset").text(Math.abs(ui.position.top)),
+            $target.closest(".cap-height-measurement__line").find(".offset-input").val(Math.abs(ui.position.top)).trigger("change");
     }
 
     function increaseAdjustment(event) {
@@ -57,9 +60,11 @@ CapHeightAlignmentTool = function() {
             $offsetIndicator = $target.closest(".cap-height-measurement__line").find(".cap-height-measurement__offset"),
             currentPosition = $offsetIndicator.text(),
             $measurementLine = $target.closest(".cap-height-measurement__line"),
+            $offsetInput = $measurementLine.find(".offset-input"),
             newPosition = parseInt(currentPosition, 10) + 1;
 
         $offsetIndicator.text(newPosition);
+        $offsetInput.val(newPosition).trigger("change");
         if ($measurementLine.hasClass("cap-height-measurement__line--bottom")) {
             newPosition = -(newPosition);
         }
@@ -72,9 +77,11 @@ CapHeightAlignmentTool = function() {
             $offsetIndicator = $target.closest(".cap-height-measurement__line").find(".cap-height-measurement__offset"),
             currentPosition = $offsetIndicator.text(),
             $measurementLine = $target.closest(".cap-height-measurement__line"),
+            $offsetInput = $measurementLine.find(".offset-input"),
             newPosition = Math.max(0, parseInt(currentPosition, 10) - 1);
 
         $offsetIndicator.text(newPosition);
+        $offsetInput.val(newPosition).trigger("change");
         if ($measurementLine.hasClass("cap-height-measurement__line--bottom")) {
             newPosition = -(newPosition);
         }
@@ -103,8 +110,9 @@ CapHeightAlignmentTool = function() {
 
     function setSampleTextStyles() {
         var fontSize = $("#size").val() + 'px',
-            fontFamily = $("#typeface").val();
-        $(".cap-height-measurement__sample-text").css({fontSize: fontSize, fontFamily: fontFamily});
+            fontFamily = $("#typeface").val(),
+            lineHeight = $("#line-height").val();
+        $(".cap-height-measurement__sample-text").css({fontSize: fontSize, fontFamily: fontFamily, lineHeight: lineHeight});
         
         // if ($("#inline-styles").length == 0) {
         //     $("head").append("<style id='inline-styles'>");
