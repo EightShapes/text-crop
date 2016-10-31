@@ -96,8 +96,13 @@ CapHeightAlignmentTool = function() {
         $("#bottom-measurement").on('keyup change', syncBottomMeasurement);
         $("#typeface").on('change', buildWeightAndStyleSelectBox);
         $("#weight-and-style").on('change', setSampleTextStyles);
-        $(".measurement-fine-tune__increment--increase").on('click', increaseAdjustment)
-        $(".measurement-fine-tune__increment--decrease").on('click', decreaseAdjustment)
+        $("#use-custom-typeface").on('change', setSampleTextStyles);
+        $("#custom-typeface-name").on('keyup change', setSampleTextStyles);
+        $("#custom-typeface-weight").on('keyup change', setSampleTextStyles);
+        $("#custom-typeface-style").on('keyup change', setSampleTextStyles);
+        $("#custom-typeface-url").on('keyup change', setSampleTextStyles);
+        $(".measurement-fine-tune__increment--increase").on('click', increaseAdjustment);
+        $(".measurement-fine-tune__increment--decrease").on('click', decreaseAdjustment);
 
         $(".cap-height-measurement__line").draggable({ 
             axis: 'y', 
@@ -135,18 +140,33 @@ CapHeightAlignmentTool = function() {
             fontFamily = $("#typeface").val(),
             lineHeight = $("#line-height").val(),
             weightAndStyle = parseWeightAndStyle($("#weight-and-style").val()),
+            useCustomTypeface = $("#use-custom-typeface").is(":checked"),
             style = "";    
 
-        var fontUrl = "https://fonts.googleapis.com/css?family=" + fontFamily.replace(/ /g, '+') + ':' + weightAndStyle.originalString;
 
-        WebFont.load({
-          google: {
-            families: [fontFamily + ":" + weightAndStyle.originalString]
-          }
-        });
+        if (useCustomTypeface) {
+            var fontUrl = false;
 
-        if ($("link[href='" + fontUrl + "']").length === 0) {
-            $("head").append("<link rel='styleshee' href='" + fontUrl + "'>");
+            fontFamily = $("#custom-typeface-name").val();
+            weightAndStyle = {
+                weight: $("#custom-typeface-weight").val(),
+                style: $("#custom-typeface-style").val()
+            };
+    
+            if ($("#custom-typeface-url").length > 0) {
+                fontUrl = $("#custom-typeface-url").val();
+            }
+
+            if (fontUrl && $("link[href='" + fontUrl + "']").length === 0) {
+                $("head").append("<link rel='stylesheet' href='" + fontUrl + "'>");
+            }
+        } else {
+            var fontUrl = "https://fonts.googleapis.com/css?family=" + fontFamily.replace(/ /g, '+') + ':' + weightAndStyle.originalString;
+            WebFont.load({
+              google: {
+                families: [fontFamily + ":" + weightAndStyle.originalString]
+              }
+            });
         }
 
         $(".cap-height-measurement__sample-text").css({fontSize: fontSize, fontFamily: fontFamily, lineHeight: lineHeight, fontWeight: weightAndStyle.weight, fontStyle: weightAndStyle.style});
@@ -207,6 +227,7 @@ CapHeightAlignmentTool = function() {
         syncTopMeasurement();
         syncBottomMeasurement();
         buildWeightAndStyleSelectBox();
+        setSampleTextStyles();
     }
 
 
