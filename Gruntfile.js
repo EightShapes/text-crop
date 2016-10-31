@@ -165,6 +165,7 @@ module.exports = function(grunt) {
                     'node_modules/jquery-ui/ui/scroll-parent.js',
                     'node_modules/jquery-ui/ui/plugin.js',
                     'node_modules/jquery-ui/ui/safe-active-element.js',
+                    'node_modules/jquery-ui/ui/safe-blur.js',
                     'node_modules/jquery-ui/ui/widgets/draggable.js',
                     'node_modules/jquery-ui/ui/widgets/mouse.js',
                     'node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.js'

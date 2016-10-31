@@ -15619,4 +15619,4 @@ var googleFonts = {
    }
   }
  ]
-}
+};
