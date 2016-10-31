@@ -14,6 +14,7 @@ body {
   border: solid 1px #323232;
   box-sizing: content-box;
   color: #323232;
+  font-family: monospace;
   text-align: center;
   margin: 0 0 0 60px; }
 
@@ -149,5 +150,8 @@ select {
 #line-height {
   color: #D72044;
   font-weight: bold; }
+
+.typeface-action--hidden {
+  display: none; }
 
 /*# sourceMappingURL=project.css.map */

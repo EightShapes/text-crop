@@ -89,6 +89,16 @@ CapHeightAlignmentTool = function() {
         $measurementLine.css({top: newPosition + "px"});
     }
 
+    function toggleTypefaceInputVisiblity() {
+        $(".typeface-action--hidden").removeClass("typeface-action--hidden");
+
+        if ($("#use-custom-typeface").is(":checked")) {
+            $(".typeface-action--typeface, .typeface-action--weight-and-style").addClass("typeface-action--hidden");
+        } else {
+            $(".typeface-action--custom-typeface-name, .typeface-action--custom-typeface-url, .typeface-action--custom-typeface-weight, .typeface-action--custom-typeface-style").addClass("typeface-action--hidden")
+        }
+    }
+
     function setEventHandlers() {
         $("#line-height").on('keyup change', syncLineHeight);
         $("#size").on('keyup change', syncFontSize);
@@ -96,7 +106,10 @@ CapHeightAlignmentTool = function() {
         $("#bottom-measurement").on('keyup change', syncBottomMeasurement);
         $("#typeface").on('change', buildWeightAndStyleSelectBox);
         $("#weight-and-style").on('change', setSampleTextStyles);
-        $("#use-custom-typeface").on('change', setSampleTextStyles);
+        $("#use-custom-typeface").on('change', function(){
+            toggleTypefaceInputVisiblity();
+            setSampleTextStyles();
+        });
         $("#custom-typeface-name").on('keyup change', setSampleTextStyles);
         $("#custom-typeface-weight").on('keyup change', setSampleTextStyles);
         $("#custom-typeface-style").on('keyup change', setSampleTextStyles);
@@ -169,7 +182,7 @@ CapHeightAlignmentTool = function() {
             });
         }
 
-        $(".cap-height-measurement__sample-text").css({fontSize: fontSize, fontFamily: fontFamily, lineHeight: lineHeight, fontWeight: weightAndStyle.weight, fontStyle: weightAndStyle.style});
+        $(".cap-height-measurement__sample-text").css({fontSize: fontSize, fontFamily: fontFamily + ", monospace", lineHeight: lineHeight, fontWeight: weightAndStyle.weight, fontStyle: weightAndStyle.style});
         
     }
 

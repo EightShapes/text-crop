@@ -19,6 +19,7 @@ body {
     border: solid 1px $color-gray-20;
     box-sizing: content-box;
     color: $color-text-default;
+    font-family: monospace;
     text-align: center;
     margin: 0 0 0 60px;
 }
@@ -240,4 +241,8 @@ select {
 #line-height {
     color: $color-red;
     font-weight: bold;
+}
+
+.typeface-action--hidden {
+    display: none;
 }
