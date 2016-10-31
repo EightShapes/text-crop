@@ -4,7 +4,8 @@ CapHeightAlignmentTool = function() {
     var measurementLineLockedClass = "cap-height-measurement__line--locked",
         topMeasurementLineListClass = "cap-height-measurement__lines--top",
         bottomMeasurementLineListClass = "cap-height-measurement__lines--bottom",
-        fineTuneAdjustmentClass = "measurement-fine-tune";
+        fineTuneAdjustmentClass = "measurement-fine-tune",
+        typefaceVariantMapping = {};
 
     function syncLineHeight() {
         $(".code-line-height").text($("#line-height").val());
@@ -94,10 +95,10 @@ CapHeightAlignmentTool = function() {
         $("#size").on('keyup change', syncFontSize);
         $("#top-measurement").on('keyup change', syncTopMeasurement);
         $("#bottom-measurement").on('keyup change', syncBottomMeasurement);
-        $("#typeface").on('change', setSampleTextStyles);
+        $("#typeface").on('change', buildWeightAndStyleSelectBox);
+        $("#weight-and-style").on('change', setSampleTextStyles);
         $(".measurement-fine-tune__increment--increase").on('click', increaseAdjustment)
         $(".measurement-fine-tune__increment--decrease").on('click', decreaseAdjustment)
-        // $(".cap-height-measurement__line").on('click', lockMeasurementLine);
 
         $(".cap-height-measurement__line").draggable({ 
             axis: 'y', 
@@ -108,17 +109,67 @@ CapHeightAlignmentTool = function() {
         });
     }
 
+    function parseWeightAndStyle(string) {
+        var weightAndStyle = {
+            weight: '400',
+            style: 'normal',
+            originalString: string
+        };
+
+        if (string === 'regular') {
+            // Nothing to do, just use defaults
+        } else if (string === 'italic') {
+            weightAndStyle.style = 'italic';
+        } else if (string.indexOf('italic') !== -1) {
+            var weight = string.replace('italic', '');
+            weightAndStyle.style = 'italic';
+            weightAndStyle.weight = weight;
+        } else {
+            weightAndStyle.weight = string;
+        }
+
+        return weightAndStyle;
+    }
+
     function setSampleTextStyles() {
         var fontSize = $("#size").val() + 'px',
             fontFamily = $("#typeface").val(),
-            lineHeight = $("#line-height").val();
-        $(".cap-height-measurement__sample-text").css({fontSize: fontSize, fontFamily: fontFamily, lineHeight: lineHeight});
-        
-        // if ($("#inline-styles").length == 0) {
-        //     $("head").append("<style id='inline-styles'>");
-        // }
+            lineHeight = $("#line-height").val(),
+            weightAndStyle = parseWeightAndStyle($("#weight-and-style").val()),
+            style = "";    
 
-        // $("#inline-styles").append(" .cap-height-measurement__sample-text { font-family: '" + fontFamily + "'; }")
+        var fontUrl = "https://fonts.googleapis.com/css?family=" + fontFamily.replace(/ /g, '+') + ':' + weightAndStyle.originalString;
+
+        WebFont.load({
+          google: {
+            families: [fontFamily + ":" + weightAndStyle.originalString]
+          }
+        });
+
+        if ($("link[href='" + fontUrl + "']").length === 0) {
+            $("head").append("<link rel='styleshee' href='" + fontUrl + "'>");
+        }
+
+        $(".cap-height-measurement__sample-text").css({fontSize: fontSize, fontFamily: fontFamily, lineHeight: lineHeight, fontWeight: weightAndStyle.weight, fontStyle: weightAndStyle.style});
+        
+    }
+
+    function getWeightAndStyleVariants() {
+        var currentTypeface = $("#typeface").val();
+        return typefaceVariantMapping[currentTypeface];
+    }
+
+    function buildWeightAndStyleSelectBox() {
+        var variants = getWeightAndStyleVariants(),
+            $variantSelect = $("#weight-and-style"),
+            options = "";
+
+        for (var style in variants) {
+            var filepath = variants[style];
+            options += '<option value="' + style + '">' + style + '</option>';
+        }
+
+        return $variantSelect.html(options).trigger('change');
     }
 
     function getGoogleFontTypefaces() {
@@ -126,6 +177,7 @@ CapHeightAlignmentTool = function() {
         for (var i = 0; i < googleFonts.items.length; i++) {
             var font = googleFonts.items[i];
             typefaces.push(font.family);
+            typefaceVariantMapping[font.family] = font.files;
         }
 
         return typefaces;
@@ -155,7 +207,7 @@ CapHeightAlignmentTool = function() {
         syncFontSize();
         syncTopMeasurement();
         syncBottomMeasurement();
-        // setSampleTextStyles();
+        buildWeightAndStyleSelectBox();
     }
 
 
