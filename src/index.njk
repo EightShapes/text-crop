@@ -28,129 +28,126 @@
         <script src="scripts/project.js"></script>
     </head>
     <body>
+        <div class="typeface-actions tool-section">
+            <h1>Cap Aligned Line Height Generator</h1>
+            <h2 class="tool-section__title">Select a Typeface</h2> 
+            <div class="typeface-action typeface-action--typeface">
+                <label for="typeface">Typeface</label>
+                <select name="typeface" id="typeface">
+                    <!-- Built out dynamically with JS -->
+                </select>
+            </div>
+            
+            <div class="typeface-action typeface-action--use-custom-typeface">
+                <label for="use-custom-typeface">
+                    <input type="checkbox" id="use-custom-typeface" name="use-custom-typeface">
+                    Use a Custom Typeface
+                </label>
+            </div>
 
-                <div class="typeface-actions tool-section">
-                    <h1>Cap Aligned Line Height Generator</h1>
-                    <h2 class="tool-section__title">Select a Typeface</h2> 
-                    <div class="typeface-action typeface-action--typeface">
-                        <label for="typeface">Typeface</label>
-                        <select name="typeface" id="typeface">
-                            <!-- Built out dynamically with JS -->
-                        </select>
-                    </div>
-                    
-                    <div class="typeface-action typeface-action--use-custom-typeface">
-                        <label for="use-custom-typeface">
-                            <input type="checkbox" id="use-custom-typeface" name="use-custom-typeface">
-                            Use a Custom Typeface
-                        </label>
-                    </div>
+            <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-name">
+                <label for="custom-typeface-name">
+                    Custom Typeface Name (font-family)
+                </label>
+                <input type="text" id="custom-typeface-name" name="custom-typeface-name" value="Helvetica">
+            </div>
 
-                    <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-name">
-                        <label for="custom-typeface-name">
-                            Custom Typeface Name (font-family)
-                        </label>
-                        <input type="text" id="custom-typeface-name" name="custom-typeface-name" value="Helvetica">
-                    </div>
+            <div class="typeface-action typeface-action--hidden  typeface-action--custom-typeface-url">
+                <label for="custom-typeface-url">
+                    Custom Typeface Url (optional)
+                </label>
+                <input type="text" id="custom-typeface-url" name="custom-typeface-url" placeholder="https://my-link-to-hosted-webfont.example.com/?font=Font+Name">
+            </div>
 
-                    <div class="typeface-action typeface-action--hidden  typeface-action--custom-typeface-url">
-                        <label for="custom-typeface-url">
-                            Custom Typeface Url (optional)
-                        </label>
-                        <input type="text" id="custom-typeface-url" name="custom-typeface-url" placeholder="https://my-link-to-hosted-webfont.example.com/?font=Font+Name">
-                    </div>
+            <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-weight">
+                <label for="custom-typeface-weight">
+                    Custom Typeface Weight (optional)
+                </label>
+                <input type="text" id="custom-typeface-weight" name="custom-typeface-weight" value="400">
+            </div>
 
-                    <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-weight">
-                        <label for="custom-typeface-weight">
-                            Custom Typeface Weight (optional)
-                        </label>
-                        <input type="text" id="custom-typeface-weight" name="custom-typeface-weight" value="400">
-                    </div>
-
-                    <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-style">
-                        <label for="custom-typeface-style">
-                            Custom Typeface Style (optional)
-                        </label>
-                        <input type="text" id="custom-typeface-style" name="custom-typeface-style" value="normal">
-                    </div>
-                    
-                    <div class="typeface-action typeface-action--weight-and-style">
-                        <label for="weight-and-style">Weight &amp; Style</label>
-                        <select name="weight-and-style" id="weight-and-style">
-                            <option value="400">400 (normal)</option>
-                            <option value="400i">400 Italic (normal)</option>
-                            <option value="700">700 (bold)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="typeface-action typeface-action--size">
-                        <label for="size">Size</label>
-                        <input name="size" id="size" type="text" value="36">
-                    </div>
-                    
-                    <div class="typeface-action typeface-action--line-height">
-                        <label for="line-height">Default Line Height</label>
-                        <input name="line-height" id="line-height" type="text" value="1.2">
-                    </div>
-                </div>
+            <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-style">
+                <label for="custom-typeface-style">
+                    Custom Typeface Style (optional)
+                </label>
+                <input type="text" id="custom-typeface-style" name="custom-typeface-style" value="normal">
+            </div>
+            
+            <div class="typeface-action typeface-action--weight-and-style">
+                <label for="weight-and-style">Weight &amp; Style</label>
+                <select name="weight-and-style" id="weight-and-style">
+                    <option value="400">400 (normal)</option>
+                    <option value="400i">400 Italic (normal)</option>
+                    <option value="700">700 (bold)</option>
+                </select>
+            </div>
+            
+            <div class="typeface-action typeface-action--size">
+                <label for="size">Size</label>
+                <input name="size" id="size" type="text" value="36">
+            </div>
+            
+            <div class="typeface-action typeface-action--line-height">
+                <label for="line-height">Default Line Height</label>
+                <input name="line-height" id="line-height" type="text" value="1.2">
+            </div>
+        </div>
 
 
-                <div class="cap-height-measurement tool-section">
-                    <h2 class="tool-section__title">Measure the Cap Height</h2> 
+        <div class="cap-height-measurement tool-section">
+            <h2 class="tool-section__title">Measure the Cap Height</h2> 
 
-                    <div class="cap-height-measurement-wrap">
-                        <div class="cap-height-measurement__actions">
-                            <div class="cap-height-measurement__line cap-height-measurement__line--top">
-                                <div class="measurement-fine-tune measurement-fine-tune--top">
-                                    <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
-                                        {{ components.icon(name="arrow-circle-up", class="measurement-fine-tune__increment-icon") }}
-                                    </div>
-                                    <div class="measurement-fine-tune__grip">{{ components.icon(name="bars", class="measurement-fine-tune__grip-icon") }}</div>
-                                    <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
-                                        {{ components.icon(name="arrow-circle-down", class="measurement-fine-tune__increment-icon") }}
-                                    </div>
-                                </div>
-                                <div class="cap-height-measurement__offset">
-                                    0
-                                </div>
-                                <label for="top-measurement" class="offset-input-label">Top Measurement</label>
-                                <input class="offset-input" type="number" id="top-measurement" name="top-measurement" value="0">
+            <div class="cap-height-measurement-wrap">
+                <div class="cap-height-measurement__actions">
+                    <div class="cap-height-measurement__line cap-height-measurement__line--top">
+                        <div class="measurement-fine-tune measurement-fine-tune--top">
+                            <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
+                                {{ components.icon(name="arrow-circle-up", class="measurement-fine-tune__increment-icon") }}
                             </div>
-                            <div class="cap-height-measurement__sample-text">
-                                I try &ldquo;ascenders&rdquo; descending (1).
-                            </div>
-                            <div class="cap-height-measurement__line cap-height-measurement__line--bottom">
-                                <div class="measurement-fine-tune measurement-fine-tune--bottom">
-                                    <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
-                                        {{ components.icon(name="arrow-circle-up", class="measurement-fine-tune__increment-icon") }}
-                                    </div>
-                                    <div class="measurement-fine-tune__grip">{{ components.icon(name="bars", class="measurement-fine-tune__grip-icon") }}</div>
-                                    <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
-                                        {{ components.icon(name="arrow-circle-down", class="measurement-fine-tune__increment-icon") }}
-                                    </div>
-                                </div>
-                                <div class="cap-height-measurement__offset">
-                                    0
-                                </div>
-                                <label for="bottom-measurement" class="offset-input-label">Bottom Measurement</label>
-                                <input class="offset-input" type="number" id="bottom-measurement" name="bottom-measurement" value="0">
+                            <div class="measurement-fine-tune__grip">{{ components.icon(name="bars", class="measurement-fine-tune__grip-icon") }}</div>
+                            <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
+                                {{ components.icon(name="arrow-circle-down", class="measurement-fine-tune__increment-icon") }}
                             </div>
                         </div>
+                        <div class="cap-height-measurement__offset">
+                            0
+                        </div>
+                        <label for="top-measurement" class="offset-input-label">Top Measurement</label>
+                        <input class="offset-input" type="number" id="top-measurement" name="top-measurement" value="0">
                     </div>
-                
-
+                    <div class="cap-height-measurement__sample-text">
+                        I try &ldquo;ascenders&rdquo; descending (1).
+                    </div>
+                    <div class="cap-height-measurement__line cap-height-measurement__line--bottom">
+                        <div class="measurement-fine-tune measurement-fine-tune--bottom">
+                            <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
+                                {{ components.icon(name="arrow-circle-up", class="measurement-fine-tune__increment-icon") }}
+                            </div>
+                            <div class="measurement-fine-tune__grip">{{ components.icon(name="bars", class="measurement-fine-tune__grip-icon") }}</div>
+                            <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
+                                {{ components.icon(name="arrow-circle-down", class="measurement-fine-tune__increment-icon") }}
+                            </div>
+                        </div>
+                        <div class="cap-height-measurement__offset">
+                            0
+                        </div>
+                        <label for="bottom-measurement" class="offset-input-label">Bottom Measurement</label>
+                        <input class="offset-input" type="number" id="bottom-measurement" name="bottom-measurement" value="0">
+                    </div>
                 </div>
+            </div>
+        </div>
 
-                <div class="generated-code tool-section">
-                    <h2 class="tool-section__title">Mixin Code</h2> 
-                    <h3>SCSS</h3>
-                    <pre>
-                        <code id="scss-code">
+        <div class="generated-code tool-section">
+            <h2 class="tool-section__title">Mixin Code</h2> 
+            <h3>SCSS</h3>
+            <pre>
+                <code id="scss-code">
 @mixin cap-aligned-line-height($line-height: <span class="code-line-height">1.2</span>) {
-    $offset-top: (<span class="code-top-measurement">0</span> + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
-    $offset-top: (<span class="code-bottom-measurement">0</span> + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
+    $offset-top: ((<span class="code-top-measurement">0</span> - (<span class="code-size">60</span> / 10)) + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
+    $offset-bottom: ((<span class="code-bottom-measurement">0</span> - (<span class="code-size">60</span> / 10)) + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
 
-    line-height: <span class="code-line-height">1.2</span>;
+    line-height: $line-height;
 
     &::before,
     &::after {
@@ -168,46 +165,17 @@
         margin-top: -#{$offset-bottom}em;
     }
 }
-                        </code>
-                    </pre>
+                </code>
+            </pre>
 
-                    <h3>LESS</h3>
-                    <pre>
-                        <code id="less-code">
-cap-aligned-line-height($line-height = <span class="code-line-height">1.2</span>) {
-    $offset-top = (<span class="code-top-measurement">0</span> + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
-    $offset-top = (<span class="code-bottom-measurement">0</span> + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
-
-    line-height: <span class="code-line-height">1.2</span>;
-
-    &::before,
-    &::after {
-        content: '';
-        display: block;
-        height: 0;
-        width: 0;
-    }
-
-    &::before {
-        margin-bottom: -{$offset-top}em;
-    }
-
-    &::after {
-        margin-top: -{$offset-bottom}em;
-    }
-}
-                        </code>
-                    </pre>
-
-
-                    <h3>Stylus</h3>
-                    <pre>
-                        <code id="stylus-code">
+            <h3>LESS</h3>
+            <pre>
+                <code id="stylus-code">
 .cap-aligned-line-height(@line-height: <span class="code-line-height">1.2</span>) {
-    @offset-top: (<span class="code-top-measurement">0</span> + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
-    @offset-top: (<span class="code-bottom-measurement">0</span> + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
+    @offset-top: ((<span class="code-top-measurement">0</span> - (<span class="code-size">60</span> / 10)) + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
+    @offset-bottom: ((<span class="code-bottom-measurement">0</span> - (<span class="code-size">60</span> / 10)) + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
 
-    line-height: <span class="code-line-height">1.2</span>;
+    line-height: @line-height;
 
     &::before,
     &::after {
@@ -225,8 +193,48 @@ cap-aligned-line-height($line-height = <span class="code-line-height">1.2</span>
         margin-top: -(@offset-bottom)em;
     }
 }
-                        </code>
-                    </pre>
-                </div>
+                </code>
+            </pre>
+
+            <h3>Stylus</h3>
+            <pre>
+                <code id="less-code">
+cap-aligned-line-height($line-height = <span class="code-line-height">1.2</span>) {
+    $offset-top = ((<span class="code-top-measurement">0</span> - (<span class="code-size">60</span> / 10)) + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
+    $offset-bottom = ((<span class="code-bottom-measurement">0</span> - (<span class="code-size">60</span> / 10)) + ($line-height - 1) * (<span class="code-size">60</span> / 2)) / <span class="code-size">60</span>;    
+
+    line-height: $line-height;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+    }
+
+    &::before {
+        margin-bottom: -($offset-top)em;
+    }
+
+    &::after {
+        margin-top: -($offset-bottom)em;
+    }
+}
+                </code>
+            </pre>
+        </div>
+        <div class="typeface-actions tool-section">
+            <h2 class="tool-section__title">Results</h2>
+            <div class="visible-padded-box cap-aligned-line-height sample-font-result">
+                16px font with 20px padding
+            </div>
+            <div class="visible-padded-box visible-padded-box--large cap-aligned-line-height sample-font-result">
+                32px font with 20px padding
+            </div>
+            <div class="visible-padded-box visible-padded-box--extra-large cap-aligned-line-height sample-font-result">
+                64px font with 20px padding
+            </div>
+        </div>
     </body>
 </html>

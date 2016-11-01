@@ -38,7 +38,8 @@ body {
   background: #F57026;
   display: block;
   height: 1px;
-  position: relative;
+  position: absolute;
+  top: 0;
   width: 100%; }
   .cap-height-measurement__line:after {
     background: white;
@@ -57,7 +58,9 @@ body {
     z-index: 100; }
   .cap-height-measurement__line.cap-height-measurement__line--bottom {
     background: #0795aa;
+    bottom: 0;
     left: 30px;
+    top: auto;
     width: calc(100% - 30px); }
 
 .measurement-fine-tune__grip-icon,
@@ -153,5 +156,25 @@ select {
 
 .typeface-action--hidden {
   display: none; }
+
+.visible-padded-box {
+  box-shadow: inset 20px 20px 0 #F57026, inset -20px -20px 0 #F57026;
+  display: inline-block;
+  font-size: 16px;
+  padding: 20px; }
+
+.visible-padded-box--large {
+  font-size: 32px; }
+
+.visible-padded-box--extra-large {
+  font-size: 64px; }
+
+.cap-aligned-line-height {
+  line-height: 1.2; }
+  .cap-aligned-line-height::before, .cap-aligned-line-height::after {
+    content: '';
+    display: block;
+    height: 0;
+    width: 0; }
 
 /*# sourceMappingURL=project.css.map */

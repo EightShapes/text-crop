@@ -10,19 +10,39 @@ CapHeightAlignmentTool = function() {
     function syncLineHeight() {
         $(".code-line-height").text($("#line-height").val());
         setSampleTextStyles();
+        updateInlineStyles();
     }
 
     function syncFontSize() {
         $(".code-size").text($("#size").val());
         setSampleTextStyles();
+        updateInlineStyles();
     }
 
     function syncTopMeasurement() {
         $(".code-top-measurement").text($("#top-measurement").val());
+        updateInlineStyles();
     }
 
     function syncBottomMeasurement() {
         $(".code-bottom-measurement").text($("#bottom-measurement").val());
+        updateInlineStyles();
+    }
+
+    function updateInlineStyles() {
+        if ($("style#cap-aligned-line-height-inline-styles").length === 0) {
+            $("head").append("<style id='cap-aligned-line-height-inline-styles'>");
+        }
+
+        var fontSize = parseInt($("#size").val(), 10),
+            lineHeight = parseFloat($("#line-height").val(), 10),
+            topMeasurement = parseInt($("#top-measurement").val(), 10),
+            bottomMeasurement = parseInt($("#bottom-measurement").val(), 10),
+            topOffsetEm = ((topMeasurement - (fontSize / 10)) + (lineHeight - 1) * (fontSize / 2)) / fontSize,
+            bottomOffsetEm = ((bottomMeasurement - (fontSize / 10)) + (lineHeight - 1) * (fontSize / 2)) / fontSize,
+            inlineStyle = ".cap-aligned-line-height { line-height: " + lineHeight + " } .cap-aligned-line-height::before { margin-bottom: -" + topOffsetEm + "em; } .cap-aligned-line-height::after { margin-top: -" + bottomOffsetEm + "em; }";
+
+        $("#cap-aligned-line-height-inline-styles").html(inlineStyle);
     }
 
     function moveFineTuneAdjustment($lockedLine, $lineList) {
@@ -52,8 +72,16 @@ CapHeightAlignmentTool = function() {
     function updateIndicator(event, ui) {
         var $target = $(event.target);
 
-            $target.closest(".cap-height-measurement__line").find(".cap-height-measurement__offset").text(Math.abs(ui.position.top)),
-            $target.closest(".cap-height-measurement__line").find(".offset-input").val(Math.abs(ui.position.top)).trigger("change");
+            if ($target.closest(".cap-height-measurement__line--bottom").length > 0) {
+                var offset = ui.position.top,
+                    heightOfSampleBox = $(".cap-height-measurement__sample-text").outerHeight(),
+                    value = heightOfSampleBox - offset;                
+            } else {
+                value = ui.position.top;
+            }
+
+            $target.closest(".cap-height-measurement__line").find(".cap-height-measurement__offset").text(value);
+            $target.closest(".cap-height-measurement__line").find(".offset-input").val(value).trigger("change");
     }
 
     function increaseAdjustment(event) {
@@ -184,7 +212,7 @@ CapHeightAlignmentTool = function() {
         }
 
         $(".cap-height-measurement__sample-text").css({fontSize: fontSize, fontFamily: fontFamily + ", monospace", lineHeight: lineHeight, fontWeight: weightAndStyle.weight, fontStyle: weightAndStyle.style});
-        
+        $(".sample-font-result").css({fontFamily: fontFamily + ", monospace", fontWeight: weightAndStyle.weight, fontStyle: weightAndStyle.style });
     }
 
     function getWeightAndStyleVariants() {

@@ -94,7 +94,8 @@ body {
     background: $color-orange-light;
     display: block;
     height: 1px;
-    position: relative;
+    position: absolute;
+    top: 0;
     width: 100%;
 
     &:after {
@@ -116,7 +117,9 @@ body {
 
     &.cap-height-measurement__line--bottom {
         background: $color-blue;
+        bottom: 0;
         left: 30px;
+        top: auto;
         width: calc(100% - 30px);
     }
 }
@@ -245,4 +248,31 @@ select {
 
 .typeface-action--hidden {
     display: none;
+}
+
+.visible-padded-box {
+    box-shadow: inset 20px 20px 0 $color-orange-light, inset -20px -20px 0 $color-orange-light;
+    display: inline-block;
+    font-size: 16px;
+    padding: 20px;
+}
+
+.visible-padded-box--large {
+    font-size: 32px;
+}
+
+.visible-padded-box--extra-large {
+    font-size: 64px;
+}
+
+.cap-aligned-line-height {
+    line-height: 1.2;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
+    }
 }
