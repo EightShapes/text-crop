@@ -172,6 +172,12 @@ module.exports = function(grunt) {
                 ],
                 flatten: true,
                 dest: 'docs/scripts'
+            },
+            local_fonts: {
+                cwd: 'src',
+                expand: true,
+                src: 'fonts/*/**',
+                dest: 'docs/'
             }        
         },
 

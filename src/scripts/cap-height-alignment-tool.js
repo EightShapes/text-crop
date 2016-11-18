@@ -73,7 +73,7 @@ CapHeightAlignmentTool = function() {
 
             if ($target.closest(".cap-height-measurement__line--bottom").length > 0) {
                 var offset = ui.position.top,
-                    heightOfSampleBox = $(".cap-height-measurement__sample-text").outerHeight(),
+                    heightOfSampleBox = $(".cap-height-measurement__sample-text").outerHeight() - 1,
                     value = heightOfSampleBox - offset;                
             } else {
                 value = ui.position.top;
@@ -89,12 +89,13 @@ CapHeightAlignmentTool = function() {
             currentPosition = $offsetIndicator.text(),
             $measurementLine = $target.closest(".cap-height-measurement__line"),
             $offsetInput = $measurementLine.find(".offset-input"),
-            newPosition = parseInt(currentPosition, 10) + 1;
+            newPosition = parseInt(currentPosition, 10) + 1,
+            heightOfSampleBox = $(".cap-height-measurement__sample-text").outerHeight() - 1;
 
         $offsetIndicator.text(newPosition);
         $offsetInput.val(newPosition).trigger("change");
         if ($measurementLine.hasClass("cap-height-measurement__line--bottom")) {
-            newPosition = -(newPosition);
+            newPosition = heightOfSampleBox - newPosition;
         }
 
         $measurementLine.css({top: newPosition + "px"});
@@ -106,12 +107,13 @@ CapHeightAlignmentTool = function() {
             currentPosition = $offsetIndicator.text(),
             $measurementLine = $target.closest(".cap-height-measurement__line"),
             $offsetInput = $measurementLine.find(".offset-input"),
-            newPosition = Math.max(0, parseInt(currentPosition, 10) - 1);
+            newPosition = Math.max(0, parseInt(currentPosition, 10) - 1),
+            heightOfSampleBox = $(".cap-height-measurement__sample-text").outerHeight() - 1;
 
         $offsetIndicator.text(newPosition);
         $offsetInput.val(newPosition).trigger("change");
         if ($measurementLine.hasClass("cap-height-measurement__line--bottom")) {
-            newPosition = -(newPosition);
+            newPosition = heightOfSampleBox - newPosition;
         }
 
         $measurementLine.css({top: newPosition + "px"});

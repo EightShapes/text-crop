@@ -111,6 +111,13 @@ body {
   top: 50%;
   margin-top: -15px;
   right: 30px;
+  -webkit-user-select: none;
+  /* Chrome all / Safari all */
+  -moz-user-select: none;
+  /* Firefox all */
+  -ms-user-select: none;
+  /* IE 10+ */
+  user-select: none;
   z-index: 20; }
   .cap-height-measurement__line--bottom .cap-height-measurement__offset {
     border-color: #0795aa;
