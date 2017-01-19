@@ -1,0 +1,22 @@
+.es-text-crop-samples__button {
+    background: $color-link;
+    border: none;
+    color: $color-white;
+    font-size: $font-size-lg;
+    margin: 0 0 $spacing-default;
+    padding: 10px 20px;
+}
+
+.es-text-crop-samples__flexbox {
+    align-items: flex-start;
+    display: flex;
+    margin: 0 0 $spacing-default;
+}
+
+.es-text-crop-samples__flexbox-image {
+    margin-right: $spacing-sm;
+}
+
+.es-text-crop-samples__flexbox-text {
+    font-size: $font-size-lg;
+}

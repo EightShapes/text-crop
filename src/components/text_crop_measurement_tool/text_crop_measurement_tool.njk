@@ -1,0 +1,46 @@
+{% macro text_crop_measurement_tool(sample_text="ABCDEFGHIJKLMNOPQRSTUVWXYZ &ldquo; &rdquo; $ & 1234567890 abcdefghijklmnopqrstuvwxyz") %}
+    <div class="cap-height-measurement tool-section">
+        <h2 class="tool-section__title">Crop the Text</h2> 
+
+        <div class="cap-height-measurement-wrap">
+            <div class="cap-height-measurement__actions">
+                <div class="cap-height-measurement__line cap-height-measurement__line--top">
+                    <div class="measurement-fine-tune measurement-fine-tune--top">
+                        <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
+                            {{ icon(icon_name="arrow-circle-up", class="measurement-fine-tune__increment-icon") }}
+                        </div>
+                        <div class="measurement-fine-tune__grip">{{ icon(icon_name="bars", class="measurement-fine-tune__grip-icon") }}</div>
+                        <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
+                            {{ icon(icon_name="arrow-circle-down", class="measurement-fine-tune__increment-icon") }}
+                        </div>
+                    </div>
+                    <div class="cap-height-measurement__offset">
+                        0
+                    </div>
+                    <label for="top-measurement" class="offset-input-label">Top Measurement</label>
+                    <input class="offset-input" type="number" id="top-measurement" name="top-measurement" value="0">
+                </div>
+                <div class="cap-height-measurement__sample-text" contenteditable="true">
+                    {{ sample_text | safe }}
+                    {# ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstu &ldquo;ascenders&rdquo; descending (1).#}
+                </div>
+                <div class="cap-height-measurement__line cap-height-measurement__line--bottom">
+                    <div class="measurement-fine-tune measurement-fine-tune--bottom">
+                        <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
+                            {{ icon(icon_name="arrow-circle-up", class="measurement-fine-tune__increment-icon") }}
+                        </div>
+                        <div class="measurement-fine-tune__grip">{{ icon(icon_name="bars", class="measurement-fine-tune__grip-icon") }}</div>
+                        <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
+                            {{ icon(icon_name="arrow-circle-down", class="measurement-fine-tune__increment-icon") }}
+                        </div>
+                    </div>
+                    <div class="cap-height-measurement__offset">
+                        0
+                    </div>
+                    <label for="bottom-measurement" class="offset-input-label">Bottom Measurement</label>
+                    <input class="offset-input" type="number" id="bottom-measurement" name="bottom-measurement" value="0">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endmacro %}

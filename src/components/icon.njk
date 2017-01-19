@@ -1,6 +1,0 @@
-{% macro icon(name="arrow-circle-down", class="false") %}
-    <svg {% if class %} class="{{ class }}" {% endif %} aria-labelledby="title">
-        <title>{{ name }}</title>
-        <use xlink:href="/svg/project.svg#{{ name }}"></use>
-    </svg>
-{% endmacro %}

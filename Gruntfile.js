@@ -11,7 +11,8 @@ module.exports = function(grunt) {
         },
         sass: {
             options: {
-                sourceMap: true
+                sourceMap: true,
+                includePaths: ['src/components']
             },
             dist: {
                 files: [{

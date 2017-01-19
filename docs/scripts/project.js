@@ -36,10 +36,11 @@ CapHeightAlignmentTool = function() {
 
         var fontSize = parseInt($("#size").val(), 10),
             lineHeight = parseFloat($("#line-height").val(), 10),
+            measuredLineHeight = lineHeight,
             topMeasurement = parseInt($("#top-measurement").val(), 10),
             bottomMeasurement = parseInt($("#bottom-measurement").val(), 10),
-            topOffsetEm = ((topMeasurement - (fontSize / 10)) + (lineHeight - 1) * (fontSize / 2)) / fontSize,
-            bottomOffsetEm = ((bottomMeasurement - (fontSize / 10)) + (lineHeight - 1) * (fontSize / 2)) / fontSize,
+            topOffsetEm = Math.max((topMeasurement + (lineHeight - measuredLineHeight) * (fontSize / 2)), 0) / fontSize,
+            bottomOffsetEm = Math.max((bottomMeasurement + (lineHeight - measuredLineHeight) * (fontSize / 2)), 0) / fontSize,
             inlineStyle = ".cap-aligned-line-height { line-height: " + lineHeight + " } .cap-aligned-line-height::before { margin-bottom: -" + topOffsetEm + "em; } .cap-aligned-line-height::after { margin-top: -" + bottomOffsetEm + "em; }";
 
         $("#cap-aligned-line-height-inline-styles").html(inlineStyle);

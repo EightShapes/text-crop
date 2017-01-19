@@ -1,0 +1,65 @@
+{% macro font_form() %}
+    <div class="es-font-form typeface-actions tool-section">
+        <h2 class="tool-section__title">Select a Typeface</h2> 
+        <div class="typeface-action typeface-action--typeface">
+            <label for="typeface">Typeface</label>
+            <select name="typeface" id="typeface">
+                <!-- Built out dynamically with JS -->
+            </select>
+        </div>
+        
+        <div class="typeface-action typeface-action--use-custom-typeface">
+            <label for="use-custom-typeface">
+                <input type="checkbox" id="use-custom-typeface" name="use-custom-typeface">
+                Use a Custom Typeface
+            </label>
+        </div>
+
+        <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-name">
+            <label for="custom-typeface-name">
+                Custom Typeface Name (font-family)
+            </label>
+            <input type="text" id="custom-typeface-name" name="custom-typeface-name" value="Helvetica">
+        </div>
+
+        <div class="typeface-action typeface-action--hidden  typeface-action--custom-typeface-url">
+            <label for="custom-typeface-url">
+                Custom Typeface Url (optional)
+            </label>
+            <input type="text" id="custom-typeface-url" name="custom-typeface-url" placeholder="https://my-link-to-hosted-webfont.example.com/?font=Font+Name">
+        </div>
+
+        <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-weight">
+            <label for="custom-typeface-weight">
+                Custom Typeface Weight (optional)
+            </label>
+            <input type="text" id="custom-typeface-weight" name="custom-typeface-weight" value="400">
+        </div>
+
+        <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-style">
+            <label for="custom-typeface-style">
+                Custom Typeface Style (optional)
+            </label>
+            <input type="text" id="custom-typeface-style" name="custom-typeface-style" value="normal">
+        </div>
+        
+        <div class="typeface-action typeface-action--weight-and-style">
+            <label for="weight-and-style">Weight &amp; Style</label>
+            <select name="weight-and-style" id="weight-and-style">
+                <option value="400">400 (normal)</option>
+                <option value="400i">400 Italic (normal)</option>
+                <option value="700">700 (bold)</option>
+            </select>
+        </div>
+        
+        <div class="typeface-action typeface-action--size">
+            <label for="size">Size</label>
+            <input name="size" id="size" type="text" value="36">
+        </div>
+        
+        <div class="typeface-action typeface-action--line-height">
+            <label for="line-height">Default Line Height</label>
+            <input name="line-height" id="line-height" type="text" value="1.2">
+        </div>
+    </div>
+{% endmacro %}
