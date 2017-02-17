@@ -128,6 +128,7 @@ CapHeightAlignmentTool = function() {
         } else {
             $(".typeface-action--custom-typeface-name, .typeface-action--custom-typeface-url, .typeface-action--custom-typeface-weight, .typeface-action--custom-typeface-style").addClass("typeface-action--hidden")
         }
+        setSampleTextStyles();
     }
 
     function setEventHandlers() {
@@ -137,10 +138,7 @@ CapHeightAlignmentTool = function() {
         $("#bottom-measurement").on('keyup change', syncBottomMeasurement);
         $("#typeface").on('change', buildWeightAndStyleSelectBox);
         $("#weight-and-style").on('change', setSampleTextStyles);
-        $("#use-custom-typeface").on('change', function(){
-            toggleTypefaceInputVisiblity();
-            setSampleTextStyles();
-        });
+        $("input[name='typeface-selection']").on('change', toggleTypefaceInputVisiblity);
         $("#custom-typeface-name").on('keyup change', setSampleTextStyles);
         $("#custom-typeface-weight").on('keyup change', setSampleTextStyles);
         $("#custom-typeface-style").on('keyup change', setSampleTextStyles);

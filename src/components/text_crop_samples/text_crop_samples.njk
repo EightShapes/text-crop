@@ -5,11 +5,30 @@
             <input id="es-text-crop-toggle" type="checkbox" checked>
             Enable Text Crop Mixin
         </label>
+
+        <label>Button</label>
         <button class="es-text-crop-samples__button cap-aligned-line-height sample-font-result">
             Click Me
         </button>
 
+        <label>Button With Icon</label>
+        <button class="es-text-crop-samples__button es-text-crop-samples__button-with-icon cap-aligned-line-height sample-font-result">
+            {{ icon(icon_name="twitter", class="es-text-crop-samples__button-with-icon-icon") }}
+            <span class="es-text-crop-samples__button-with-icon-text">
+                Click Me
+            </span>
+        </button>
+
+        <label>Flexbox Top aligned Text with Image</label>
         <div class="es-text-crop-samples__flexbox">
+            <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
+            <p class="cap-aligned-line-height sample-font-result es-text-crop-samples__flexbox-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis, aut facere possimus dolor nihil nobis enim dolorem eius temporibus eveniet consectetur delectus.
+            </p>
+        </div>
+
+        <label>Flexbox Bottom aligned Text with Image</label>
+        <div class="es-text-crop-samples__flexbox es-text-crop-samples__flexbox--bottom-aligned">
             <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
             <p class="cap-aligned-line-height sample-font-result es-text-crop-samples__flexbox-text">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis, aut facere possimus dolor nihil nobis enim dolorem eius temporibus eveniet consectetur delectus.

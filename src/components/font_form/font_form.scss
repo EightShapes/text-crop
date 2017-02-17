@@ -1,5 +1,108 @@
 .es-font-form {
-    background: $color-gray-95;
-    flex: 0 0 360px;
-    padding: $spacing-default;
+    padding: $spacing-md $spacing-md 0;
+}
+
+.es-font-form__copy {
+    font-size: $font-size-default;
+    margin: 0 0 $spacing-stack-default;
+}
+
+.es-font-form__label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: $spacing-xs;
+}
+
+.es-font-form__microcopy {
+    font-size: $font-size-sm;
+}
+
+.es-font-form__input {
+    border-radius: $spacing-xs / 2;
+    border: solid 1px $color-gray-53;
+    font-family: 'Lato', sans-serif; 
+    font-size: $font-size-default;
+    padding: $spacing-xs;
+    margin-bottom: $spacing-xs;
+    width: 100%;
+
+    &[disabled] {
+        color: $color-gray-53;
+        cursor: not-allowed;
+        font-style: italic;
+    }
+}
+
+.es-font-form__select {
+    font-family: 'Lato', sans-serif; 
+    font-size: $font-size-default;
+    height: 37px;
+}
+
+.es-font-form__select {
+    background: none;
+    border: 0;
+    display: inline-block;
+    height: 37px;
+    position: relative;
+}
+
+.es-font-form__select-input {
+    appearance: none;
+    background: none;
+    border: 0;
+    color: $color-black;
+    cursor: pointer;
+    font-family: 'Lato', sans-serif;
+    font-size: $font-size-default;
+    height: 100%;
+    padding: $spacing-sm;
+    padding-bottom: 0;
+    padding-right: 37px;
+    padding-top: 0;
+    position: relative;
+    width: 100%;
+    z-index: 10;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.es-font-form__select-visual-wrap {
+    background: $color-white;
+    border: solid 1px $color-gray-53;
+    bottom: 0;
+    cursor: pointer;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 0;
+}
+
+.es-font-form__select-open-indicator {
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 37px;
+    position: absolute;
+    right: -1px;
+    text-align: center;
+    top: 0;
+    width: 37px;
+    z-index: 5;
+}
+
+.es-font-form__select-open-icon {
+    cursor: pointer;
+    display: inline;
+    fill: $color-black;
+    height: 30px;
+    left: 50%;
+    margin-left: -(30px / 2);
+    margin-top: -(30px / 2);
+    position: absolute;
+    top: 50%;
+    width: 30px;
 }

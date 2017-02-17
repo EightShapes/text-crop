@@ -32,7 +32,7 @@ module.exports = function(grunt) {
                 ]
             },
             project: {
-                src: 'docs/project.css'
+                src: 'docs/css/project.css'
             }
         },
 
@@ -184,7 +184,7 @@ module.exports = function(grunt) {
 
         watch: {
             styles: {
-                files: 'src/styles/*.scss',
+                files: ['src/styles/*.scss', 'src/components/*/*.scss'],
                 tasks: ['styles']
             },
             scripts: {

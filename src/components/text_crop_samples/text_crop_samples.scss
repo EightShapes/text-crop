@@ -7,10 +7,19 @@
     padding: 10px 20px;
 }
 
+.es-text-crop-samples__button-with-icon {
+    align-items: center;
+    display: flex;
+}
+
 .es-text-crop-samples__flexbox {
     align-items: flex-start;
     display: flex;
     margin: 0 0 $spacing-default;
+}
+
+.es-text-crop-samples__flexbox--bottom-aligned {
+    align-items: flex-end;
 }
 
 .es-text-crop-samples__flexbox-image {

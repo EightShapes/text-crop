@@ -1,0 +1,38 @@
+.es-tabs {
+    align-items: center;
+    display: flex;
+    margin-bottom: $spacing-sm;
+}
+
+.es-tabs__label-input {
+    position: absolute;
+    visibility: hidden;
+}
+
+.es-tabs__label {
+    flex: 1;
+}
+
+.es-tabs__label-text {
+    background: #DAD6D6;
+    border-right: solid 1px $color-gray-30;
+    cursor: pointer;
+    display: block;
+    padding: $spacing-xs $spacing-sm;
+    text-align: center;
+    white-space: nowrap;
+
+    .es-tabs__label-input:checked + & {
+        background: $color-gray-30;
+        color: $color-white;
+    }
+
+    .es-tabs__label:first-child & {
+        border-radius: $border-radius-default 0 0 $border-radius-default;
+    }
+
+    .es-tabs__label:last-child & {
+        border-right: 0;
+        border-radius: 0 $border-radius-default $border-radius-default 0;
+    }
+}

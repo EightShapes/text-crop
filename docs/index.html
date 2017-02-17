@@ -17,6 +17,7 @@
         <script src="./scripts/data.js"></script>
         <script src="./scripts/scroll-parent.js"></script>
         <script src="./scripts/mouse.js"></script>
+
         <script src="./scripts/plugin.js"></script>
         <script src="./scripts/safe-active-element.js"></script>
         <script src="./scripts/safe-blur.js"></script>
@@ -31,99 +32,172 @@
     <body>
         <div class="es-web-tool__flex-container">
             <div class="es-web-tool__outer-wrap">
-                <div class="es-web-tool__header">
-                    <h1 class="es-web-tool__title">
-                        
+                <div class="es-web-tool__body">
+                    <div class="es-web-tool__configurator">
+                        <div class="es-web-tool__sidebar">
+                            <h1 class="es-web-tool__title">
+                                <a href="http://eightshapes.com">
+                                    
     <svg  class="es-web-tool__title-logo"  aria-labelledby="title">
-        <title>eightshapes-logo</title>
-        <use xlink:href="./svg/project.svg#eightshapes-logo"></use>
+        <title>eightshapes-mark</title>
+        <use xlink:href="./svg/project.svg#eightshapes-mark"></use>
     </svg>
 
-                        <span class="es-web-tool__title-text">Text Crop</span>
-                    </h1>
-                    <a class="es-web-tool__header-link" href="https://github.com/EightShapes/contrast-grid">
-                        
-    <svg  class="es-web-tool__header-link-logo"  aria-labelledby="title">
+                                </a>
+                                <span class="es-web-tool__title-text">Text Crop</span>
+                            </h1>
+                            
+    <form method="GET" class="es-font-form">
+        <div class="es-font-form__content">
+            <p class="es-font-form__copy">
+                Generate style mixins to crop vertical white space of text to cap height and baseline.
+            </p>
+            <p class="es-font-form__copy">
+                Select font attributes, then drag the sliders to crop as much or as little white space as you want.
+            </p>
+        </div>
+        <div class="es-tabs">
+            <label class="es-tabs__label" for="select-google-font">
+                <input type="radio" id="select-google-font" name="typeface-selection" class="es-tabs__label-input" checked>
+                <span class="es-tabs__label-text">
+                    Google Font
+                </span>
+            </label>
+            <label class="es-tabs__label" for="use-custom-typeface">
+                <input type="radio" id="use-custom-typeface" name="typeface-selection" class="es-tabs__label-input">
+                <span class="es-tabs__label-text">
+                    Custom Typeface
+                </span>
+            </label>
+        </div>
+        <div class="typeface-action typeface-action--typeface">
+            <label class="es-font-form__label" for="typeface">Select a Google Font</label>
+            <div class="es-font-form__select">
+                <select class="es-font-form__select-input" name="typeface" id="typeface">
+                    <!-- Built out dynamically with JS -->
+                </select>
+                <div class="es-font-form__select-visual-wrap"></div>
+                <span class="es-font-form__select-open-indicator">
+                    
+    <svg  class="es-font-form__select-open-icon"  aria-labelledby="title">
+        <title>arrow-circle-down</title>
+        <use xlink:href="./svg/project.svg#arrow-circle-down"></use>
+    </svg>
+
+                </span>
+            </div>
+        </div>
+        
+
+        <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-name">
+            <label class="es-font-form__label" for="custom-typeface-name">
+                Typeface Name
+            </label>
+            <input class="es-font-form__input" type="text" id="custom-typeface-name" name="custom-typeface-name" value="Helvetica">
+            <span class="es-font-form__microcopy">CSS font-family</span>
+        </div>
+
+        <div class="typeface-action typeface-action--hidden  typeface-action--custom-typeface-url">
+            <label class="es-font-form__label" for="custom-typeface-url">
+                Typeface Url (optional)
+            </label>
+            <input class="es-font-form__input" type="text" id="custom-typeface-url" name="custom-typeface-url" placeholder="https://my-link-to-hosted-webfont.example.com/?font=Font+Name">
+        </div>
+
+        <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-weight">
+            <label class="es-font-form__label" for="custom-typeface-weight">
+                Typeface Weight (optional)
+            </label>
+            <input class="es-font-form__input" type="text" id="custom-typeface-weight" name="custom-typeface-weight" value="400">
+            <span class="es-font-form__microcopy">CSS font-weight</span>
+        </div>
+
+        <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-style">
+            <label class="es-font-form__label" for="custom-typeface-style">
+                Typeface Style (optional)
+            </label>
+            <input class="es-font-form__input" type="text" id="custom-typeface-style" name="custom-typeface-style" value="normal">
+            <span class="es-font-form__microcopy">CSS font-style</span>
+        </div>
+        
+        <div class="typeface-action typeface-action--weight-and-style">
+            <label class="es-font-form__label" for="weight-and-style">Weight &amp; Style</label>
+
+            <div class="es-font-form__select">
+                <select class="es-font-form__select-input" name="weight-and-style" id="weight-and-style">
+                    <option value="400">400 (normal)</option>
+                    <option value="400i">400 Italic (normal)</option>
+                    <option value="700">700 (bold)</option>
+                </select>
+                <div class="es-font-form__select-visual-wrap"></div>
+                <span class="es-font-form__select-open-indicator">
+                    
+    <svg  class="es-font-form__select-open-icon"  aria-labelledby="title">
+        <title>arrow-circle-down</title>
+        <use xlink:href="./svg/project.svg#arrow-circle-down"></use>
+    </svg>
+
+                </span>
+            </div>
+        </div>
+        
+        <div class="typeface-action typeface-action--size">
+            <label class="es-font-form__label" for="size">Size</label>
+            <input class="es-font-form__input" name="size" id="size" type="text" value="36">
+        </div>
+        
+        <div class="typeface-action typeface-action--line-height">
+            <label class="es-font-form__label" for="line-height">Default Line Height</label>
+            <input class="es-font-form__input" name="line-height" id="line-height" type="text" value="1.2">
+        </div>
+    </form>
+
+                            <div class="es-web-tool__sidebar-actions">
+                                <div class="es-web-tool__sidebar-ctas">
+                                    <button class="es-code-toggle es-button">Copy Mixin Code</button>
+                                    <a class="es-button es-web-tool__external-link--twitter" id="es-share-on-twitter-link" href="http://twitter.com/home?status=Get%20rid%20of%20unwanted%20vertical%20whitespace%20around%20text.%20http://text-crop.eightshapes.com%20@eightshapes&amp;source=webclient">
+                                        
+    <svg  class="es-web-tool__external-link-logo es-button__icon"  aria-labelledby="title">
+        <title>twitter</title>
+        <use xlink:href="./svg/project.svg#twitter"></use>
+    </svg>
+
+                                        <span class="es-web-tool__external-link-text">
+                                            Tweet This Tool
+                                        </span>
+                                    </a>
+                                </div>
+                                
+                                
+                                <div class="es-web-tool__external-links-wrap">
+                                    <a class="es-web-tool__external-link es-web-tool__external-link--github" href="http://www.eightshapes.com/design-systems.html">
+                                        <span class="es-web-tool__external-link-text">
+                                            By Eightshapes
+                                        </span>
+                                    </a>    
+                                    <div class="es-web-tool__external-link-separator">
+                                    </div>                  
+                                    <a class="es-web-tool__external-link es-web-tool__external-link--github" href="https://github.com/EightShapes/text-crop">
+                                        
+    <svg  class="es-web-tool__external-link-logo"  aria-labelledby="title">
         <title>github</title>
         <use xlink:href="./svg/project.svg#github"></use>
     </svg>
 
-                        <span class="es-web-tool__header-link-text">
-                            On Github
-                        </span>
-                    </a>
-                </div>
-                <div class="es-web-tool__body">
-                    
-    <div class="es-font-form typeface-actions tool-section">
-        <h2 class="tool-section__title">Select a Typeface</h2> 
-        <div class="typeface-action typeface-action--typeface">
-            <label for="typeface">Typeface</label>
-            <select name="typeface" id="typeface">
-                <!-- Built out dynamically with JS -->
-            </select>
-        </div>
-        
-        <div class="typeface-action typeface-action--use-custom-typeface">
-            <label for="use-custom-typeface">
-                <input type="checkbox" id="use-custom-typeface" name="use-custom-typeface">
-                Use a Custom Typeface
-            </label>
-        </div>
-
-        <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-name">
-            <label for="custom-typeface-name">
-                Custom Typeface Name (font-family)
-            </label>
-            <input type="text" id="custom-typeface-name" name="custom-typeface-name" value="Helvetica">
-        </div>
-
-        <div class="typeface-action typeface-action--hidden  typeface-action--custom-typeface-url">
-            <label for="custom-typeface-url">
-                Custom Typeface Url (optional)
-            </label>
-            <input type="text" id="custom-typeface-url" name="custom-typeface-url" placeholder="https://my-link-to-hosted-webfont.example.com/?font=Font+Name">
-        </div>
-
-        <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-weight">
-            <label for="custom-typeface-weight">
-                Custom Typeface Weight (optional)
-            </label>
-            <input type="text" id="custom-typeface-weight" name="custom-typeface-weight" value="400">
-        </div>
-
-        <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-style">
-            <label for="custom-typeface-style">
-                Custom Typeface Style (optional)
-            </label>
-            <input type="text" id="custom-typeface-style" name="custom-typeface-style" value="normal">
-        </div>
-        
-        <div class="typeface-action typeface-action--weight-and-style">
-            <label for="weight-and-style">Weight &amp; Style</label>
-            <select name="weight-and-style" id="weight-and-style">
-                <option value="400">400 (normal)</option>
-                <option value="400i">400 Italic (normal)</option>
-                <option value="700">700 (bold)</option>
-            </select>
-        </div>
-        
-        <div class="typeface-action typeface-action--size">
-            <label for="size">Size</label>
-            <input name="size" id="size" type="text" value="36">
-        </div>
-        
-        <div class="typeface-action typeface-action--line-height">
-            <label for="line-height">Default Line Height</label>
-            <input name="line-height" id="line-height" type="text" value="1.2">
-        </div>
-    </div>
-
-                    <div class="es-web-tool__results">
-                        
+                                        <span class="es-web-tool__external-link-text">
+                                            On Github
+                                        </span>
+                                    </a>
+                                </div>
+                                
+                                <p class="es-web-tool__legal">
+                                    &copy; Copyright Eightshapes, LLC 2017
+                                </p>
+                            </div>
+                        </div>
+                        <div class="es-web-tool__results">
+                            
     <div class="cap-height-measurement tool-section">
-        <h2 class="tool-section__title">Crop the Text</h2> 
-
         <div class="cap-height-measurement-wrap">
             <div class="cap-height-measurement__actions">
                 <div class="cap-height-measurement__line cap-height-measurement__line--top">
@@ -196,18 +270,42 @@
         </div>
     </div>
 
-                        
+                            
     <div class="es-text-crop-samples typeface-actions tool-section">
         <h2 class="tool-section__title">Samples</h2>
         <label for="es-text-crop-toggle" class="es-text-crop-samples__crop-toggle">
             <input id="es-text-crop-toggle" type="checkbox" checked>
             Enable Text Crop Mixin
         </label>
+
+        <label>Button</label>
         <button class="es-text-crop-samples__button cap-aligned-line-height sample-font-result">
             Click Me
         </button>
 
+        <label>Button With Icon</label>
+        <button class="es-text-crop-samples__button es-text-crop-samples__button-with-icon cap-aligned-line-height sample-font-result">
+            
+    <svg  class="es-text-crop-samples__button-with-icon-icon"  aria-labelledby="title">
+        <title>twitter</title>
+        <use xlink:href="./svg/project.svg#twitter"></use>
+    </svg>
+
+            <span class="es-text-crop-samples__button-with-icon-text">
+                Click Me
+            </span>
+        </button>
+
+        <label>Flexbox Top aligned Text with Image</label>
         <div class="es-text-crop-samples__flexbox">
+            <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
+            <p class="cap-aligned-line-height sample-font-result es-text-crop-samples__flexbox-text">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis, aut facere possimus dolor nihil nobis enim dolorem eius temporibus eveniet consectetur delectus.
+            </p>
+        </div>
+
+        <label>Flexbox Bottom aligned Text with Image</label>
+        <div class="es-text-crop-samples__flexbox es-text-crop-samples__flexbox--bottom-aligned">
             <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
             <p class="cap-aligned-line-height sample-font-result es-text-crop-samples__flexbox-text">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis, aut facere possimus dolor nihil nobis enim dolorem eius temporibus eveniet consectetur delectus.
@@ -225,19 +323,18 @@
         </div>
     </div>
 
-                        
+                        </div>
+                    </div>
+                    
         <div class="generated-code tool-section">
             <h2 class="tool-section__title">Mixin Code</h2> 
             <h3>SCSS</h3>
             <pre>
                 <code id="scss-code">
-@mixin cap-aligned-line-height($line-height: <span class="code-line-height">1.2</span>) {
+@mixin text-crop($line-height: <span class="code-line-height">1.2</span>) {
 
-topOffsetEm = Math.max((topMeasurement + offsetLineHeightAdjustment), 0) / fontSize,
-bottomOffsetEm = Math.max((bottomMeasurement + offsetLineHeightAdjustment), 0) / fontSize,
-
-    $offset-top = max((<span class="code-top-measurement">0</span> + ($lineHeight - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
-    $offset-bottom = max((<span class="code-bottom-measurement">0</span> + ($lineHeight - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
+    $offset-top: max((<span class="code-top-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
+    $offset-bottom: max((<span class="code-bottom-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
 
     line-height: $line-height;
 
@@ -318,9 +415,17 @@ cap-aligned-line-height($line-height = <span class="code-line-height">1.2</span>
             </pre>
         </div>
 
-                    </div>
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+          var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+          document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+          var pageTracker = _gat._getTracker("UA-1201194-1");
+          pageTracker._initData();
+          pageTracker._trackPageview();
+        </script>
     </body>
 </html>

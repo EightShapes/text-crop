@@ -4,13 +4,10 @@
             <h3>SCSS</h3>
             <pre>
                 <code id="scss-code">
-@mixin cap-aligned-line-height($line-height: <span class="code-line-height">1.2</span>) {
+@mixin text-crop($line-height: <span class="code-line-height">1.2</span>) {
 
-topOffsetEm = Math.max((topMeasurement + offsetLineHeightAdjustment), 0) / fontSize,
-bottomOffsetEm = Math.max((bottomMeasurement + offsetLineHeightAdjustment), 0) / fontSize,
-
-    $offset-top = max((<span class="code-top-measurement">0</span> + ($lineHeight - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
-    $offset-bottom = max((<span class="code-bottom-measurement">0</span> + ($lineHeight - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
+    $offset-top: max((<span class="code-top-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
+    $offset-bottom: max((<span class="code-bottom-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
 
     line-height: $line-height;
 
