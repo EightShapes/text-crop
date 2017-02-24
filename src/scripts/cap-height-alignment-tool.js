@@ -285,3 +285,20 @@ CapHeightAlignmentTool = function() {
 }();
 
 $(document).ready(CapHeightAlignmentTool.initialize);
+
+// $.ajax('https://raw.githubusercontent.com/google/fonts/master/ofl/alefhebrew/Alef-Bold.ttf', {
+//     success: function(data, status, xhr) {
+//         console.log(data);
+//     }
+// });
+
+opentype.load('https://raw.githubusercontent.com/google/fonts/master/ofl/alefhebrew/Alef-Bold.ttf', function(err, font) {
+    if (err) {
+        alert('Could not load font: ' + err);
+    } else {
+        // Use your font here.
+        console.log(font);
+    }
+});
+
+// 'https://fonts.gstatic.com/s/lato/v13/IY9HZVvI1cMoAHxvl0w9LVKPGs1ZzpMvnHX-7fPOuAc.woff2');

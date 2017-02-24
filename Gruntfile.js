@@ -169,7 +169,10 @@ module.exports = function(grunt) {
                     'node_modules/jquery-ui/ui/safe-blur.js',
                     'node_modules/jquery-ui/ui/widgets/draggable.js',
                     'node_modules/jquery-ui/ui/widgets/mouse.js',
-                    'node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.js'
+                    'node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.js',
+                    'node_modules/opentype.js/dist/opentype.min.js',
+                    'node_modules/fontkit/fontkit.js',
+                    'node_modules/fontkit/bundle.js'
                 ],
                 flatten: true,
                 dest: 'docs/scripts'

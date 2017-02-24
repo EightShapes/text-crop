@@ -36,9 +36,11 @@
     "yamljs": "^0.2.7"
   },
   "dependencies": {
+    "fontkit": "^1.5.2",
     "jquery": "^3.1.1",
     "jquery-ui": "^1.12.1",
     "jquery-ui-touch-punch": "^0.2.3",
+    "opentype.js": "^0.6.9",
     "svg4everybody": "^2.1.0"
   }
 }
