@@ -83,9 +83,9 @@ CapHeightAlignmentTool = function() {
             if ($target.closest(".cap-height-measurement__line--bottom").length > 0) {
                 var offset = ui.position.top,
                     heightOfSampleBox = $(".cap-height-measurement__sample-text").outerHeight() - 1,
-                    value = heightOfSampleBox - offset;                
+                    value = parseInt(heightOfSampleBox - offset, 10);                
             } else {
-                value = ui.position.top;
+                value = parseInt(ui.position.top, 10);
             }
 
             $target.closest(".cap-height-measurement__line").find(".cap-height-measurement__offset").text(value);
