@@ -156,7 +156,7 @@
                             <div class="es-web-tool__sidebar-actions">
                                 <div class="es-web-tool__sidebar-ctas">
                                     
-                                    <a class="es-button es-web-tool__external-link--twitter" id="es-share-on-twitter-link" href="http://twitter.com/home?status=Get%20rid%20of%20unwanted%20vertical%20whitespace%20around%20text.%20http://text-crop.eightshapes.com%20@eightshapes&amp;source=webclient">
+                                    <a class="es-button es-web-tool__external-link--twitter" id="es-share-on-twitter-link" href="http://twitter.com/home?status=Crop%20top%20and%20bottom%20whitespace%20surrounding%20text%20on%20the%20web.%20http://text-crop.eightshapes.com%20@eightshapes&amp;source=webclient">
                                         
     <svg  class="es-web-tool__external-link-logo es-button__icon"  aria-labelledby="title">
         <title>twitter</title>
@@ -545,29 +545,64 @@
 
                 <pre>
                     <code id="stylus-code">
-                        text-crop($line-height = <span class="code-line-height">1.2</span>, $top-adjustment = 0px, $bottom-adjustment = 0px) {
+                        <span class="code-mixin-name">
+text-crop</span>($line-height = <span class="code-line-height">1.2</span>, $top-adjustment = 0px, $bottom-adjustment = 0px) {
     $offset-top = max((<span class="code-top-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
     $offset-bottom = max((<span class="code-bottom-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
 
-    line-height: $line-height;
+    <span class="code-property">line-height</span>: $line-height;
 
-    &::before,
-    &::after {
-        content: '';
-        display: block;
-        height: 0;
-        width: 0;
+    <span class="code-selector">&::before,
+    &::after</span> {
+        <span class="code-property">content</span>: '';
+        <span class="code-property">display</span>: block;
+        <span class="code-property">height</span>: 0;
+        <span class="code-property">width</span>: 0;
     }
 
-    &::before {
-        margin-bottom: "calc(-%sem + %s)" % ($offset-top $top-adjustment)
+    <span class="code-selector">&::before</span> {
+        <span class="code-property">margin-bottom</span>: "calc(-%sem + %s)" % ($offset-top $top-adjustment)
     }
 
-    &::after {
-        padding-top: $bottom-adjustment;
-        margin-top: "calc(-%sem + %s)" % ($offset-bottom $bottom-adjustment)
+    <span class="code-selector">&::after</span> {
+        <span class="code-property">margin-top</span>: "calc(-%sem + %s)" % ($offset-bottom $bottom-adjustment)
     }
 }
+<span class="code-comment">// Mixin generated at: http://text-crop.eightshapes.com
+
+/* Usage Examples
+    .my-level-1-heading-class {
+        text-crop(); // Will use default line height of <span class="code-line-height">1.2</span>
+        font-size: 48px;
+        margin: 0 0 0 16px;
+    }
+
+    .my-level-2-heading-class {
+        text-crop(); // Will use default line height of <span class="code-line-height">1.2</span>
+        font-size: 32px; // Don't need to change any settings, will work with any font size automatically
+        margin: 0 0 0 16px;
+    }
+
+    .my-body-copy-class {
+        text-crop(2); // Larger line height desired, set the line height via the mixin
+        font-size: 16px;
+    }
+
+    // Sometimes depending on the font-size, the rendering, the browser, etc. you may need to tweak the output. 
+    // You can adjust the top and bottom cropping when invoking the component using the $top-adjustment and $bottom-adjustment settings 
+    
+    .slight-adjustment-needed {
+        text-crop(1.2, -0.5px, 2px);
+        font-size: 17px;
+    }
+
+    .dont-do-this {
+        text-crop();
+        font-size: 16px;
+        line-height: 3; // DO NOT set line height outside of the mixin, the mixin needs the line height value to calculate the crop correctly
+    }
+*/
+</span>
 
                     </code>
                 </pre>

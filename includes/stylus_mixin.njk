@@ -1,24 +1,24 @@
-text-crop($line-height = <span class="code-line-height">1.2</span>, $top-adjustment = 0px, $bottom-adjustment = 0px) {
+<span class="code-mixin-name">
+text-crop</span>($line-height = <span class="code-line-height">1.2</span>, $top-adjustment = 0px, $bottom-adjustment = 0px) {
     $offset-top = max((<span class="code-top-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
     $offset-bottom = max((<span class="code-bottom-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
 
-    line-height: $line-height;
+    <span class="code-property">line-height</span>: $line-height;
 
-    &::before,
-    &::after {
-        content: '';
-        display: block;
-        height: 0;
-        width: 0;
+    <span class="code-selector">&::before,
+    &::after</span> {
+        <span class="code-property">content</span>: '';
+        <span class="code-property">display</span>: block;
+        <span class="code-property">height</span>: 0;
+        <span class="code-property">width</span>: 0;
     }
 
-    &::before {
-        margin-bottom: "calc(-%sem + %s)" % ($offset-top $top-adjustment)
+    <span class="code-selector">&::before</span> {
+        <span class="code-property">margin-bottom</span>: "calc(-%sem + %s)" % ($offset-top $top-adjustment)
     }
 
-    &::after {
-        padding-top: $bottom-adjustment;
-        margin-top: "calc(-%sem + %s)" % ($offset-bottom $bottom-adjustment)
+    <span class="code-selector">&::after</span> {
+        <span class="code-property">margin-top</span>: "calc(-%sem + %s)" % ($offset-bottom $bottom-adjustment)
     }
 }
 <span class="code-comment">// Mixin generated at: http://text-crop.eightshapes.com
