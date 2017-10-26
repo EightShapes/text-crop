@@ -1,29 +1,22 @@
-.es-font-form {
-    padding: $spacing-md $spacing-md 0;
-}
+// ESDS Form Component Candidates
+$esds-form-input-min-height: 37px;
 
-.es-font-form__copy {
-    font-size: $font-size-default;
-    margin: 0 0 $spacing-stack-default;
-}
-
-.es-font-form__label {
+.esds-form__label {
+    @include esds-text-color('primary');
     display: block;
-    font-weight: bold;
-    margin-bottom: $spacing-xs;
+    font-size: $esds-font-size-xs;
+    letter-spacing: .02em;
+    margin: $esds-space-stack-quarter-x;
 }
 
-.es-font-form__microcopy {
-    font-size: $font-size-sm;
-}
-
-.es-font-form__input {
-    border: solid 1px $color-gray-53;
-    border-radius: $spacing-xs / 2;
+.esds-form__input {
+    border: $esds-border-control-on-white;
+    border-radius: $esds-border-radius-default;
     font-family: 'Lato', sans-serif; 
-    font-size: $font-size-default;
-    margin-bottom: $spacing-xs;
-    padding: $spacing-xs;
+    font-size: $esds-font-size-s;
+    margin: 0;
+    min-height: $esds-form-input-min-height;
+    padding: $esds-space-inset-half-x;
     width: 100%;
 
     &[disabled] {
@@ -33,17 +26,18 @@
     }
 }
 
-.es-font-form__select {
+.esds-form__select {
     background: none;
     border: 0;
     display: inline-block;
     font-family: 'Lato', sans-serif; 
-    font-size: $font-size-default;
+    font-size: $esds-font-size-s;
     height: 37px;
     position: relative;
+    width: 100%;
 }
 
-.es-font-form__select-input {
+.esds-form__select-input {
     appearance: none;
     background: none;
     border: 0;
@@ -65,9 +59,10 @@
     }
 }
 
-.es-font-form__select-visual-wrap {
+.esds-form__select-visual-wrap {
     background: $color-white;
-    border: solid 1px $color-gray-53;
+    border: $esds-border-control-on-white;
+    border-radius: $esds-border-radius-default;
     bottom: 0;
     cursor: pointer;
     left: 0;
@@ -77,11 +72,11 @@
     z-index: 0;
 }
 
-.es-font-form__select-open-indicator {
+.esds-form__select-open-indicator {
     bottom: 0;
     content: '';
     display: block;
-    height: 37px;
+    min-height: $esds-form-input-min-height;
     position: absolute;
     right: -1px;
     text-align: center;
@@ -90,10 +85,10 @@
     z-index: 5;
 }
 
-.es-font-form__select-open-icon {
+.esds-form__select-open-icon {
     cursor: pointer;
     display: inline;
-    fill: $color-black;
+    fill: $esds-color-neutral-70;
     height: 30px;
     left: 50%;
     margin-left: -(30px / 2);
@@ -101,4 +96,83 @@
     position: absolute;
     top: 50%;
     width: 30px;
+}
+
+
+// Bespoke Text Crop Form Styles
+.es-text-crop-font-form {
+    align-items: flex-end;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.es-text-crop-label-tabs {
+    display: flex;
+    font-size: $esds-font-size-xs;
+}
+
+.es-text-crop-label-tabs__delimiter {
+    padding: 0 $esds-space-generic-half-x;
+}
+
+.es-text-crop-label-tabs__tab-text {
+    @include esds-text-color('link');
+}
+
+.es-text-crop-label-tabs__label {
+    margin-right: $esds-space-generic-half-x;
+}
+
+.es-text-crop-label-tabs__input {
+    left: 0;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+}
+
+.es-text-crop-label-tabs__input:checked + .es-text-crop-label-tabs__tab-text {
+    @include esds-text-color('primary');
+    font-weight: $esds-font-weight-bold;
+}
+
+.es-text-crop-label-tabs__tab {
+    cursor: pointer;
+}
+
+.typeface-action {
+    flex: 1 1 auto;
+    margin-right: $esds-space-generic-1-x;
+}
+
+// Size specific form elements
+.typeface-action--line-height,
+.typeface-action--top-crop,
+.typeface-action--bottom-crop,
+.typeface-action--size {
+    flex-grow: 0;
+    width: 6em;
+}
+
+.typeface-action--tabbed-selector {
+    flex: 0 0 20em;
+    width: 20em;
+
+    .typeface-action {
+        margin-right: 0;
+    }
+}
+
+.typeface-action--weight-and-style {
+    flex-grow: 0;
+    width: 10em;
+}
+
+.typeface-action--top-crop {
+    margin-left: auto;
+}
+
+.typeface-action--custom-typeface-weight,
+.typeface-action--custom-typeface-style {
+    flex-grow: 0;
+    width: 6em;
 }

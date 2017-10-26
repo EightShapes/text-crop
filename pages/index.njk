@@ -1,5 +1,5 @@
-{% import "components/eightshapes-text-crop.njk" as components with context %}
 {% import "@eightshapes/esds-library/components/esds.njk" as esds with context %}
+{% import "components/eightshapes-text-crop.njk" as components with context %}
 
 <html>
     <head>
@@ -51,7 +51,9 @@
                 Want to rid your components of that pesky space above and below a block of text due to line height? Use our tool to create a mixin for your typography.
             </p>
         {% endcall %}
-        {% call esds.row(background="light") %}
+        {% call esds.row(background="light eswt-step-row") %}
+            <h4 class="eswt-step-row__step-number">Step 1</h4>
+            <h2 class="eswt-step-row__title">Configure the Crop</h2>
             {{ components.font_form() }}
             {{ components.text_crop_measurement_tool() }}
 

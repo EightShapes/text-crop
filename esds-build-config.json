@@ -27,9 +27,15 @@
             "destination": "docs"
         },
         {
-            "name": "esds-library-tokens",
+            "name": "esds-library-icon-sprite",
             "sources": ["node_modules/@eightshapes/esds-library/dist/esds.svg"],
-            "destination": "docs/icons"
+            "destination": "docs/icons",
+            "watch": true
+        }
+    ],
+    "dependencies": [
+        {
+            "moduleName": "@eightshapes/esds-library"
         }
     ]  
 }

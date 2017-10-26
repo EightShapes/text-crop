@@ -1,88 +1,93 @@
 {% macro font_form() %}
-    <form method="GET" class="es-font-form">
-        <div class="es-tabs">
-            <label class="es-tabs__label" for="select-google-font">
-                <input type="radio" id="select-google-font" name="typeface-selection" class="es-tabs__label-input" checked>
-                <span class="es-tabs__label-text">
-                    Google Font
+    <form method="GET" class="es-text-crop-font-form">
+        <div class="typeface-action typeface-action--tabbed-selector">
+            <div class="es-text-crop-label-tabs">
+                <span class="esds-form__label es-text-crop-label-tabs__label">
+                    Font Family:
                 </span>
-            </label>
-            <label class="es-tabs__label" for="use-custom-typeface">
-                <input type="radio" id="use-custom-typeface" name="typeface-selection" class="es-tabs__label-input">
-                <span class="es-tabs__label-text">
-                    Custom Typeface
-                </span>
-            </label>
-        </div>
-        <div class="typeface-action typeface-action--typeface">
-            <label class="es-font-form__label" for="typeface">Select a Google Font</label>
-            <div class="es-font-form__select">
-                <select class="es-font-form__select-input" name="typeface" id="typeface">
+                <label class="es-text-crop-label-tabs__tab" for="select-google-font">
+                    <input type="radio" id="select-google-font" name="typeface-selection" class="es-text-crop-label-tabs__input" checked>
+                    <span class="es-text-crop-label-tabs__tab-text">
+                        Google Font
+                    </span>
+                </label>
+                <span class="es-text-crop-label-tabs__delimiter">|</span>
+                <label class="es-text-crop-label-tabs__tab" for="use-custom-typeface">
+                    <input type="radio" id="use-custom-typeface" name="typeface-selection" class="es-text-crop-label-tabs__input">
+                    <span class="es-text-crop-label-tabs__tab-text">
+                        Custom Font
+                    </span>
+                </label>
+            </div>
+            <div class="esds-form__select typeface-action typeface-action--typeface">
+                <select class="esds-form__select-input" name="typeface" id="typeface">
                     <!-- Built out dynamically with JS -->
                 </select>
-                <div class="es-font-form__select-visual-wrap"></div>
-                <span class="es-font-form__select-open-indicator">
-                    {{ icon(icon_name='caret-down', class='es-font-form__select-open-icon', path=icon_path) }}
+                <div class="esds-form__select-visual-wrap"></div>
+                <span class="esds-form__select-open-indicator">
+                    {{ esds.icon(name='caret-down', class='esds-form__select-open-icon') }}
                 </span>
             </div>
-        </div>
-        
-
-        <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-name">
-            <label class="es-font-form__label" for="custom-typeface-name">
-                Typeface Name
-            </label>
-            <input class="es-font-form__input" type="text" id="custom-typeface-name" name="custom-typeface-name" value="Helvetica">
-            <span class="es-font-form__microcopy">CSS font-family</span>
+            <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-name">
+                <input class="esds-form__input" type="text" id="custom-typeface-name" name="custom-typeface-name" value="Helvetica">
+            </div>
         </div>
 
         <div class="typeface-action typeface-action--hidden  typeface-action--custom-typeface-url">
-            <label class="es-font-form__label" for="custom-typeface-url">
+            <label class="esds-form__label" for="custom-typeface-url">
                 Typeface Url (optional)
             </label>
-            <input class="es-font-form__input" type="text" id="custom-typeface-url" name="custom-typeface-url" placeholder="https://my-link-to-hosted-webfont.example.com/?font=Font+Name">
+            <input class="esds-form__input" type="text" id="custom-typeface-url" name="custom-typeface-url" placeholder="https://my-link-to-hosted-webfont.example.com/?font=Font+Name">
         </div>
 
         <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-weight">
-            <label class="es-font-form__label" for="custom-typeface-weight">
-                Typeface Weight (optional)
+            <label class="esds-form__label" for="custom-typeface-weight">
+                Weight
             </label>
-            <input class="es-font-form__input" type="text" id="custom-typeface-weight" name="custom-typeface-weight" value="400">
-            <span class="es-font-form__microcopy">CSS font-weight</span>
+            <input class="esds-form__input" type="text" id="custom-typeface-weight" name="custom-typeface-weight" value="400">
         </div>
 
         <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-style">
-            <label class="es-font-form__label" for="custom-typeface-style">
-                Typeface Style (optional)
+            <label class="esds-form__label" for="custom-typeface-style">
+                Style
             </label>
-            <input class="es-font-form__input" type="text" id="custom-typeface-style" name="custom-typeface-style" value="normal">
-            <span class="es-font-form__microcopy">CSS font-style</span>
+            <input class="esds-form__input" type="text" id="custom-typeface-style" name="custom-typeface-style" value="normal">
         </div>
         
         <div class="typeface-action typeface-action--weight-and-style">
-            <label class="es-font-form__label" for="weight-and-style">Weight &amp; Style</label>
+            <label class="esds-form__label" for="weight-and-style">Weight &amp; Style</label>
 
-            <div class="es-font-form__select">
-                <select class="es-font-form__select-input" name="weight-and-style" id="weight-and-style">
+            <div class="esds-form__select">
+                <select class="esds-form__select-input" name="weight-and-style" id="weight-and-style">
                     <option value="400">400 (normal)</option>
                     <option value="400i">400 Italic (normal)</option>
                     <option value="700">700 (bold)</option>
                 </select>
-                <div class="es-font-form__select-visual-wrap"></div>
-                <span class="es-font-form__select-open-indicator">
-                    {{ icon(icon_name='caret-down', class='es-font-form__select-open-icon', path=icon_path) }}
+                <div class="esds-form__select-visual-wrap"></div>
+                <span class="esds-form__select-open-indicator">
+                    {{ esds.icon(name='caret-down', class='esds-form__select-open-icon') }}
                 </span>
             </div>
         </div>
         
         <div class="typeface-action typeface-action--size">
-            <label class="es-font-form__label" for="size">Size</label>
-            <input class="es-font-form__input" name="size" id="size" type="text" value="36">
+            <label class="esds-form__label" for="size">Size</label>
+            <input class="esds-form__input" name="size" id="size" type="number" value="36" step="10">
         </div>
         
         <div class="typeface-action typeface-action--line-height">
-            <label class="es-font-form__label" for="line-height">Default Line Height</label>
-            <input class="es-font-form__input" name="line-height" id="line-height" type="text" value="1.2">
+            <label class="esds-form__label" for="line-height">Line Height</label>
+            <input class="esds-form__input" name="line-height" id="line-height" type="number" value="1.2" step=".1" min="0">
+        </div>
+        
+        <div class="typeface-action typeface-action--top-crop">
+            <label class="esds-form__label" for="top-crop">Top Crop</label>
+            <input class="esds-form__input" name="top-crop" id="top-crop" type="number" value="0" step="1" min="0">
+        </div>
+        
+        <div class="typeface-action typeface-action--bottom-crop">
+            <label class="esds-form__label" for="bottom-crop">Bottom Crop</label>
+            <input class="esds-form__input" name="bottom-crop" id="bottom-crop" type="number" value="0" step="1" min="0">
         </div>
     </form>
 {% endmacro %}
