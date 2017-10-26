@@ -1,48 +1,72 @@
 {% macro text_crop_samples() %}
     <div class="es-text-crop-samples typeface-actions tool-section">
-        <h2 class="tool-section__title">Samples</h2>
-        <label for="es-text-crop-toggle" class="es-text-crop-samples__crop-toggle">
-            <input id="es-text-crop-toggle" type="checkbox" checked>
-            Enable Text Crop Mixin
-        </label>
-
-        <label>Button</label>
-        <button class="es-text-crop-samples__button cap-aligned-line-height sample-font-result">
-            Click Me
-        </button>
-
-        <label>Button With Icon</label>
-        <button class="es-text-crop-samples__button es-text-crop-samples__button-with-icon cap-aligned-line-height sample-font-result">
-            {{ icon(icon_name="twitter", class="es-text-crop-samples__button-with-icon-icon") }}
-            <span class="es-text-crop-samples__button-with-icon-text">
-                Click Me
-            </span>
-        </button>
-
-        <label>Flexbox Top aligned Text with Image</label>
-        <div class="es-text-crop-samples__flexbox">
-            <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
-            <p class="cap-aligned-line-height sample-font-result es-text-crop-samples__flexbox-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis, aut facere possimus dolor nihil nobis enim dolorem eius temporibus eveniet consectetur delectus.
-            </p>
+        <div class="es-text-crop-samples__header">
+            <h2 class="es-text-crop-samples__title tool-section__title">Examples</h2>
+            <label for="es-text-crop-toggle" class="es-text-crop-samples__crop-toggle">
+                <input id="es-text-crop-toggle" type="checkbox" checked>
+                <span class="es-text-crop-toggle__text">
+                    Enable Text Crop Mixin
+                </span>
+            </label>
         </div>
 
-        <label>Flexbox Bottom aligned Text with Image</label>
-        <div class="es-text-crop-samples__flexbox es-text-crop-samples__flexbox--bottom-aligned">
-            <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
-            <p class="cap-aligned-line-height sample-font-result es-text-crop-samples__flexbox-text">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis, aut facere possimus dolor nihil nobis enim dolorem eius temporibus eveniet consectetur delectus.
-            </p>
+        <div class="es-text-crop-samples__row">
+            <div class="es-text-crop__sample">
+                <label class="es-text-crop__sample-label">Button</label>
+                <button class="es-text-crop-samples__button cap-aligned-line-height sample-font-result">
+                    Click Me
+                </button>
+            </div>
+
+            <div class="es-text-crop__sample">
+                <label class="es-text-crop__sample-label">Button With Icon</label>
+                <button class="es-text-crop-samples__button es-text-crop-samples__button--with-icon">
+                    {{ icon(icon_name="stopwatch", class="es-text-crop-samples__button-with-icon-icon") }}
+                    <span class="es-text-crop-samples__button-with-icon-text cap-aligned-line-height sample-font-result">
+                        Start Timer
+                    </span>
+                </button>
+            </div>
+
+            <div class="es-text-crop__sample">
+                <label class="es-text-crop__sample-label">Flexbox Top aligned Text with Image</label>
+                <div class="es-text-crop-samples__flexbox">
+                    <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
+                    <p class="cap-aligned-line-height sample-font-result es-text-crop-samples__flexbox-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis.
+                    </p>
+                </div>
+            </div>
+
+            <div class="es-text-crop__sample">
+                <label class="es-text-crop__sample-label">Flexbox Bottom aligned Text with Image</label>
+                <div class="es-text-crop-samples__flexbox es-text-crop-samples__flexbox--bottom-aligned">
+                    <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
+                    <p class="cap-aligned-line-height sample-font-result es-text-crop-samples__flexbox-text">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis.
+                    </p>
+                </div>
+            </div>
         </div>
 
-        <div class="visible-padded-box cap-aligned-line-height sample-font-result">
-            16px font with 20px padding
-        </div>
-        <div class="visible-padded-box visible-padded-box--large cap-aligned-line-height sample-font-result">
-            32px font with 20px padding
-        </div>
-        <div class="visible-padded-box visible-padded-box--extra-large cap-aligned-line-height sample-font-result">
-            64px font with 20px padding
+        <div class="es-text-crop-samples__row">
+            <div class="es-text-crop__sample">
+                <div class="visible-padded-box cap-aligned-line-height sample-font-result">
+                    16px font with 20px padding
+                </div>
+            </div>
+
+            <div class="es-text-crop__sample">
+                <div class="visible-padded-box visible-padded-box--large cap-aligned-line-height sample-font-result">
+                    32px font with 20px padding
+                </div>
+            </div>
+
+            <div class="es-text-crop__sample">
+                <div class="visible-padded-box visible-padded-box--extra-large cap-aligned-line-height sample-font-result">
+                    64px font with 20px padding
+                </div>
+            </div>
         </div>
     </div>
 {% endmacro %}

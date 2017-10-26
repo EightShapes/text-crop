@@ -1,15 +1,21 @@
-.es-text-crop-samples__button {
-    background: $color-link;
-    border: none;
-    color: $color-white;
-    font-size: $font-size-lg;
-    margin: 0 0 $spacing-default;
-    padding: 10px 20px;
+.es-text-crop-samples__crop-toggle {
+    cursor: pointer;
 }
 
-.es-text-crop-samples__button-with-icon {
-    align-items: center;
-    display: flex;
+.es-text-crop-toggle__text {
+    position: relative;
+    top: 2px;
+}
+
+.es-text-crop-samples__button {
+    background: $color-link;
+    border: 0;
+    color: $color-white;
+    display: inline-block;
+    font-size: $font-size-lg;
+    margin: 0 0 $spacing-default;
+    min-width: 160px;
+    padding: 10px 20px;
 }
 
 .es-text-crop-samples__flexbox {
@@ -28,4 +34,58 @@
 
 .es-text-crop-samples__flexbox-text {
     font-size: $font-size-lg;
+}
+
+.es-text-crop-samples__header {
+    align-items: center;
+    border-bottom: solid 1px $color-gray-53;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: $spacing-md;
+    padding-bottom: $spacing-xs;
+}
+
+.es-text-crop-samples__title {
+    margin: 0 $spacing-default 0 0;
+}
+
+.es-text-crop-samples__row {
+    display: flex;
+}
+
+.es-text-crop-samples__button--with-icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    width: 180px;
+}
+
+.es-text-crop__sample {
+    margin-right: $spacing-lg;
+    // width: 20%;
+}
+
+.es-text-crop-samples__button-with-icon-icon {
+    fill: $color-white;
+    height: 20px;
+    margin-bottom: -30px; // "Removes" icon height from button height calculation
+    margin-right: $spacing-xs;
+    margin-top: -30px; // "Removes" icon height from button height calculation
+    width: 20px;
+}
+
+.es-text-crop-samples__button-with-icon-text {
+    display: block;
+}
+
+.es-text-crop__sample-label {
+    display: block;
+    margin: 0 0 $spacing-xs;
+}
+
+.text-crop--disabled {
+    &:before,
+    &:after {
+        display: none !important;
+    }
 }

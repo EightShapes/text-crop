@@ -213,8 +213,8 @@ body {
 }
 
 .tool-section {
-    margin-bottom: $spacing-lg;
-    padding: $spacing-sm;
+    margin-bottom: 32px;
+    padding: 0 $spacing-sm 0 0;
 }
 
 .tool-section__title {
@@ -231,6 +231,10 @@ body {
     overflow: hidden;
     text-align: center;
     word-break: break-word;
+
+    &:focus {
+        outline: none;
+    }
 }
 
 .cap-height-measurement__actions {
@@ -239,7 +243,7 @@ body {
 }
 
 .cap-height-measurement-wrap {
-    padding: $spacing-lg 0;
+    padding: 48px 0;
 }
 
 .measurement-fine-tune__increment--increase {
