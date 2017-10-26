@@ -31,10 +31,13 @@
     </div>
     
     <div id="style-preprocessor-scss" class="mixin-code-tab-pane">
-        {{ copy_code_button("#scss-code") }}
+        {# {{ copy_code_button("#scss-code") }} #}
+        {% set scss_source %}
+            {% include 'includes/scss_mixin.njk' %}
+        {% endset %}
+        {{ esds_doc.code_snippet(source=scss_source) }}
         <pre>
             <code id="scss-code">
-                {% include 'includes/scss_mixin.njk' %}
             </code>
         </pre>
     </div>

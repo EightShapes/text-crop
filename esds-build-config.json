@@ -6,7 +6,11 @@
     "copyTasks": [
         {
             "name": "script-dependencies",
-            "sources": ["node_modules/jquery/dist/jquery.min.js",
+            "sources": ["node_modules/prismjs/prism.js",
+                        "node_modules/prismjs/components/prism-less.min.js",
+                        "node_modules/prismjs/components/prism-scss.min.js",
+                        "node_modules/prismjs/components/prism-stylus.min.js",
+                        "node_modules/jquery/dist/jquery.min.js",
                         "node_modules/svg4everybody/dist/svg4everybody.min.js",
                         "node_modules/jquery-ui/ui/widget.js",
                         "node_modules/jquery-ui/ui/data.js",
@@ -20,6 +24,11 @@
                         "node_modules/clipboard/dist/clipboard.min.js",
                         "node_modules/svg4everybody/dist/svg4everybody.min.js"],
             "destination": "docs/scripts/dependencies"
+        },
+        {
+            "name": "style-dependencies",
+            "sources": ["node_modules/prismjs/themes/prism.css"],
+            "destination": "docs/styles/dependencies"
         },
         {
             "name": "github-pages-cname-file",
@@ -36,6 +45,9 @@
     "dependencies": [
         {
             "moduleName": "@eightshapes/esds-library"
+        },
+        {
+            "moduleName": "esds-doc"
         }
     ]  
 }

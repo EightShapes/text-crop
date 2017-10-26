@@ -1,4 +1,5 @@
 @import '@eightshapes/esds-library/tokens/tokens';
+@import 'esds-doc/tokens/tokens';
 @import 'variables'; // Deprecate when possible
 
 @import '@eightshapes/esds-library/styles/shared/color';
@@ -9,6 +10,16 @@
 @import '@eightshapes/esds-library/components/container/container';
 @import '@eightshapes/esds-library/components/row/row';
 @import '@eightshapes/esds-library/components/card/card';
+
+@import 'esds-doc/styles/shared/utils';
+@import 'esds-doc/components/container/container';
+@import 'esds-doc/components/button/button';
+@import 'esds-doc/components/code_snippet/code_snippet';
+@import 'esds-doc/components/html_example_list/html_example_list';
+@import 'esds-doc/components/code_example_pair/code_example_pair';
+@import 'esds-doc/components/page_navigation/page_navigation';
+@import 'esds-doc/components/reference_table/reference_table';
+@import 'esds-doc/components/tint_stack/tint_stack';
 
 @import 'code_snippet/code_snippet';
 @import 'font_form/font_form';
