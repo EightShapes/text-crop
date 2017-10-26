@@ -146,15 +146,14 @@ $esds-form-input-min-height: 37px;
 
 // Size specific form elements
 .typeface-action--line-height,
-.typeface-action--top-crop,
-.typeface-action--bottom-crop,
 .typeface-action--size {
     flex-grow: 0;
     width: 6em;
 }
 
 .typeface-action--tabbed-selector {
-    flex: 0 0 20em;
+    flex: 1 1 20em;
+    max-width: 20em;
     width: 20em;
 
     .typeface-action {
@@ -165,6 +164,12 @@ $esds-form-input-min-height: 37px;
 .typeface-action--weight-and-style {
     flex-grow: 0;
     width: 10em;
+}
+
+.typeface-action--top-crop,
+.typeface-action--bottom-crop {
+    flex: 0 0 5em;
+    width: 5em;
 }
 
 .typeface-action--top-crop {
