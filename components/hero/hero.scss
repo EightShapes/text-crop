@@ -14,7 +14,7 @@
     @include esds-text-crop;
     @include esds-text-color('primary');
     font-size: $esds-font-size-lead;
+    font-weight: $esds-font-weight-light;
     margin: 0 auto;
     max-width: 640px;
-    // text-align: center;
 }

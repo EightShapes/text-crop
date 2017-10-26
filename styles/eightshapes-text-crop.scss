@@ -249,9 +249,8 @@ a {
     display: none;
 }
 
-.cap-aligned-line-height {
-    line-height: 1.2;
-
+// Used by the dynamic examples, sets some defaults
+.text-crop {
     &::before,
     &::after {
         content: '';

@@ -7,56 +7,53 @@
 {% endmacro %}
 
 {% macro code_snippet() %}
-        <div class="generated-code tool-section">
-            <h2 class="tool-section__title">Mixin Code</h2> 
-            <div class="es-tabs es-tabs--code-snippets">
-                <label class="es-tabs__label" for="scss">
-                    <input type="radio" id="scss" name="style-preprocessor" class="es-tabs__label-input" checked>
-                    <span class="es-tabs__label-text">
-                        SCSS
-                    </span>
-                </label>
-                <label class="es-tabs__label" for="less">
-                    <input type="radio" id="less" name="style-preprocessor" class="es-tabs__label-input">
-                    <span class="es-tabs__label-text">
-                        LESS
-                    </span>
-                </label>
-                <label class="es-tabs__label" for="stylus">
-                    <input type="radio" id="stylus" name="style-preprocessor" class="es-tabs__label-input">
-                    <span class="es-tabs__label-text">
-                        Stylus
-                    </span>
-                </label>
-            </div>
-            
-            <div id="style-preprocessor-scss" class="mixin-code-tab-pane">
-                {{ copy_code_button("#scss-code") }}
-                <pre>
-                    <code id="scss-code">
-                        {% include 'includes/scss_mixin.njk' %}
-                    </code>
-                </pre>
-            </div>
+    <div class="es-tabs es-tabs--code-snippets">
+        <label class="es-tabs__label" for="scss">
+            <input type="radio" id="scss" name="style-preprocessor" class="es-tabs__label-input" checked>
+            <span class="es-tabs__label-text">
+                SCSS
+            </span>
+        </label>
+        <label class="es-tabs__label" for="less">
+            <input type="radio" id="less" name="style-preprocessor" class="es-tabs__label-input">
+            <span class="es-tabs__label-text">
+                LESS
+            </span>
+        </label>
+        <label class="es-tabs__label" for="stylus">
+            <input type="radio" id="stylus" name="style-preprocessor" class="es-tabs__label-input">
+            <span class="es-tabs__label-text">
+                Stylus
+            </span>
+        </label>
+    </div>
+    
+    <div id="style-preprocessor-scss" class="mixin-code-tab-pane">
+        {{ copy_code_button("#scss-code") }}
+        <pre>
+            <code id="scss-code">
+                {% include 'includes/scss_mixin.njk' %}
+            </code>
+        </pre>
+    </div>
 
-            <div id="style-preprocessor-less" class="mixin-code-tab-pane">
-                {{ copy_code_button("#less-code") }}
+    <div id="style-preprocessor-less" class="mixin-code-tab-pane">
+        {{ copy_code_button("#less-code") }}
 
-                <pre>
-                    <code id="less-code">
-                        {% include 'includes/less_mixin.njk' %}
-                    </code>
-                </pre>
-            </div>
+        <pre>
+            <code id="less-code">
+                {% include 'includes/less_mixin.njk' %}
+            </code>
+        </pre>
+    </div>
 
-            <div id="style-preprocessor-stylus" class="mixin-code-tab-pane">
-                {{ copy_code_button("#stylus-code") }}
+    <div id="style-preprocessor-stylus" class="mixin-code-tab-pane">
+        {{ copy_code_button("#stylus-code") }}
 
-                <pre>
-                    <code id="stylus-code">
-                        {% include 'includes/stylus_mixin.njk' %}
-                    </code>
-                </pre>
-            </div>
-        </div>
+        <pre>
+            <code id="stylus-code">
+                {% include 'includes/stylus_mixin.njk' %}
+            </code>
+        </pre>
+    </div>
 {% endmacro %}

@@ -45,8 +45,8 @@ CapHeightAlignmentTool = function() {
     }
 
     function updateInlineStyles() {
-        if ($("style#cap-aligned-line-height-inline-styles").length === 0) {
-            $("head").append("<style id='cap-aligned-line-height-inline-styles'>");
+        if ($("style#text-crop-inline-styles").length === 0) {
+            $("head").append("<style id='text-crop-inline-styles'>");
         }
 
         var fontSize = parseInt($("#size").val(), 10),
@@ -56,9 +56,9 @@ CapHeightAlignmentTool = function() {
             bottomMeasurement = parseInt($("#bottom-measurement").val(), 10),
             topOffsetEm = Math.max((topMeasurement + (lineHeight - measuredLineHeight) * (fontSize / 2)), 0) / fontSize,
             bottomOffsetEm = Math.max((bottomMeasurement + (lineHeight - measuredLineHeight) * (fontSize / 2)), 0) / fontSize,
-            inlineStyle = ".cap-aligned-line-height { line-height: " + lineHeight + " } .cap-aligned-line-height::before { margin-bottom: -" + topOffsetEm + "em; } .cap-aligned-line-height::after { margin-top: -" + bottomOffsetEm + "em; }";
+            inlineStyle = ".text-crop { line-height: " + lineHeight + " } .text-crop::before { margin-bottom: -" + topOffsetEm + "em; } .text-crop::after { margin-top: -" + bottomOffsetEm + "em; }";
 
-        $("#cap-aligned-line-height-inline-styles").html(inlineStyle);
+        $("#text-crop-inline-styles").html(inlineStyle);
     }
 
     function moveFineTuneAdjustment($lockedLine, $lineList) {

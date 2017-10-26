@@ -51,60 +51,53 @@
                 Want to rid your components of that pesky space above and below a block of text due to line height? Use our tool to create a mixin for your typography.
             </p>
         {% endcall %}
-        {% call esds.row(background="light eswt-step-row") %}
+        {% call esds.row(background="light", class="eswt-step-row") %}
             <h4 class="eswt-step-row__step-number">Step 1</h4>
             <h2 class="eswt-step-row__title">Configure the Crop</h2>
             {{ components.font_form() }}
             {{ components.text_crop_measurement_tool() }}
-
- {#            <div class="es-web-tool__sidebar-actions">
-                <div class="es-web-tool__sidebar-ctas">
-                    <a class="es-button es-web-tool__external-link--twitter" id="es-share-on-twitter-link" href="http://twitter.com/home?status=Crop%20top%20and%20bottom%20whitespace%20surrounding%20text%20on%20the%20web.%20http://text-crop.eightshapes.com%20@eightshapes&amp;source=webclient">
-                        {{ components.icon(icon_name="twitter", class="es-web-tool__external-link-logo es-button__icon") }}
-                        <span class="es-web-tool__external-link-text">
-                            Tweet This Tool
-                        </span>
-                    </a>
-                </div>
-                
-                
-                <div class="es-web-tool__external-links-wrap">
-                    <a class="es-web-tool__external-link es-web-tool__external-link--github" href="http://www.eightshapes.com/design-systems.html">
-                        <span class="es-web-tool__external-link-text">
-                            By Eightshapes
-                        </span>
-                    </a>    
-                    <div class="es-web-tool__external-link-separator">
-                    </div>                  
-                    <a class="es-web-tool__external-link es-web-tool__external-link--github" href="https://github.com/EightShapes/text-crop">
-                        {{ components.icon(icon_name="github", class="es-web-tool__external-link-logo") }}
-                        <span class="es-web-tool__external-link-text">
-                            On Github
-                        </span>
-                    </a>
-                </div>
-                
-                <p class="es-web-tool__legal">
-                    &copy; Copyright Eightshapes, LLC 2017
-                </p>
-            </div> #}
         {% endcall %}
-        <div class="es-web-tool__flex-container">
-            <div class="es-web-tool__outer-wrap">
-                <div class="es-web-tool__body">
-                    <div class="es-web-tool__configurator">
-                        <div class="es-web-tool__sidebar">
-                            
-                            
-                        </div>
-                        <div class="es-web-tool__results">
-                            {{ components.text_crop_samples() }}
-                            {{ components.code_snippet() }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% call esds.row(background="white", class="eswt-step-row") %}
+            <h4 class="eswt-step-row__step-number">Step 2</h4>
+            <h2 class="eswt-step-row__title">Confirm the Result</h2>
+            {{ components.text_crop_samples() }}
+        {% endcall %}
+        {% call esds.row(background="light", class="eswt-step-row") %}
+            <h4 class="eswt-step-row__step-number">Step 3</h4>
+            <h2 class="eswt-step-row__title">Copy the Code</h2>
+            {{ components.code_snippet() }}
+        {% endcall %}
+        {#            <div class="es-web-tool__sidebar-actions">
+                       <div class="es-web-tool__sidebar-ctas">
+                           <a class="es-button es-web-tool__external-link--twitter" id="es-share-on-twitter-link" href="http://twitter.com/home?status=Crop%20top%20and%20bottom%20whitespace%20surrounding%20text%20on%20the%20web.%20http://text-crop.eightshapes.com%20@eightshapes&amp;source=webclient">
+                               {{ components.icon(icon_name="twitter", class="es-web-tool__external-link-logo es-button__icon") }}
+                               <span class="es-web-tool__external-link-text">
+                                   Tweet This Tool
+                               </span>
+                           </a>
+                       </div>
+                       
+                       
+                       <div class="es-web-tool__external-links-wrap">
+                           <a class="es-web-tool__external-link es-web-tool__external-link--github" href="http://www.eightshapes.com/design-systems.html">
+                               <span class="es-web-tool__external-link-text">
+                                   By Eightshapes
+                               </span>
+                           </a>    
+                           <div class="es-web-tool__external-link-separator">
+                           </div>                  
+                           <a class="es-web-tool__external-link es-web-tool__external-link--github" href="https://github.com/EightShapes/text-crop">
+                               {{ components.icon(icon_name="github", class="es-web-tool__external-link-logo") }}
+                               <span class="es-web-tool__external-link-text">
+                                   On Github
+                               </span>
+                           </a>
+                       </div>
+                       
+                       <p class="es-web-tool__legal">
+                           &copy; Copyright Eightshapes, LLC 2017
+                       </p>
+                   </div> #}
         <script type="text/javascript">
           var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
           document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

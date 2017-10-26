@@ -1,6 +1,12 @@
+.text-crop-measurement-wrap {
+    overflow: hidden;
+    padding: 60px 0;
+}
+
 .text-crop-measurement__sample-text {
-    background: $color-white;
-    border: solid 1px $color-gray-20;
+    background: transparent;
+    border: $esds-border-control-on-white;
+    border-radius: $esds-border-radius-default;
     box-sizing: content-box;
     color: $color-text-default;
     font-family: monospace;
@@ -17,10 +23,6 @@
 .text-crop-measurement__actions {
     // overflow: hidden;
     position: relative;
-}
-
-.text-crop-measurement-wrap {
-    padding: 48px 0;
 }
 
 .measurement-fine-tune__increment--increase {
@@ -45,7 +47,7 @@
     height: 1px;
     position: absolute;
     top: 0;
-    width: 100%;
+    width: calc(100% - 120px);
 
     &:after {
         background: $color-white;
@@ -64,13 +66,14 @@
         z-index: 100;
     }
 
-    &.text-crop-measurement__line--bottom {
-        background: $color-blue;
-        bottom: 0;
-        left: 30px;
-        top: auto;
-        width: calc(100% - 30px);
-    }
+}
+
+.text-crop-measurement__line--bottom {
+    background: $esds-text-color-link-on-white;
+    bottom: 0;
+    left: 0;
+    top: auto;
+    width: calc(100% - 25px);
 }
 
 .measurement-fine-tune__grip-icon,
@@ -90,7 +93,7 @@
     width: 30px;
 
     .text-crop-measurement__line--bottom & {
-        background: $color-blue;
+        background: $esds-text-color-link-on-white;
     }
 }
 
@@ -102,11 +105,23 @@
 
 .measurement-fine-tune {
     display: inline-block;
-    right: 0;
     margin-top: -45px;
     position: absolute;
+    right: 0;
     top: 50%;
     z-index: 200;
+
+    &:before {
+        background: $esds-color-neutral-70;
+        bottom: 100%;
+        content: '';
+        display: block;
+        height: 100vh;
+        left: 50%;
+        margin-left: -2px;
+        position: absolute;
+        width: 4px;
+    }
 }
 
 .text-crop-measurement__offset {
@@ -128,8 +143,8 @@
     z-index: 20;
 
     .text-crop-measurement__line--bottom & {
-        border-color: $color-blue;
-        color: $color-blue;
+        border-color: $esds-text-color-link-on-white;
+        color: $esds-text-color-link-on-white;
         right: 0;
     }
 }

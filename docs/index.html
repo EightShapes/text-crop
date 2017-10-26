@@ -238,7 +238,7 @@
                     <input class="offset-input" type="number" id="top-measurement" name="top-measurement" value="0">
                 </div>
                 <div class="text-crop-measurement__sample-text" contenteditable="true" spellcheck="false">
-                    ABCDEFGHIJKLMNOPQRSTUVWXYZ &ldquo; &rdquo; $ & 1234567890 abcdefghijklmnopqrstuvwxyz
+                    ABCDEFGHIJKLMNOPQRSTUVWXYZ &ldquo; &rdquo; $ & 1234567890 abcdefghijklmnopqrstuvwxyz. Type your own sample text
                     
                 </div>
                 <div class="text-crop-measurement__line text-crop-measurement__line--bottom">
@@ -274,126 +274,172 @@
         </div>
     </div>
 
-
- 
         
         
     </div>
 </div>
 
 
-        <div class="es-web-tool__flex-container">
-            <div class="es-web-tool__outer-wrap">
-                <div class="es-web-tool__body">
-                    <div class="es-web-tool__configurator">
-                        <div class="es-web-tool__sidebar">
-                            
-                            
-                        </div>
-                        <div class="es-web-tool__results">
-                            
-    <div class="es-text-crop-samples typeface-actions tool-section">
-        <div class="es-text-crop-samples__header">
-            <h2 class="es-text-crop-samples__title">Examples</h2>
-            <label for="es-text-crop-toggle" class="es-text-crop-samples__crop-toggle">
-                <input id="es-text-crop-toggle" type="checkbox" checked>
-                <span class="es-text-crop-toggle__text">
-                    Enable Text Crop Mixin
-                </span>
-            </label>
-        </div>
+        
 
-        <div class="es-text-crop-samples__row">
-            <div class="es-text-crop__sample">
-                <label class="es-text-crop__sample-label">Button</label>
-                <button class="es-text-crop-samples__button cap-aligned-line-height sample-font-result">
-                    Click Me
-                </button>
-            </div>
-
-            <div class="es-text-crop__sample">
-                <label class="es-text-crop__sample-label">Button With Icon</label>
-                <button class="es-text-crop-samples__button es-text-crop-samples__button--with-icon">
-                    
+<div class="esds-row esds-container--white eswt-step-row"
+    
+    >
+    <div class="esds-row__inner">
+        
+            
+            <h4 class="eswt-step-row__step-number">Step 2</h4>
+            <h2 class="eswt-step-row__title">Confirm the Result</h2>
+            
+    <table class="es-text-crop-sample-table">
+        <thead class="es-text-crop-sample-table__head">
+            <tr class="es-text-crop-sample-table__head-row">
+                <th class="es-text-crop-sample-table__head-cell">Example</th>
+                <th class="es-text-crop-sample-table__head-cell">Without Text Crop</th>
+                <th class="es-text-crop-sample-table__head-cell">With Text Crop</th>
+            </tr>
+        </thead>
+        <tbody class="es-text-crop-sample-table__body">
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Button
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <button class="es-text-crop-samples__button sample-font-result">
+                        Click Me
+                    </button>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <button class="es-text-crop-samples__button text-crop sample-font-result">
+                        Click Me
+                    </button>
+                </td>
+            </tr>
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Button with Icon
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <button class="es-text-crop-samples__button es-text-crop-samples__button--with-icon">
+                        
     <svg  class="es-text-crop-samples__button-with-icon-icon"  aria-labelledby="title">
         <title>stopwatch</title>
         <use xlink:href="/icons/eightshapes-text-crop.svg#stopwatch"></use>
     </svg>
 
-                    <span class="es-text-crop-samples__button-with-icon-text cap-aligned-line-height sample-font-result">
-                        Start Timer
-                    </span>
-                </button>
-            </div>
+                        <span class="es-text-crop-samples__button-with-icon-text sample-font-result">
+                            Start Timer
+                        </span>
+                    </button>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <button class="es-text-crop-samples__button es-text-crop-samples__button--with-icon">
+                        
+    <svg  class="es-text-crop-samples__button-with-icon-icon"  aria-labelledby="title">
+        <title>stopwatch</title>
+        <use xlink:href="/icons/eightshapes-text-crop.svg#stopwatch"></use>
+    </svg>
 
-            <div class="es-text-crop__sample">
-                <label class="es-text-crop__sample-label">Flexbox Top aligned Text with Image</label>
-                <div class="es-text-crop-samples__flexbox">
-                    <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
-                    <p class="cap-aligned-line-height sample-font-result es-text-crop-samples__flexbox-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis.
-                    </p>
-                </div>
-            </div>
+                        <span class="es-text-crop-samples__button-with-icon-text text-crop sample-font-result">
+                            Start Timer
+                        </span>
+                    </button>
+                </td>
+            </tr>
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Flexbox Top aligned Text with Image
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="es-text-crop-samples__flexbox">
+                        <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
+                        <p class="sample-font-result es-text-crop-samples__flexbox-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis.
+                        </p>
+                    </div>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="es-text-crop-samples__flexbox">
+                        <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
+                        <p class="text-crop sample-font-result es-text-crop-samples__flexbox-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis.
+                        </p>
+                    </div>
+                </td>
+            </tr>
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Small Padded Box
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="visible-padded-box sample-font-result">
+                        16px font with 20px padding
+                    </div>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="visible-padded-box text-crop sample-font-result">
+                        16px font with 20px padding
+                    </div>
+                </td>
+            </tr>
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Large Padded Box
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="visible-padded-box visible-padded-box--extra-large sample-font-result">
+                        64px font with 20px padding
+                    </div>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="visible-padded-box visible-padded-box--extra-large text-crop sample-font-result">
+                        64px font with 20px padding
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-            <div class="es-text-crop__sample">
-                <label class="es-text-crop__sample-label">Flexbox Bottom aligned Text with Image</label>
-                <div class="es-text-crop-samples__flexbox es-text-crop-samples__flexbox--bottom-aligned">
-                    <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
-                    <p class="cap-aligned-line-height sample-font-result es-text-crop-samples__flexbox-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="es-text-crop-samples__row">
-            <div class="es-text-crop__sample">
-                <div class="visible-padded-box cap-aligned-line-height sample-font-result">
-                    16px font with 20px padding
-                </div>
-            </div>
-
-            <div class="es-text-crop__sample">
-                <div class="visible-padded-box visible-padded-box--large cap-aligned-line-height sample-font-result">
-                    32px font with 20px padding
-                </div>
-            </div>
-
-            <div class="es-text-crop__sample">
-                <div class="visible-padded-box visible-padded-box--extra-large cap-aligned-line-height sample-font-result">
-                    64px font with 20px padding
-                </div>
-            </div>
-        </div>
+        
+        
     </div>
+</div>
 
-                            
-        <div class="generated-code tool-section">
-            <h2 class="tool-section__title">Mixin Code</h2> 
-            <div class="es-tabs es-tabs--code-snippets">
-                <label class="es-tabs__label" for="scss">
-                    <input type="radio" id="scss" name="style-preprocessor" class="es-tabs__label-input" checked>
-                    <span class="es-tabs__label-text">
-                        SCSS
-                    </span>
-                </label>
-                <label class="es-tabs__label" for="less">
-                    <input type="radio" id="less" name="style-preprocessor" class="es-tabs__label-input">
-                    <span class="es-tabs__label-text">
-                        LESS
-                    </span>
-                </label>
-                <label class="es-tabs__label" for="stylus">
-                    <input type="radio" id="stylus" name="style-preprocessor" class="es-tabs__label-input">
-                    <span class="es-tabs__label-text">
-                        Stylus
-                    </span>
-                </label>
-            </div>
+
+        
+
+<div class="esds-row esds-container--light eswt-step-row"
+    
+    >
+    <div class="esds-row__inner">
+        
             
-            <div id="style-preprocessor-scss" class="mixin-code-tab-pane">
-                
+            <h4 class="eswt-step-row__step-number">Step 3</h4>
+            <h2 class="eswt-step-row__title">Copy the Code</h2>
+            
+    <div class="es-tabs es-tabs--code-snippets">
+        <label class="es-tabs__label" for="scss">
+            <input type="radio" id="scss" name="style-preprocessor" class="es-tabs__label-input" checked>
+            <span class="es-tabs__label-text">
+                SCSS
+            </span>
+        </label>
+        <label class="es-tabs__label" for="less">
+            <input type="radio" id="less" name="style-preprocessor" class="es-tabs__label-input">
+            <span class="es-tabs__label-text">
+                LESS
+            </span>
+        </label>
+        <label class="es-tabs__label" for="stylus">
+            <input type="radio" id="stylus" name="style-preprocessor" class="es-tabs__label-input">
+            <span class="es-tabs__label-text">
+                Stylus
+            </span>
+        </label>
+    </div>
+    
+    <div id="style-preprocessor-scss" class="mixin-code-tab-pane">
+        
     <a href="#" class="es-code-snippet__copy-button" data-clipboard-target="#scss-code">
         
     <svg  class="es-code-snippet__copy-button-icon"  aria-labelledby="title">
@@ -405,9 +451,9 @@
         <span class="es-code-snippet__copy-response">Press Ctrl + C to copy</span>
     </a>
 
-                <pre>
-                    <code id="scss-code">
-                        <span class="code-keyword">
+        <pre>
+            <code id="scss-code">
+                <span class="code-keyword">
 @mixin</span> <span class="code-mixin-name">text-crop</span>($line-height: <span class="code-line-height">1.2</span>, $top-adjustment: 0px, $bottom-adjustment: 0px) {
     $offset-top: max((<span class="code-top-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
     $offset-bottom: max((<span class="code-bottom-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
@@ -466,12 +512,12 @@
 */
 </span>
 
-                    </code>
-                </pre>
-            </div>
+            </code>
+        </pre>
+    </div>
 
-            <div id="style-preprocessor-less" class="mixin-code-tab-pane">
-                
+    <div id="style-preprocessor-less" class="mixin-code-tab-pane">
+        
     <a href="#" class="es-code-snippet__copy-button" data-clipboard-target="#less-code">
         
     <svg  class="es-code-snippet__copy-button-icon"  aria-labelledby="title">
@@ -484,9 +530,9 @@
     </a>
 
 
-                <pre>
-                    <code id="less-code">
-                        <span class="code-mixin-name">
+        <pre>
+            <code id="less-code">
+                <span class="code-mixin-name">
 .text-crop</span>(@line-height: <span class="code-line-height">1.2</span>, @top-adjustment: 0px, @bottom-adjustment: 0px) {
     @offset-top: max((<span class="code-top-measurement">0</span> + (@line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">36</span> / 2)), 0) / <span class="code-size">36</span>;
     @offset-bottom: max((<span class="code-bottom-measurement">0</span> + (@line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">36</span> / 2)), 0) / <span class="code-size">36</span>;
@@ -545,12 +591,12 @@
 */
 </span>
 
-                    </code>
-                </pre>
-            </div>
+            </code>
+        </pre>
+    </div>
 
-            <div id="style-preprocessor-stylus" class="mixin-code-tab-pane">
-                
+    <div id="style-preprocessor-stylus" class="mixin-code-tab-pane">
+        
     <a href="#" class="es-code-snippet__copy-button" data-clipboard-target="#stylus-code">
         
     <svg  class="es-code-snippet__copy-button-icon"  aria-labelledby="title">
@@ -563,9 +609,9 @@
     </a>
 
 
-                <pre>
-                    <code id="stylus-code">
-                        <span class="code-mixin-name">
+        <pre>
+            <code id="stylus-code">
+                <span class="code-mixin-name">
 text-crop</span>($line-height = <span class="code-line-height">1.2</span>, $top-adjustment = 0px, $bottom-adjustment = 0px) {
     $offset-top = max((<span class="code-top-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
     $offset-bottom = max((<span class="code-bottom-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
@@ -624,16 +670,17 @@ text-crop</span>($line-height = <span class="code-line-height">1.2</span>, $top-
 */
 </span>
 
-                    </code>
-                </pre>
-            </div>
-        </div>
+            </code>
+        </pre>
+    </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        
+        
+    </div>
+</div>
+
+
+        
         <script type="text/javascript">
           var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
           document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

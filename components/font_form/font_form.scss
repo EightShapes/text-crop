@@ -104,6 +104,7 @@ $esds-form-input-min-height: 37px;
     align-items: flex-end;
     display: flex;
     justify-content: flex-start;
+    margin-bottom: 0;
 }
 
 .es-text-crop-label-tabs {
@@ -174,6 +175,10 @@ $esds-form-input-min-height: 37px;
 
 .typeface-action--top-crop {
     margin-left: auto;
+}
+
+.typeface-action--bottom-crop {
+    margin-right: 0;
 }
 
 .typeface-action--custom-typeface-weight,

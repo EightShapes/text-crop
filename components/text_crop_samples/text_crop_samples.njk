@@ -1,72 +1,100 @@
 {% macro text_crop_samples() %}
-    <div class="es-text-crop-samples typeface-actions tool-section">
-        <div class="es-text-crop-samples__header">
-            <h2 class="es-text-crop-samples__title">Examples</h2>
-            <label for="es-text-crop-toggle" class="es-text-crop-samples__crop-toggle">
-                <input id="es-text-crop-toggle" type="checkbox" checked>
-                <span class="es-text-crop-toggle__text">
-                    Enable Text Crop Mixin
-                </span>
-            </label>
-        </div>
-
-        <div class="es-text-crop-samples__row">
-            <div class="es-text-crop__sample">
-                <label class="es-text-crop__sample-label">Button</label>
-                <button class="es-text-crop-samples__button cap-aligned-line-height sample-font-result">
-                    Click Me
-                </button>
-            </div>
-
-            <div class="es-text-crop__sample">
-                <label class="es-text-crop__sample-label">Button With Icon</label>
-                <button class="es-text-crop-samples__button es-text-crop-samples__button--with-icon">
-                    {{ icon(icon_name="stopwatch", class="es-text-crop-samples__button-with-icon-icon") }}
-                    <span class="es-text-crop-samples__button-with-icon-text cap-aligned-line-height sample-font-result">
-                        Start Timer
-                    </span>
-                </button>
-            </div>
-
-            <div class="es-text-crop__sample">
-                <label class="es-text-crop__sample-label">Flexbox Top aligned Text with Image</label>
-                <div class="es-text-crop-samples__flexbox">
-                    <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
-                    <p class="cap-aligned-line-height sample-font-result es-text-crop-samples__flexbox-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis.
-                    </p>
-                </div>
-            </div>
-
-            <div class="es-text-crop__sample">
-                <label class="es-text-crop__sample-label">Flexbox Bottom aligned Text with Image</label>
-                <div class="es-text-crop-samples__flexbox es-text-crop-samples__flexbox--bottom-aligned">
-                    <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
-                    <p class="cap-aligned-line-height sample-font-result es-text-crop-samples__flexbox-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="es-text-crop-samples__row">
-            <div class="es-text-crop__sample">
-                <div class="visible-padded-box cap-aligned-line-height sample-font-result">
-                    16px font with 20px padding
-                </div>
-            </div>
-
-            <div class="es-text-crop__sample">
-                <div class="visible-padded-box visible-padded-box--large cap-aligned-line-height sample-font-result">
-                    32px font with 20px padding
-                </div>
-            </div>
-
-            <div class="es-text-crop__sample">
-                <div class="visible-padded-box visible-padded-box--extra-large cap-aligned-line-height sample-font-result">
-                    64px font with 20px padding
-                </div>
-            </div>
-        </div>
-    </div>
+    <table class="es-text-crop-sample-table">
+        <thead class="es-text-crop-sample-table__head">
+            <tr class="es-text-crop-sample-table__head-row">
+                <th class="es-text-crop-sample-table__head-cell">Example</th>
+                <th class="es-text-crop-sample-table__head-cell">Without Text Crop</th>
+                <th class="es-text-crop-sample-table__head-cell">With Text Crop</th>
+            </tr>
+        </thead>
+        <tbody class="es-text-crop-sample-table__body">
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Button
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <button class="es-text-crop-samples__button sample-font-result">
+                        Click Me
+                    </button>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <button class="es-text-crop-samples__button text-crop sample-font-result">
+                        Click Me
+                    </button>
+                </td>
+            </tr>
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Button with Icon
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <button class="es-text-crop-samples__button es-text-crop-samples__button--with-icon">
+                        {{ icon(icon_name="stopwatch", class="es-text-crop-samples__button-with-icon-icon") }}
+                        <span class="es-text-crop-samples__button-with-icon-text sample-font-result">
+                            Start Timer
+                        </span>
+                    </button>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <button class="es-text-crop-samples__button es-text-crop-samples__button--with-icon">
+                        {{ icon(icon_name="stopwatch", class="es-text-crop-samples__button-with-icon-icon") }}
+                        <span class="es-text-crop-samples__button-with-icon-text text-crop sample-font-result">
+                            Start Timer
+                        </span>
+                    </button>
+                </td>
+            </tr>
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Flexbox Top aligned Text with Image
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="es-text-crop-samples__flexbox">
+                        <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
+                        <p class="sample-font-result es-text-crop-samples__flexbox-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis.
+                        </p>
+                    </div>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="es-text-crop-samples__flexbox">
+                        <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
+                        <p class="text-crop sample-font-result es-text-crop-samples__flexbox-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis.
+                        </p>
+                    </div>
+                </td>
+            </tr>
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Small Padded Box
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="visible-padded-box sample-font-result">
+                        16px font with 20px padding
+                    </div>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="visible-padded-box text-crop sample-font-result">
+                        16px font with 20px padding
+                    </div>
+                </td>
+            </tr>
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Large Padded Box
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="visible-padded-box visible-padded-box--extra-large sample-font-result">
+                        64px font with 20px padding
+                    </div>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="visible-padded-box visible-padded-box--extra-large text-crop sample-font-result">
+                        64px font with 20px padding
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 {% endmacro %}

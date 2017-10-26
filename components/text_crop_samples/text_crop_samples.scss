@@ -1,81 +1,51 @@
-.es-text-crop-samples__crop-toggle {
-    cursor: pointer;
-    position: relative;
-    top: 5px;
+.es-text-crop-sample-table {
+    border-collapse: collapse;
+
 }
 
-.es-text-crop-toggle__text {
-    position: relative;
-    top: 2px;
+.es-text-crop-sample-table__head-cell {
+    @include esds-eyebrow-heading;
+    padding: $esds-space-inset-1-x;
+    text-align: left;
+    width: 35%;
+
+    &:first-child {
+        width: 30%;
+    }
+}
+
+.es-text-crop-sample-table__row-header {
+    @include esds-eyebrow-heading;
+    padding: $esds-space-inset-1-x;
+    padding-right: $esds-space-generic-2-x * 2;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.es-text-crop-sample-table__cell {
+    padding: $esds-space-inset-1-x;
+    text-align: left;
+}
+
+.es-text-crop-sample-table__row {
+    border-bottom: $esds-border-control-on-white;
+
+    &:last-child {
+        border-bottom: 0;
+    }
 }
 
 .es-text-crop-samples__button {
-    background: $color-sample-button-background;
+    background: $esds-color-teal-71;
     border: 0;
     border-radius: 4px;
     color: $color-white;
     cursor: pointer;
     display: inline-block;
     font-size: $font-size-lg;
-    margin: 0 0 $spacing-default;
+    margin: 0;
     min-width: 160px;
     padding: 10px 20px;
-}
-
-.visible-padded-box {
-    box-shadow: inset 20px 20px 0 $color-gray-53, inset -20px -20px 0 $color-gray-53;
-    display: inline-block;
-    font-size: 16px;
-    margin: 0 0 $spacing-lg;
-    max-width: 320px;
-    padding: 20px;
-}
-
-.visible-padded-box--large {
-    font-size: 32px;
-}
-
-.visible-padded-box--extra-large {
-    font-size: 64px;
-    max-width: 440px;
-}
-
-.es-text-crop-samples__flexbox {
-    align-items: flex-start;
-    display: flex;
-    margin: 0 0 $spacing-default;
-    max-width: 320px;
-    width: 100%;
-}
-
-.es-text-crop-samples__flexbox--bottom-aligned {
-    align-items: flex-end;
-}
-
-.es-text-crop-samples__flexbox-image {
-    margin-right: $spacing-sm;
-}
-
-.es-text-crop-samples__flexbox-text {
-    font-size: $font-size-lg;
-}
-
-.es-text-crop-samples__header {
-    align-items: center;
-    border-bottom: solid 1px $color-gray-53;
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: $spacing-md;
-    padding-bottom: $spacing-xs;
-}
-
-.es-text-crop-samples__title {
-    margin: 0 $spacing-default 0 0;
-}
-
-.es-text-crop-samples__row {
-    display: flex;
-    flex-wrap: wrap;
 }
 
 .es-text-crop-samples__button--with-icon {
@@ -83,11 +53,6 @@
     display: inline-flex;
     justify-content: center;
     width: 180px;
-}
-
-.es-text-crop__sample {
-    margin-right: $spacing-lg;
-    // width: 20%;
 }
 
 .es-text-crop-samples__button-with-icon-icon {
@@ -103,17 +68,40 @@
     display: block;
 }
 
+.visible-padded-box {
+    box-shadow: inset 20px 20px 0 $color-gray-53, inset -20px -20px 0 $color-gray-53;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 0;
+    max-width: 320px;
+    padding: 20px;
+}
+
+.visible-padded-box--extra-large {
+    font-size: 64px;
+    max-width: 440px;
+}
+
+.es-text-crop-samples__flexbox {
+    align-items: flex-start;
+    display: flex;
+    margin: 0;
+    width: 100%;
+}
+
+.es-text-crop-samples__flexbox-image {
+    margin-right: $spacing-sm;
+}
+
+.es-text-crop-samples__flexbox-text {
+    font-size: $font-size-lg;
+}
+
+.es-text-crop__sample {
+    margin-right: $spacing-lg;
+}
+
 .es-text-crop__sample-label {
     display: block;
     margin: 0 0 $spacing-xs;
 }
-
-// sass-lint:disable no-important
-// Need to override inline styles created by JS
-.text-crop--disabled {
-    &:before,
-    &:after {
-        display: none !important;
-    }
-}
-// sass-lint:enable no-important
