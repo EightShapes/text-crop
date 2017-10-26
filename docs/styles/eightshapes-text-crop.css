@@ -235,7 +235,9 @@ a {
   display: -ms-flexbox;
   display: flex;
   max-width: 100vw;
-  min-height: 100vh; }
+  min-height: 100vh;
+  width: 100%;
+  overflow-x: hidden; }
   .es-code-toggle--visible .es-web-tool__configurator {
     display: none; }
 
@@ -334,8 +336,8 @@ a {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  max-width: calc(100vw - 310px);
-  padding: 32px 0 32px 32px; }
+  padding: 32px 0 32px 32px;
+  width: calc(100vw - 320px); }
 
 .es-web-tool__sidebar-actions {
   padding: 0 26px 26px; }
@@ -384,8 +386,8 @@ body {
   color: #323232; }
 
 .tool-section {
-  padding: 15px;
-  margin-bottom: 64px; }
+  margin-bottom: 64px;
+  padding: 15px; }
 
 .tool-section__title {
   text-align: left; }
@@ -426,10 +428,10 @@ body {
   top: 0;
   width: 100%; }
   .cap-height-measurement__line:after {
-    background: white;
-    content: counter(stripes);
+    background: #FFFFFF;
     border: solid 1px #F57026;
     color: #323232;
+    content: counter(stripes);
     display: none;
     font-family: monospace;
     font-size: 14px;
@@ -498,23 +500,20 @@ body {
   display: -ms-flexbox;
   display: flex;
   font-family: monospace;
+  height: 30px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  padding: 15px;
-  height: 30px;
-  width: 30px;
-  position: absolute;
-  top: 50%;
   margin-top: -15px;
+  padding: 15px;
+  position: absolute;
   right: 30px;
+  top: 50%;
   -webkit-user-select: none;
-  /* Chrome all / Safari all */
-  -moz-user-select: none;
-  /* Firefox all */
-  -ms-user-select: none;
-  /* IE 10+ */
-  user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  width: 30px;
   z-index: 20; }
   .cap-height-measurement__line--bottom .cap-height-measurement__offset {
     border-color: #1E62AB;
@@ -523,14 +522,10 @@ body {
 
 .offset-input,
 .offset-input-label {
-  left: -10000px;
+  clip: rect(0 0 0 0);
+  left: 0;
   position: absolute;
-  top: 0; }
-
-input,
-select {
-  font-size: 16px;
-  width: 100%; }
+  z-index: -1; }
 
 .typeface-action {
   margin-bottom: 15px; }

@@ -4,6 +4,7 @@
 @import 'text_crop_samples/text_crop_samples';
 
 $sidebar-shadow: -3px 0 3px rgba($color-black, .15);
+$sidebar-width: 320px;
 
 html,
 body {
@@ -60,6 +61,8 @@ a {
     display: flex;
     max-width: 100vw;
     min-height: 100vh;
+    width: 100%;
+    overflow-x: hidden;
 
     .es-code-toggle--visible & {
         display: none;
@@ -68,7 +71,7 @@ a {
 
 .es-web-tool__sidebar {
     background: $color-gray-95;
-    flex: 0 0 320px;
+    flex: 0 0 $sidebar-width;
 }
 
 .es-web-tool__title {
@@ -156,8 +159,8 @@ a {
 .es-web-tool__results {
     box-shadow: $sidebar-shadow;
     flex: 1;
-    max-width: calc(100vw - 310px);
     padding: $spacing-default 0 $spacing-default $spacing-default;
+    width: calc(100vw - #{$sidebar-width});
 }
 
 .es-web-tool__sidebar-actions {
@@ -210,8 +213,8 @@ body {
 }
 
 .tool-section {
-    padding: $spacing-sm;
     margin-bottom: $spacing-lg;
+    padding: $spacing-sm;
 }
 
 .tool-section__title {
@@ -239,47 +242,6 @@ body {
     padding: $spacing-lg 0;
 }
 
-// .cap-height-measurement__lines {
-//     display: flex;
-//     flex-direction: column;
-//     flex-wrap: wrap;
-//     top: 0;
-//     bottom: 55%;
-//     left: 0;
-//     list-style: none;
-//     margin: 0;
-//     // overflow: hidden;
-//     padding: 0;
-//     position: absolute;
-//     width: 100%;
-// }
-
-// .cap-height-measurement__lines--top {
-//     .measurement-fine-tune {
-
-//     }
-
-//     .measurement-fine-tune__grip,
-//     .measurement-fine-tune__increment {
-//         background: $color-orange-light;
-//     }
-// }
-
-// .cap-height-measurement__lines--bottom {
-//     bottom: 0;
-//     flex-direction: column-reverse;
-//     top: 55%;
-
-//     .measurement-fine-tune {
-//         left: 25px;
-//     }
-
-//     .measurement-fine-tune__grip,
-//     .measurement-fine-tune__increment {
-//         background: $color-blue;
-//     }
-// }
-
 .measurement-fine-tune__increment--increase {
     border-radius: $border-radius-default $border-radius-default 0 0;
 
@@ -305,10 +267,10 @@ body {
     width: 100%;
 
     &:after {
-        background: white;
-        content: counter(stripes);
+        background: $color-white;
         border: solid 1px $color-orange-light;
         color: $color-text-default;
+        content: counter(stripes);
         display: none;
         font-family: monospace;
         font-size: $font-size-sm;
@@ -330,18 +292,6 @@ body {
     }
 }
 
-// .cap-height-measurement__lines--bottom .cap-height-measurement__line {
-//     &:after {
-//         border-color: $color-blue;
-//         left: 55px;
-//     }
-
-//     &.cap-height-measurement__line--locked,
-//     &:hover {
-//         background: $color-blue;
-//     }
-// }
-
 .measurement-fine-tune__grip-icon,
 .measurement-fine-tune__increment-icon {
     fill: $color-white;
@@ -353,7 +303,6 @@ body {
 .measurement-fine-tune__increment {
     align-items: center;
     background: $color-orange-light;
-    // border: solid 1px $color-gray-20;
     display: flex;
     height: 30px;
     justify-content: center;
@@ -390,18 +339,15 @@ body {
     color: $color-orange-light;
     display: flex;
     font-family: monospace;
-    justify-content: center;
-    padding: $spacing-sm;
     height: 30px;
-    width: 30px;
-    position: absolute;
-    top: 50%;
+    justify-content: center;
     margin-top: -15px;
+    padding: $spacing-sm;
+    position: absolute;
     right: 30px;
-    -webkit-user-select: none;  /* Chrome all / Safari all */
-    -moz-user-select: none;     /* Firefox all */
-    -ms-user-select: none;      /* IE 10+ */
+    top: 50%;
     user-select: none; 
+    width: 30px;
     z-index: 20;
 
     .cap-height-measurement__line--bottom & {
@@ -413,16 +359,17 @@ body {
 
 .offset-input,
 .offset-input-label {
-    left: -10000px;
+    clip: rect(0 0 0 0);
+    left: 0;
     position: absolute;
-    top: 0;
+    z-index: -1;
 }
 
-input,
-select {
-    font-size: $font-size-default;
-    width: 100%;
-}
+// input,
+// select {
+//     font-size: $font-size-default;
+//     width: 100%;
+// }
 
 .typeface-action {
     margin-bottom: $spacing-sm;
