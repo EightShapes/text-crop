@@ -20,6 +20,11 @@
                         "node_modules/clipboard/dist/clipboard.min.js",
                         "node_modules/svg4everybody/dist/svg4everybody.min.js"],
             "destination": "docs/scripts/dependencies"
+        },
+        {
+            "name": "github-pages-cname-file",
+            "sources": ["CNAME"],
+            "destination": "docs"
         }
     ]  
 }
