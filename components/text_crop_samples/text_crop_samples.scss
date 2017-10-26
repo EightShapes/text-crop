@@ -10,7 +10,7 @@
 }
 
 .es-text-crop-samples__button {
-    background: $color-link;
+    background: $color-sample-button-background;
     border: 0;
     border-radius: 4px;
     color: $color-white;
@@ -22,10 +22,30 @@
     padding: 10px 20px;
 }
 
+.visible-padded-box {
+    box-shadow: inset 20px 20px 0 $color-gray-53, inset -20px -20px 0 $color-gray-53;
+    display: inline-block;
+    font-size: 16px;
+    padding: 20px;
+    margin: 0 0 $spacing-lg 0;
+    max-width: 320px;
+}
+
+.visible-padded-box--large {
+    font-size: 32px;
+}
+
+.visible-padded-box--extra-large {
+    font-size: 64px;
+    max-width: 440px;
+}
+
 .es-text-crop-samples__flexbox {
     align-items: flex-start;
     display: flex;
     margin: 0 0 $spacing-default;
+    max-width: 320px;
+    width: 100%;
 }
 
 .es-text-crop-samples__flexbox--bottom-aligned {
@@ -55,6 +75,7 @@
 
 .es-text-crop-samples__row {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .es-text-crop-samples__button--with-icon {

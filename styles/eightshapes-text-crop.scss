@@ -402,21 +402,6 @@ body {
     display: none;
 }
 
-.visible-padded-box {
-    box-shadow: inset 20px 20px 0 $color-orange-light, inset -20px -20px 0 $color-orange-light;
-    display: inline-block;
-    font-size: 16px;
-    padding: 20px;
-}
-
-.visible-padded-box--large {
-    font-size: 32px;
-}
-
-.visible-padded-box--extra-large {
-    font-size: 64px;
-}
-
 .cap-aligned-line-height {
     line-height: 1.2;
 
