@@ -305,7 +305,7 @@
                     Button
                 </th>
                 <td class="es-text-crop-sample-table__cell">
-                    <button class="es-text-crop-samples__button sample-font-result">
+                    <button class="es-text-crop-samples__button text-crop text-crop--no-crop sample-font-result">
                         Click Me
                     </button>
                 </td>
@@ -327,7 +327,7 @@
         <use xlink:href="/icons/eightshapes-text-crop.svg#stopwatch"></use>
     </svg>
 
-                        <span class="es-text-crop-samples__button-with-icon-text sample-font-result">
+                        <span class="es-text-crop-samples__button-with-icon-text  text-crop text-crop--no-crop sample-font-result">
                             Start Timer
                         </span>
                     </button>
@@ -353,7 +353,7 @@
                 <td class="es-text-crop-sample-table__cell">
                     <div class="es-text-crop-samples__flexbox">
                         <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
-                        <p class="sample-font-result es-text-crop-samples__flexbox-text">
+                        <p class=" text-crop text-crop--no-crop sample-font-result es-text-crop-samples__flexbox-text">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis.
                         </p>
                     </div>
@@ -372,7 +372,7 @@
                     Small Padded Box
                 </th>
                 <td class="es-text-crop-sample-table__cell">
-                    <div class="visible-padded-box sample-font-result">
+                    <div class="visible-padded-box sample-font-result text-crop text-crop--no-crop ">
                         16px font with 20px padding
                     </div>
                 </td>
@@ -387,7 +387,7 @@
                     Large Padded Box
                 </th>
                 <td class="es-text-crop-sample-table__cell">
-                    <div class="visible-padded-box visible-padded-box--extra-large sample-font-result">
+                    <div class="visible-padded-box visible-padded-box--extra-large text-crop text-crop--no-crop sample-font-result">
                         64px font with 20px padding
                     </div>
                 </td>
@@ -417,25 +417,27 @@
             <h4 class="eswt-step-row__step-number">Step 3</h4>
             <h2 class="eswt-step-row__title">Copy the Code</h2>
             
-    <div class="es-tabs es-tabs--code-snippets">
-        <label class="es-tabs__label" for="scss">
-            <input type="radio" id="scss" name="style-preprocessor" class="es-tabs__label-input" checked>
-            <span class="es-tabs__label-text">
-                SCSS
-            </span>
-        </label>
-        <label class="es-tabs__label" for="less">
-            <input type="radio" id="less" name="style-preprocessor" class="es-tabs__label-input">
-            <span class="es-tabs__label-text">
-                LESS
-            </span>
-        </label>
-        <label class="es-tabs__label" for="stylus">
-            <input type="radio" id="stylus" name="style-preprocessor" class="es-tabs__label-input">
-            <span class="es-tabs__label-text">
-                Stylus
-            </span>
-        </label>
+    <div class="es-text-crop-code-snippet__tabs-wrap">
+        <div class="esds-tabs esds-tabs--code-snippets">
+            <label class="esds-tabs__label" for="scss">
+                <input type="radio" id="scss" name="style-preprocessor" class="esds-tabs__label-input" checked>
+                <span class="esds-tabs__label-text">
+                    SCSS
+                </span>
+            </label>
+            <label class="esds-tabs__label" for="less">
+                <input type="radio" id="less" name="style-preprocessor" class="esds-tabs__label-input">
+                <span class="esds-tabs__label-text">
+                    LESS
+                </span>
+            </label>
+            <label class="esds-tabs__label" for="stylus">
+                <input type="radio" id="stylus" name="style-preprocessor" class="esds-tabs__label-input">
+                <span class="esds-tabs__label-text">
+                    Stylus
+                </span>
+            </label>
+        </div>
     </div>
     
     <div id="style-preprocessor-scss" class="mixin-code-tab-pane">

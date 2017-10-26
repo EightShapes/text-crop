@@ -413,13 +413,8 @@
 .esds-card__link > *:last-child {
   margin-bottom: 0; }
 
-.es-tabs--code-snippets {
-  max-width: 600px; }
-
-.tool-section__title {
-  border-bottom: solid 1px #888888;
-  margin-bottom: 26px;
-  padding-bottom: 8px; }
+.es-text-crop-code-snippet__tabs-wrap {
+  text-align: center; }
 
 .code-comment {
   color: #888888; }
@@ -722,38 +717,58 @@
           flex-grow: 0;
   width: 6em; }
 
-.es-tabs {
+.esds-tabs {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-bottom: 15px; }
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin: 0 auto 16px; }
 
-.es-tabs__label-input {
+.esds-tabs__label-input {
   position: absolute;
   visibility: hidden; }
 
-.es-tabs__label {
+.esds-tabs__label {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1; }
 
-.es-tabs__label-text {
-  background: #DAD6D6;
+.esds-tabs__label-text {
+  background: #F3F1F1;
   border-right: solid 1px #4D4D4D;
   cursor: pointer;
   display: block;
-  padding: 8px 15px;
+  font-size: 24px;
+  padding: 0 16px;
   text-align: center;
   white-space: nowrap; }
-  .es-tabs__label-input:checked + .es-tabs__label-text {
-    background: #4D4D4D;
+  .esds-container--white .esds-tabs__label-text {
+    color: #068194; }
+  .esds-container--light .esds-tabs__label-text {
+    color: #00798C; }
+  .esds-container--dark .esds-tabs__label-text {
+    color: #0A9DB3; }
+  .esds-container--black .esds-tabs__label-text {
+    color: #0A9DB3; }
+  .esds-container--brand .esds-tabs__label-text {
     color: #FFFFFF; }
-  .es-tabs__label:first-child .es-tabs__label-text {
+  .esds-tabs__label-input:checked + .esds-tabs__label-text {
+    font-weight: 700; }
+    .esds-container--white .esds-tabs__label-input:checked + .esds-tabs__label-text {
+      color: #262626; }
+    .esds-container--light .esds-tabs__label-input:checked + .esds-tabs__label-text {
+      color: #262626; }
+    .esds-container--dark .esds-tabs__label-input:checked + .esds-tabs__label-text {
+      color: #FFFFFF; }
+    .esds-container--black .esds-tabs__label-input:checked + .esds-tabs__label-text {
+      color: #F3F1F1; }
+    .esds-container--brand .esds-tabs__label-input:checked + .esds-tabs__label-text {
+      color: #FFFFFF; }
+  .esds-tabs__label:first-child .esds-tabs__label-text {
     border-radius: 4px 0 0 4px; }
-  .es-tabs__label:last-child .es-tabs__label-text {
+  .esds-tabs__label:last-child .esds-tabs__label-text {
     border-radius: 0 4px 4px 0;
     border-right: 0; }
 
@@ -868,7 +883,7 @@
           box-shadow: inset 20px 20px 0 #888888, inset -20px -20px 0 #888888;
   display: inline-block;
   font-size: 16px;
-  margin: 0 0;
+  margin: 0;
   max-width: 320px;
   padding: 20px; }
 
@@ -898,6 +913,9 @@
 .es-text-crop__sample-label {
   display: block;
   margin: 0 0 8px; }
+
+.text-crop--no-crop::before, .text-crop--no-crop::after {
+  display: none !important; }
 
 .eswt-headcrumb {
   font-family: "Lato", sans-serif;

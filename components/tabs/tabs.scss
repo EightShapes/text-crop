@@ -1,37 +1,41 @@
-.es-tabs {
+.esds-tabs {
     align-items: center;
-    display: flex;
-    margin-bottom: $spacing-sm;
+    display: inline-flex;
+    margin: 0 auto $esds-space-generic-1-x;
 }
 
-.es-tabs__label-input {
+.esds-tabs__label-input {
     position: absolute;
     visibility: hidden;
 }
 
-.es-tabs__label {
+.esds-tabs__label {
     flex: 1;
 }
 
-.es-tabs__label-text {
-    background: $color-tab-background;
+.esds-tabs__label-text {
+    @include esds-text-color('link');
+    background: $esds-background-color-light;
     border-right: solid 1px $color-gray-30;
     cursor: pointer;
     display: block;
-    padding: $spacing-xs $spacing-sm;
+    font-size: $esds-font-size-l;
+    padding: 0 $esds-space-generic-1-x;
     text-align: center;
     white-space: nowrap;
 
-    .es-tabs__label-input:checked + & {
-        background: $color-gray-30;
-        color: $color-white;
+    .esds-tabs__label-input:checked + & {
+        @include esds-text-color('primary');
+        // background: $color-gray-30;
+        // color: $color-white;
+        font-weight: $esds-font-weight-bold;
     }
 
-    .es-tabs__label:first-child & {
+    .esds-tabs__label:first-child & {
         border-radius: $border-radius-default 0 0 $border-radius-default;
     }
 
-    .es-tabs__label:last-child & {
+    .esds-tabs__label:last-child & {
         border-radius: 0 $border-radius-default $border-radius-default 0;
         border-right: 0;
     }

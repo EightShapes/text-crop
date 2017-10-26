@@ -72,7 +72,7 @@
     box-shadow: inset 20px 20px 0 $color-gray-53, inset -20px -20px 0 $color-gray-53;
     display: inline-block;
     font-size: 16px;
-    margin: 0 0;
+    margin: 0;
     max-width: 320px;
     padding: 20px;
 }
@@ -105,3 +105,14 @@
     display: block;
     margin: 0 0 $spacing-xs;
 }
+
+// sass-lint:disable no-important
+// Have to override inline styles injected by JS
+.text-crop--no-crop {
+    // let line height through, but remove the before and after pseudo elements
+    &::before,
+    &::after {
+        display: none !important;
+    }
+}
+// sass-lint:enable no-important
