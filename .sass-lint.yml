@@ -1,5 +1,7 @@
 files:
-  include: 'src/**/*.scss'
+  include: '**/*.scss'
+  ignore:
+    - 'node_modules/**/*.scss'
 options:
   formatter: stylish
   merge-default-rules: false
@@ -28,7 +30,7 @@ rules:
   final-newline:
     - 1
     - include: true
-  force-attribute-nesting: 1
+  force-attribute-nesting: 0
   force-element-nesting: 0
   force-pseudo-nesting: 0
   function-name-format:
@@ -74,16 +76,17 @@ rules:
     - extra-properties: []
   no-qualifying-elements:
     - 1
-    - allow-element-with-attribute: false
-      allow-element-with-class: false
-      allow-element-with-id: false
+    - allow-element-with-attribute: true
+      allow-element-with-class: true
+      allow-element-with-id: true
   no-trailing-zero: 1
   no-transition-all: 0
   no-url-protocols: 1
   no-vendor-prefixes:
     - 1
     - additional-identifiers: []
-      excluded-identifiers: []
+      excluded-identifiers:
+        - 'ms'
   placeholder-in-extend: 1
   placeholder-name-format:
     - 1
@@ -160,5 +163,6 @@ rules:
     - 1
     - allow-leading-underscore: true
       convention: hyphenatedlowercase
-  zero-unit: 1
-
+  zero-unit:
+    - 1
+    - include: false

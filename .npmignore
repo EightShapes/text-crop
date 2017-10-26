@@ -18,19 +18,8 @@ jspm_packages/
 # dotenv environment variables file
 .env
 
-# Auto-generated files
-/dist
-/data/icons.json
-
-/tokens/*
-# Keep yaml token source file
-!/tokens/*.yaml 
-
-# Ignore root .njk files in /components
-/components/*
-# keep files in subdirectories in /components
-!/components/*/
-
+# default webroot build directory
+/_site
 
 # MacOS folder attributes
 *.DS_Store

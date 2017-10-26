@@ -1,0 +1,23 @@
+{
+    "docsPath": "pages",      
+    "webroot": "docs",        
+    "versionedDocs": false,
+    "latestVersionPath": "",
+    "copyTasks": [
+        {
+            "name": "script-dependencies",
+            "sources": ["node_modules/jquery/dist/jquery.min.js",
+                        "node_modules/svg4everybody/dist/svg4everybody.min.js",
+                        "node_modules/jquery-ui/ui/widget.js",
+                        "node_modules/jquery-ui/ui/data.js",
+                        "node_modules/jquery-ui/ui/scroll-parent.js",
+                        "node_modules/jquery-ui/ui/plugin.js",
+                        "node_modules/jquery-ui/ui/safe-active-element.js",
+                        "node_modules/jquery-ui/ui/safe-blur.js",
+                        "node_modules/jquery-ui/ui/widgets/draggable.js",
+                        "node_modules/jquery-ui/ui/widgets/mouse.js",
+                        "node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.js"],
+            "destination": "docs/scripts/dependencies"
+        }
+    ]  
+}
