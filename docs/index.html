@@ -4,13 +4,14 @@
     <head>
         <title>EightShapes Text Crop</title>
         <link href="https://fonts.googleapis.com/css?family=Lato:300" rel="stylesheet">
+        <link rel="stylesheet" href="http://eightshapes.com/css/global.css">
         <link rel="stylesheet" href="/styles/eightshapes-text-crop.css">
         <meta name="HandheldFriendly" content="True" />
         <meta name="MobileOptimized" content="320" />
         <meta name="viewport" content="width=device-width, minimum-scale=1.0" />
         <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
         <meta http-equiv="cleartype" content="on">
-        <link rel="stylesheet" href="http://eightshapes.com/css/global.css">
+        <script src="/scripts/dependencies/clipboard.min.js"></script>
         <script src="/scripts/dependencies/jquery.min.js"></script>
         <!-- These scripts are all the dependencies for the draggable widget from jQuery UI -->
         <script src="/scripts/dependencies/widget.js"></script>
@@ -372,36 +373,87 @@
             </div>
             
             <div id="style-preprocessor-scss" class="mixin-code-tab-pane">
+                
+    <a href="#" class="es-code-snippet__copy-button" data-clipboard-target="#scss-code">
+        
+    <svg  class="es-code-snippet__copy-button-icon"  aria-labelledby="title">
+        <title>clipboard</title>
+        <use xlink:href="/icons/eightshapes-text-crop.svg#clipboard"></use>
+    </svg>
+
+        <span class="es-code-snippet__copy-button-text">Copy to Clipboard</span>
+        <span class="es-code-snippet__copy-response">Press Ctrl + C to copy</span>
+    </a>
+
                 <pre>
                     <code id="scss-code">
-@mixin text-crop($line-height: <span class="code-line-height">1.2</span>, $top-adjustment: 0px, $bottom-adjustment: 0px) {
-
+<span class="code-keyword">@mixin</span> <span class="code-mixin-name">text-crop</span>($line-height: <span class="code-line-height">1.2</span>, $top-adjustment: 0px, $bottom-adjustment: 0px) {
     $offset-top: max((<span class="code-top-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
     $offset-bottom: max((<span class="code-bottom-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
 
-    line-height: $line-height;
+    <span class="code-property">line-height</span>: $line-height;
 
-    &::before,
-    &::after {
-        content: '';
-        display: block;
-        height: 0;
-        width: 0;
+    <span class="code-selector">&::before,
+    &::after</span> {
+        <span class="code-property">content</span>: '';
+        <span class="code-property">display</span>: block;
+        <span class="code-property">height</span>: 0;
+        <span class="code-property">width</span>: 0;
     }
 
-    &::before {
-        margin-bottom: calc(-#{$offset-top}em + #{$top-adjustment});
+    <span class="code-selector">&::before</span> {
+        <span class="code-property">margin-bottom</span>: calc(-#{$offset-top}em + #{$top-adjustment});
     }
 
-    &::after {
-        margin-top: calc(-#{$offset-bottom}em + #{$bottom-adjustment});
+    <span class="code-selector">&::after</span> {
+        <span class="code-property">margin-top</span>: calc(-#{$offset-bottom}em + #{$bottom-adjustment});
     }
 }
+<span class="code-comment">// Mixin generated at: http://text-crop.eightshapes.com
+
+/* Usage Example
+    .my-level-1-heading-class {
+        @include text-crop; // Will use default line height of <span class="code-line-height">1.2</span>
+        font-size: 48px;
+        margin: 0 0 0 16px;
+    }
+
+    .my-level-2-heading-class {
+        @include text-crop; // Will use default line height of <span class="code-line-height">1.2</span>
+        font-size: 32px; // Don't need to change any settings, will work with any font size automatically
+        margin: 0 0 0 16px;
+    }
+
+    .my-body-copy-class {
+        @include text-crop($line-height: 2); // Larger line height desired, set the line height via the mixin
+        font-size: 16px;
+    }
+
+    .dont-do-this {
+        @include text-crop;
+        font-size: 16px;
+        line-height: 3; // DO NOT set line height outside of the mixin, the mixin needs the desired line height to calculate the crop correctly
+    }
+*/
+</span>
                     </code>
                 </pre>
             </div>
 
             <div id="style-preprocessor-less" class="mixin-code-tab-pane">
+                
+    <a href="#" class="es-code-snippet__copy-button" data-clipboard-target="#less-code">
+        
+    <svg  class="es-code-snippet__copy-button-icon"  aria-labelledby="title">
+        <title>clipboard</title>
+        <use xlink:href="/icons/eightshapes-text-crop.svg#clipboard"></use>
+    </svg>
+
+        <span class="es-code-snippet__copy-button-text">Copy to Clipboard</span>
+        <span class="es-code-snippet__copy-response">Press Ctrl + C to copy</span>
+    </a>
+
+
                 <pre>
                     <code id="less-code">
 .cap-aligned-line-height(@line-height: <span class="code-line-height">1.2</span>) {
@@ -432,6 +484,19 @@
             </div>
 
             <div id="style-preprocessor-stylus" class="mixin-code-tab-pane">
+                
+    <a href="#" class="es-code-snippet__copy-button" data-clipboard-target="#stylus-code">
+        
+    <svg  class="es-code-snippet__copy-button-icon"  aria-labelledby="title">
+        <title>clipboard</title>
+        <use xlink:href="/icons/eightshapes-text-crop.svg#clipboard"></use>
+    </svg>
+
+        <span class="es-code-snippet__copy-button-text">Copy to Clipboard</span>
+        <span class="es-code-snippet__copy-response">Press Ctrl + C to copy</span>
+    </a>
+
+
                 <pre>
                     <code id="stylus-code">
 cap-aligned-line-height($line-height = <span class="code-line-height">1.2</span>) {

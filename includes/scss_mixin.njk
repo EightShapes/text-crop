@@ -1,0 +1,76 @@
+<span class="token keyword">@mixin</span>
+<span class="token function">text-crop</span>
+<span class="token punctuation">(</span>
+<span class="token property"><span class="token variable">$line-height</span></span>
+<span class="token punctuation">:</span> 1.2, <span class="token property"><span class="token variable">$top-adjustment</span></span>
+<span class="token punctuation">:</span> 0px, <span class="token property"><span class="token variable">$bottom-adjustment</span></span>
+<span class="token punctuation">:</span> 0px<span class="token punctuation">)</span>
+<span class="token punctuation">{</span>
+
+<span class="token property"><span class="token variable">$offset-top</span></span>
+<span class="token punctuation">:</span>
+<span class="token function">max</span>
+<span class="token punctuation">(</span>
+<span class="token punctuation">(</span>0 <span class="token operator">+</span>
+<span class="token punctuation">(</span>
+<span class="token variable">$line-height</span>
+<span class="token operator">-</span> 1.2<span class="token punctuation">)</span>
+<span class="token operator">*</span>
+<span class="token punctuation">(</span>60 <span class="token operator">/</span> 2<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>, 0<span class="token punctuation">)</span>
+<span class="token operator">/</span> 60<span class="token punctuation">;</span>
+<span class="token property"><span class="token variable">$offset-bottom</span></span>
+<span class="token punctuation">:</span>
+<span class="token function">max</span>
+<span class="token punctuation">(</span>
+<span class="token punctuation">(</span>0 <span class="token operator">+</span>
+<span class="token punctuation">(</span>
+<span class="token variable">$line-height</span>
+<span class="token operator">-</span> 1.2<span class="token punctuation">)</span>
+<span class="token operator">*</span>
+<span class="token punctuation">(</span>60 <span class="token operator">/</span> 2<span class="token punctuation">)</span>
+<span class="token punctuation">)</span>, 0<span class="token punctuation">)</span>
+<span class="token operator">/</span> 60<span class="token punctuation">;</span>
+
+<span class="token property">line-height</span>
+<span class="token punctuation">:</span>
+<span class="token variable">$line-height</span>
+<span class="token punctuation">;</span>
+
+<span class="token selector"><span class="token parent important">&amp;</span>::before,
+<span class="token parent important">&amp;</span>::after </span>
+<span class="token punctuation">{</span>
+<span class="token property">content</span>
+<span class="token punctuation">:</span>
+<span class="token string">''</span>
+<span class="token punctuation">;</span>
+<span class="token property">display</span>
+<span class="token punctuation">:</span> block<span class="token punctuation">;</span>
+<span class="token property">height</span>
+<span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token property">width</span>
+<span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector"><span class="token parent important">&amp;</span>::before </span>
+<span class="token punctuation">{</span>
+<span class="token property">margin-bottom</span>
+<span class="token punctuation">:</span>
+<span class="token function">calc</span>
+<span class="token punctuation">(</span>-<span class="token variable">#{$offset-top}</span>em <span class="token operator">+</span>
+<span class="token variable">#{$top-adjustment}</span>
+<span class="token punctuation">)</span>
+<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector"><span class="token parent important">&amp;</span>::after </span>
+<span class="token punctuation">{</span>
+<span class="token property">margin-top</span>
+<span class="token punctuation">:</span>
+<span class="token function">calc</span>
+<span class="token punctuation">(</span>-<span class="token variable">#{$offset-bottom}</span>em <span class="token operator">+</span>
+<span class="token variable">#{$bottom-adjustment}</span>
+<span class="token punctuation">)</span>
+<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
