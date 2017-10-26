@@ -1,4 +1,5 @@
 {% import "components/eightshapes-text-crop.njk" as components with context %}
+{% import "@eightshapes/esds-library/components/esds.njk" as esds with context %}
 
 <html>
     <head>
@@ -34,53 +35,67 @@
         <script src="/scripts/eightshapes-text-crop.js"></script>
     </head>
     <body>
+        {% call esds.row(background="brand", class="eswt-headcrumb") %}
+            <h1 class="eswt-headcrumb__brand">
+                <a href="http://eightshapes.com/design-systems.html" class="eswt-headcrumb__link">
+                    {{ components.icon(icon_name="eightshapes-mark", class="eswt-headcrumb__brand-mark") }}
+                    <span class="eswt-headcrumb__brand-name">eightshapes</span>
+                    {{ esds.icon(name="angle-right", class="eswt-headcrumb__delimiter") }}
+                    <span class="eswt-headcrumb__crumb-text">Design Systems</span>
+                </a>
+            </h1>
+        {% endcall %}
+        {% call esds.row(background="dark", class="esds-row--hero-inset eswt-hero") %}
+            <h1 class="eswt-hero__title">Text Crop</h1>
+            <p class="eswt-hero__lead">
+                Want to rid your components of that pesky space above and below a block of text due to line height? Use our tool to create a mixin for your typography.
+            </p>
+        {% endcall %}
+        {% call esds.row(background="light") %}
+            {{ components.font_form() }}
+            {{ components.text_crop_measurement_tool() }}
+
+ {#            <div class="es-web-tool__sidebar-actions">
+                <div class="es-web-tool__sidebar-ctas">
+                    <a class="es-button es-web-tool__external-link--twitter" id="es-share-on-twitter-link" href="http://twitter.com/home?status=Crop%20top%20and%20bottom%20whitespace%20surrounding%20text%20on%20the%20web.%20http://text-crop.eightshapes.com%20@eightshapes&amp;source=webclient">
+                        {{ components.icon(icon_name="twitter", class="es-web-tool__external-link-logo es-button__icon") }}
+                        <span class="es-web-tool__external-link-text">
+                            Tweet This Tool
+                        </span>
+                    </a>
+                </div>
+                
+                
+                <div class="es-web-tool__external-links-wrap">
+                    <a class="es-web-tool__external-link es-web-tool__external-link--github" href="http://www.eightshapes.com/design-systems.html">
+                        <span class="es-web-tool__external-link-text">
+                            By Eightshapes
+                        </span>
+                    </a>    
+                    <div class="es-web-tool__external-link-separator">
+                    </div>                  
+                    <a class="es-web-tool__external-link es-web-tool__external-link--github" href="https://github.com/EightShapes/text-crop">
+                        {{ components.icon(icon_name="github", class="es-web-tool__external-link-logo") }}
+                        <span class="es-web-tool__external-link-text">
+                            On Github
+                        </span>
+                    </a>
+                </div>
+                
+                <p class="es-web-tool__legal">
+                    &copy; Copyright Eightshapes, LLC 2017
+                </p>
+            </div> #}
+        {% endcall %}
         <div class="es-web-tool__flex-container">
             <div class="es-web-tool__outer-wrap">
                 <div class="es-web-tool__body">
                     <div class="es-web-tool__configurator">
                         <div class="es-web-tool__sidebar">
-                            <h1 class="es-web-tool__title">
-                                <a href="http://eightshapes.com">
-                                    {{ components.icon(icon_name="eightshapes-mark", class="es-web-tool__title-logo") }}
-                                </a>
-                                <span class="es-web-tool__title-text">Text Crop</span>
-                            </h1>
-                            {{ components.font_form() }}
-                            <div class="es-web-tool__sidebar-actions">
-                                <div class="es-web-tool__sidebar-ctas">
-                                    {# <button class="es-code-toggle es-button">Copy Mixin Code</button> #}
-                                    <a class="es-button es-web-tool__external-link--twitter" id="es-share-on-twitter-link" href="http://twitter.com/home?status=Crop%20top%20and%20bottom%20whitespace%20surrounding%20text%20on%20the%20web.%20http://text-crop.eightshapes.com%20@eightshapes&amp;source=webclient">
-                                        {{ components.icon(icon_name="twitter", class="es-web-tool__external-link-logo es-button__icon") }}
-                                        <span class="es-web-tool__external-link-text">
-                                            Tweet This Tool
-                                        </span>
-                                    </a>
-                                </div>
-                                
-                                
-                                <div class="es-web-tool__external-links-wrap">
-                                    <a class="es-web-tool__external-link es-web-tool__external-link--github" href="http://www.eightshapes.com/design-systems.html">
-                                        <span class="es-web-tool__external-link-text">
-                                            By Eightshapes
-                                        </span>
-                                    </a>    
-                                    <div class="es-web-tool__external-link-separator">
-                                    </div>                  
-                                    <a class="es-web-tool__external-link es-web-tool__external-link--github" href="https://github.com/EightShapes/text-crop">
-                                        {{ components.icon(icon_name="github", class="es-web-tool__external-link-logo") }}
-                                        <span class="es-web-tool__external-link-text">
-                                            On Github
-                                        </span>
-                                    </a>
-                                </div>
-                                
-                                <p class="es-web-tool__legal">
-                                    &copy; Copyright Eightshapes, LLC 2017
-                                </p>
-                            </div>
+                            
+                            
                         </div>
                         <div class="es-web-tool__results">
-                            {{ components.text_crop_measurement_tool() }}
                             {{ components.text_crop_samples() }}
                             {{ components.code_snippet() }}
                         </div>

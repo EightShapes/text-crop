@@ -1,8 +1,21 @@
-@import 'variables';
+@import '@eightshapes/esds-library/tokens/tokens';
+@import 'variables'; // Deprecate when possible
+
+@import '@eightshapes/esds-library/styles/shared/color';
+@import '@eightshapes/esds-library/styles/shared/typography';
+
+@import '@eightshapes/esds-library/components/icon/icon';
+@import '@eightshapes/esds-library/components/button/button';
+@import '@eightshapes/esds-library/components/container/container';
+@import '@eightshapes/esds-library/components/row/row';
+@import '@eightshapes/esds-library/components/card/card';
+
 @import 'code_snippet/code_snippet';
 @import 'font_form/font_form';
 @import 'tabs/tabs';
 @import 'text_crop_samples/text_crop_samples';
+@import 'headcrumb/headcrumb';
+@import 'hero/hero';
 
 $sidebar-shadow: -3px 0 3px rgba($color-black, .15);
 $sidebar-width: 320px;

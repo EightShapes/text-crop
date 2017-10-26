@@ -16,6 +16,7 @@
     "esds-build": "^0.25.0"
   },
   "dependencies": {
+    "@eightshapes/esds-library": "^0.3.2",
     "clipboard": "^1.7.1",
     "jquery": "^3.2.1",
     "jquery-ui": "^1.12.1",

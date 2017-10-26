@@ -25,6 +25,11 @@
             "name": "github-pages-cname-file",
             "sources": ["CNAME"],
             "destination": "docs"
+        },
+        {
+            "name": "esds-library-tokens",
+            "sources": ["node_modules/@eightshapes/esds-library/dist/esds.svg"],
+            "destination": "docs/icons"
         }
     ]  
 }
