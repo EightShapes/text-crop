@@ -1,9 +1,9 @@
-<span class="code-keyword">
-@mixin</span> <span class="code-mixin-name">text-crop</span>($line-height: <span class="code-line-height">1.2</span>, $top-adjustment: 0px, $bottom-adjustment: 0px) {
-    $offset-top: max((<span class="code-top-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
-    $offset-bottom: max((<span class="code-bottom-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
+<span class="code-mixin-name">
+.text-crop</span>(@line-height: <span class="code-line-height">1.2</span>, @top-adjustment: 0px, @bottom-adjustment: 0px) {
+    @offset-top: max((<span class="code-top-measurement">0</span> + (@line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">36</span> / 2)), 0) / <span class="code-size">36</span>;
+    @offset-bottom: max((<span class="code-bottom-measurement">0</span> + (@line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">36</span> / 2)), 0) / <span class="code-size">36</span>;
 
-    <span class="code-property">line-height</span>: $line-height;
+    <span class="code-property">line-height</span>: @line-height;
 
     <span class="code-selector">&::before,
     &::after</span> {
@@ -14,30 +14,30 @@
     }
 
     <span class="code-selector">&::before</span> {
-        <span class="code-property">margin-bottom</span>: calc(-#{$offset-top}em + #{$top-adjustment});
+        <span class="code-property">margin-bottom</span>: calc(unit(-@offset-top, em) ~"+" @top-adjustment);
     }
 
     <span class="code-selector">&::after</span> {
-        <span class="code-property">margin-top</span>: calc(-#{$offset-bottom}em + #{$bottom-adjustment});
+        <span class="code-property">margin-top</span>: calc(unit(-@offset-bottom, em) ~"+" @bottom-adjustment);
     }
 }
 <span class="code-comment">// Mixin generated at: http://text-crop.eightshapes.com
 
 /* Usage Examples
     .my-level-1-heading-class {
-        @include text-crop; // Will use default line height of <span class="code-line-height">1.2</span>
+        .text-crop; // Will use default line height of <span class="code-line-height">1.2</span>
         font-size: 48px;
         margin: 0 0 0 16px;
     }
 
     .my-level-2-heading-class {
-        @include text-crop; // Will use default line height of <span class="code-line-height">1.2</span>
+        .text-crop; // Will use default line height of <span class="code-line-height">1.2</span>
         font-size: 32px; // Don't need to change any settings, will work with any font size automatically
         margin: 0 0 0 16px;
     }
 
     .my-body-copy-class {
-        @include text-crop($line-height: 2); // Larger line height desired, set the line height via the mixin
+        .text-crop(@line-height: 2); // Larger line height desired, set the line height via the mixin
         font-size: 16px;
     }
 
@@ -45,12 +45,12 @@
     // You can adjust the top and bottom cropping when invoking the component using the $top-adjustment and $bottom-adjustment settings 
     
     .slight-adjustment-needed {
-        @include text-crop($top-adjustment: -0.5px, $bottom-adjustment: 2px);
+        .text-crop(@top-adjustment: -0.5px, @bottom-adjustment: 2px);
         font-size: 17px;
     }
 
     .dont-do-this {
-        @include text-crop;
+        .text-crop;
         font-size: 16px;
         line-height: 3; // DO NOT set line height outside of the mixin, the mixin needs the line height value to calculate the crop correctly
     }
