@@ -20,10 +20,8 @@ CapHeightAlignmentTool = function() {
         updateInlineStyles();
         
         // If font is sized down after being large, the drag handle can be hanging outside the sample box, check for that and move it
-
         var sampleBoxHeight = $(".cap-height-measurement__actions").height();
         var bottomLineMeasurePosition = parseInt($(".cap-height-measurement__line--bottom").css("top"), 10);
-        console.log(sampleBoxHeight, bottomLineMeasurePosition);
         if (bottomLineMeasurePosition > sampleBoxHeight) {
             $(".cap-height-measurement__line--bottom").css("top", sampleBoxHeight + "px");
         }
@@ -15919,6 +15917,18 @@ var googleFonts = {
   }
  ]
 };
+$(document).ready(function(){
+    function showMixinTab() {
+        const language = $("[name='style-preprocessor']:checked").attr("id");
+
+        $(".mixin-code-tab-pane").hide();
+        $("#style-preprocessor-" + language).show();
+    }
+
+    $("#style-preprocessor-less, #style-preprocessor-stylus").hide();
+    $("[name='style-preprocessor']").on("change", showMixinTab);
+});
+
 $(document).ready(function(){
     function toggleTextCropSamples() {
         const checked = $(this).is(":checked");

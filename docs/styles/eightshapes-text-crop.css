@@ -1,3 +1,8 @@
+.tool-section__title {
+  border-bottom: solid 1px #888888;
+  margin-bottom: 26px;
+  padding-bottom: 8px; }
+
 .es-font-form {
   padding: 26px 26px 0; }
 
@@ -130,7 +135,9 @@
     border-radius: 0 4px 4px 0; }
 
 .es-text-crop-samples__crop-toggle {
-  cursor: pointer; }
+  cursor: pointer;
+  position: relative;
+  top: 5px; }
 
 .es-text-crop-toggle__text {
   position: relative;
@@ -139,7 +146,9 @@
 .es-text-crop-samples__button {
   background: #1E62AB;
   border: 0;
+  border-radius: 4px;
   color: #FFFFFF;
+  cursor: pointer;
   display: inline-block;
   font-size: 20px;
   margin: 0 0 32px;

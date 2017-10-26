@@ -19,10 +19,8 @@ CapHeightAlignmentTool = function() {
         updateInlineStyles();
         
         // If font is sized down after being large, the drag handle can be hanging outside the sample box, check for that and move it
-
         var sampleBoxHeight = $(".cap-height-measurement__actions").height();
         var bottomLineMeasurePosition = parseInt($(".cap-height-measurement__line--bottom").css("top"), 10);
-        console.log(sampleBoxHeight, bottomLineMeasurePosition);
         if (bottomLineMeasurePosition > sampleBoxHeight) {
             $(".cap-height-measurement__line--bottom").css("top", sampleBoxHeight + "px");
         }

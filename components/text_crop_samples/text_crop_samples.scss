@@ -1,5 +1,7 @@
 .es-text-crop-samples__crop-toggle {
     cursor: pointer;
+    position: relative;
+    top: 5px;
 }
 
 .es-text-crop-toggle__text {
@@ -10,7 +12,9 @@
 .es-text-crop-samples__button {
     background: $color-link;
     border: 0;
+    border-radius: 4px;
     color: $color-white;
+    cursor: pointer;
     display: inline-block;
     font-size: $font-size-lg;
     margin: 0 0 $spacing-default;

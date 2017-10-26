@@ -1,10 +1,31 @@
 {% macro code_snippet() %}
         <div class="generated-code tool-section">
             <h2 class="tool-section__title">Mixin Code</h2> 
-            <h3>SCSS</h3>
-            <pre>
-                <code id="scss-code">
-@mixin text-crop($line-height: <span class="code-line-height">1.2</span>) {
+            <div class="es-tabs">
+                <label class="es-tabs__label" for="scss">
+                    <input type="radio" id="scss" name="style-preprocessor" class="es-tabs__label-input" checked>
+                    <span class="es-tabs__label-text">
+                        SCSS
+                    </span>
+                </label>
+                <label class="es-tabs__label" for="less">
+                    <input type="radio" id="less" name="style-preprocessor" class="es-tabs__label-input">
+                    <span class="es-tabs__label-text">
+                        LESS
+                    </span>
+                </label>
+                <label class="es-tabs__label" for="stylus">
+                    <input type="radio" id="stylus" name="style-preprocessor" class="es-tabs__label-input">
+                    <span class="es-tabs__label-text">
+                        Stylus
+                    </span>
+                </label>
+            </div>
+            
+            <div id="style-preprocessor-scss" class="mixin-code-tab-pane">
+                <pre>
+                    <code id="scss-code">
+@mixin text-crop($line-height: <span class="code-line-height">1.2</span>, $top-adjustment: 0px, $bottom-adjustment: 0px) {
 
     $offset-top: max((<span class="code-top-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
     $offset-bottom: max((<span class="code-bottom-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
@@ -20,19 +41,20 @@
     }
 
     &::before {
-        margin-bottom: -#{$offset-top}em;
+        margin-bottom: calc(-#{$offset-top}em + #{$top-adjustment});
     }
 
     &::after {
-        margin-top: -#{$offset-bottom}em;
+        margin-top: calc(-#{$offset-bottom}em + #{$bottom-adjustment});
     }
 }
-                </code>
-            </pre>
+                    </code>
+                </pre>
+            </div>
 
-            <h3>LESS</h3>
-            <pre>
-                <code id="stylus-code">
+            <div id="style-preprocessor-less" class="mixin-code-tab-pane">
+                <pre>
+                    <code id="less-code">
 .cap-aligned-line-height(@line-height: <span class="code-line-height">1.2</span>) {
 
     @offset-top = max((<span class="code-top-measurement">0</span> + ($lineHeight - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
@@ -56,12 +78,13 @@
         margin-top: -(@offset-bottom)em;
     }
 }
-                </code>
-            </pre>
+                    </code>
+                </pre>
+            </div>
 
-            <h3>Stylus</h3>
-            <pre>
-                <code id="less-code">
+            <div id="style-preprocessor-stylus" class="mixin-code-tab-pane">
+                <pre>
+                    <code id="stylus-code">
 cap-aligned-line-height($line-height = <span class="code-line-height">1.2</span>) {
     $offset-top = max((<span class="code-top-measurement">0</span> + ($lineHeight - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
     $offset-bottom = max((<span class="code-bottom-measurement">0</span> + ($lineHeight - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
@@ -84,7 +107,8 @@ cap-aligned-line-height($line-height = <span class="code-line-height">1.2</span>
         margin-top: -($offset-bottom)em;
     }
 }
-                </code>
-            </pre>
+                    </code>
+                </pre>
+            </div>
         </div>
 {% endmacro %}
