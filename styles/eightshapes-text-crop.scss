@@ -326,10 +326,6 @@ body {
     position: absolute;
     top: 50%;
     z-index: 200;
-
-    .cap-height-measurement__line--bottom & {
-        background: $color-blue;
-    }
 }
 
 .cap-height-measurement__offset {

@@ -4,7 +4,8 @@ CapHeightAlignmentTool = function() {
         topMeasurementLineListClass = "cap-height-measurement__lines--top",
         bottomMeasurementLineListClass = "cap-height-measurement__lines--bottom",
         fineTuneAdjustmentClass = "measurement-fine-tune",
-        typefaceVariantMapping = {};
+        typefaceVariantMapping = {},
+        draggableInstance;
 
     function syncLineHeight() {
         $(".code-line-height").text($("#line-height").val());
@@ -16,6 +17,15 @@ CapHeightAlignmentTool = function() {
         $(".code-size").text($("#size").val());
         setSampleTextStyles();
         updateInlineStyles();
+        
+        // If font is sized down after being large, the drag handle can be hanging outside the sample box, check for that and move it
+
+        var sampleBoxHeight = $(".cap-height-measurement__actions").height();
+        var bottomLineMeasurePosition = parseInt($(".cap-height-measurement__line--bottom").css("top"), 10);
+        console.log(sampleBoxHeight, bottomLineMeasurePosition);
+        if (bottomLineMeasurePosition > sampleBoxHeight) {
+            $(".cap-height-measurement__line--bottom").css("top", sampleBoxHeight + "px");
+        }
     }
 
     function syncTopMeasurement() {

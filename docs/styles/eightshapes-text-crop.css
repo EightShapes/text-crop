@@ -486,8 +486,6 @@ body {
   position: absolute;
   top: 50%;
   z-index: 200; }
-  .cap-height-measurement__line--bottom .measurement-fine-tune {
-    background: #1E62AB; }
 
 .cap-height-measurement__offset {
   -webkit-box-align: center;
