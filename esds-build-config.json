@@ -22,7 +22,8 @@
                         "node_modules/jquery-ui/ui/widgets/mouse.js",
                         "node_modules/jquery-ui-touch-punch/jquery.ui.touch-punch.js",
                         "node_modules/clipboard/dist/clipboard.min.js",
-                        "node_modules/svg4everybody/dist/svg4everybody.min.js"],
+                        "node_modules/svg4everybody/dist/svg4everybody.min.js",
+                        "node_modules/esds-doc/dist/esds-doc.js"],
             "destination": "docs/scripts/dependencies"
         },
         {

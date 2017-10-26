@@ -46,57 +46,12 @@
     }
 }
 
-.es-code-snippet__copy-response {
-    background: $color-gray-12;
-    border-radius: $spacing-xs;
-    color: $color-white;
-    font-size: $font-size-sm;
-    left: 50%;
-    margin-left: -(150px / 2);
-    opacity: 0;
-    padding: $spacing-xs;
-    position: absolute;
-    text-align: center;
-    top: 20px;
-    width: 150px;
-    z-index: 100;
 
-    &:before {
-        background: $color-gray-12;
-        content: '';
-        display: block;
-        height: 10px;
-        left: 50%;
-        margin-left: -5px;
-        position: absolute;
-        top: -5px;
-        transform: rotate(45deg);
-        width: 10px;
-    }
-
-    .es-code-snippet__copy-button--clicked & {
-        animation: fade-in-out 3s;
-    }
+// Shouldn't need either one of these, defects in esds-doc
+.esds-doc-code-snippet__pre {
+    margin: 0;
 }
 
-@keyframes fade-in-out {
-    0% {
-        opacity: 0;
-        top: 24px;
-    }
-
-    10% {
-        opacity: 1;
-        top: 32px;
-    }
-
-    90% {
-        opacity: 1;
-        top: 32px;
-    }
-
-    100% {
-        opacity: 0;
-        top: 24px;
-    }
+.esds-doc-code-snippet--show-copied-notification .esds-doc-code-snippet__copied-notification {
+    visibility: visible;
 }

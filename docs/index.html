@@ -21,6 +21,10 @@
         <script src="/scripts/dependencies/scroll-parent.js"></script>
         <script src="/scripts/dependencies/mouse.js"></script>
 
+        <script src="/scripts/dependencies/prism.js"></script>
+        <script src="/scripts/dependencies/prism-less.min.js"></script>
+        <script src="/scripts/dependencies/prism-scss.min.js"></script>
+        <script src="/scripts/dependencies/prism-stylus.min.js"></script>
         <script src="/scripts/dependencies/plugin.js"></script>
         <script src="/scripts/dependencies/safe-active-element.js"></script>
         <script src="/scripts/dependencies/safe-blur.js"></script>
@@ -33,6 +37,7 @@
         <script>
             svg4everybody();
         </script>
+        <script src="/scripts/dependencies/esds-doc.js"></script>
         <script src="/scripts/eightshapes-text-crop.js"></script>
     </head>
     <body>
@@ -458,7 +463,7 @@
 
     
 
-    <div class="esds-doc-code-snippet">
+    <div class="esds-doc-code-snippet esds-doc-code-snippet--no-max-height">
         
         
 
@@ -478,32 +483,64 @@
             
             
                 
-    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--12016--markup">
+    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--64234--scss">
         
-        <pre class="esds-doc-code-snippet__pre"><code class="language-markup">&lt;span class=&quot;code-keyword&quot;&gt; @mixin&lt;/span&gt;
-&lt;span class=&quot;code-mixin-name&quot;&gt;text-crop&lt;/span&gt;($line-height:
-&lt;span class=&quot;code-line-height&quot;&gt;1.2&lt;/span&gt;, $top-adjustment: 0px, $bottom-adjustment: 0px) { $offset-top: max((
-&lt;span class=&quot;code-top-measurement&quot;&gt;0&lt;/span&gt; + ($line-height -
-&lt;span class=&quot;code-line-height&quot;&gt;1.2&lt;/span&gt;) * (
-&lt;span class=&quot;code-size&quot;&gt;60&lt;/span&gt; / 2)), 0) /
-&lt;span class=&quot;code-size&quot;&gt;60&lt;/span&gt;; $offset-bottom: max((
-&lt;span class=&quot;code-bottom-measurement&quot;&gt;0&lt;/span&gt; + ($line-height -
-&lt;span class=&quot;code-line-height&quot;&gt;1.2&lt;/span&gt;) * (
-&lt;span class=&quot;code-size&quot;&gt;60&lt;/span&gt; / 2)), 0) /
-&lt;span class=&quot;code-size&quot;&gt;60&lt;/span&gt;;
-&lt;span class=&quot;code-property&quot;&gt;line-height&lt;/span&gt;: $line-height;
-&lt;span class=&quot;code-selector&quot;&gt;&amp;::before, &amp;::after&lt;/span&gt; {
-&lt;span class=&quot;code-property&quot;&gt;content&lt;/span&gt;: &#39;&#39;;
-&lt;span class=&quot;code-property&quot;&gt;display&lt;/span&gt;: block;
-&lt;span class=&quot;code-property&quot;&gt;height&lt;/span&gt;: 0;
-&lt;span class=&quot;code-property&quot;&gt;width&lt;/span&gt;: 0; }
-&lt;span class=&quot;code-selector&quot;&gt;&amp;::before&lt;/span&gt; {
-&lt;span class=&quot;code-property&quot;&gt;margin-bottom&lt;/span&gt;: calc(-#{$offset-top}em + #{$top-adjustment}); }
-&lt;span class=&quot;code-selector&quot;&gt;&amp;::after&lt;/span&gt; {
-&lt;span class=&quot;code-property&quot;&gt;margin-top&lt;/span&gt;: calc(-#{$offset-bottom}em + #{$bottom-adjustment}); } }
-&lt;span class=&quot;code-comment&quot;&gt;// Mixin generated at: http://text-crop.eightshapes.com /* Usage Examples .my-level-1-heading-class { @include text-crop; // Will use default line height of
-    &lt;span class=&quot;code-line-height&quot;&gt;1.2&lt;/span&gt; font-size: 48px; margin: 0 0 0 16px; } .my-level-2-heading-class { @include text-crop; // Will use default line height of
-    &lt;span class=&quot;code-line-height&quot;&gt;1.2&lt;/span&gt; font-size: 32px; // Don&#39;t need to change any settings, will work with any font size automatically margin: 0 0 0 16px; } .my-body-copy-class { @include text-crop($line-height: 2); // Larger line height desired, set the line height via the mixin font-size: 16px; } // Sometimes depending on the font-size, the rendering, the browser, etc. you may need to tweak the output. // You can adjust the top and bottom cropping when invoking the component using the $top-adjustment and $bottom-adjustment settings .slight-adjustment-needed { @include text-crop($top-adjustment: -0.5px, $bottom-adjustment: 2px); font-size: 17px; } .dont-do-this { @include text-crop; font-size: 16px; line-height: 3; // DO NOT set line height outside of the mixin, the mixin needs the line height value to calculate the crop correctly } */ &lt;/span&gt;</code></pre>
+        <pre class="esds-doc-code-snippet__pre"><code class="language-scss">@mixin text-crop($line-height: !!LINE-HEIGHT!!, $top-adjustment: 0px, $bottom-adjustment: 0px) {
+    $offset-top: max((!!TOP-CROP!! + ($line-height - !!LINE-HEIGHT!!) * (!!FONT-SIZE!! / 2)), 0) / !!FONT-SIZE!!;
+    $offset-bottom: max((!!BOTTOM-CROP!! + ($line-height - !!LINE-HEIGHT!!) * (!!FONT-SIZE!! / 2)), 0) / !!FONT-SIZE!!;
+
+    line-height: $line-height;
+
+    &amp;::before,
+    &amp;::after {
+        content: &#39;&#39;;
+        display: block;
+        height: 0;
+        width: 0;
+    }
+
+    &amp;::before {
+        margin-bottom: calc(-#{$offset-top}em + #{$top-adjustment});
+    }
+
+    &amp;::after {
+        margin-top: calc(-#{$offset-bottom}em + #{$bottom-adjustment});
+    }
+}
+
+// Mixin generated at: http://text-crop.eightshapes.com
+/* Usage Examples
+    .my-level-1-heading-class {
+        @include text-crop; // Will use default line height of !!LINE-HEIGHT!!
+        font-size: 48px;
+        margin: 0 0 0 16px;
+    }
+
+    .my-level-2-heading-class {
+        @include text-crop; // Will use default line height of !!LINE-HEIGHT!!
+        font-size: 32px; // Don&#39;t need to change any settings, will work with any font size automatically
+        margin: 0 0 0 16px;
+    }
+
+    .my-body-copy-class {
+        @include text-crop($line-height: 2); // Larger line height desired, set the line height via the mixin
+        font-size: 16px;
+    }
+
+    // Sometimes depending on the font-size, the rendering, the browser, etc. you may need to tweak the output. 
+    // You can adjust the top and bottom cropping when invoking the component using the $top-adjustment and $bottom-adjustment settings 
+    
+    .slight-adjustment-needed {
+        @include text-crop($top-adjustment: -0.5px, $bottom-adjustment: 2px);
+        font-size: 17px;
+    }
+
+    .dont-do-this {
+        @include text-crop;
+        font-size: 16px;
+        line-height: 3; // DO NOT set line height outside of the mixin, the mixin needs the line height value to calculate the crop correctly
+    }
+*/</code></pre>
     </div>
 
             
@@ -689,6 +726,9 @@ text-crop</span>($line-height = <span class="code-line-height">1.2</span>, $top-
           var pageTracker = _gat._getTracker("UA-1201194-1");
           pageTracker._initData();
           pageTracker._trackPageview();
+        </script>
+        <script>
+          Esds.CodeSnippet.init();
         </script>
     </body>
 </html>

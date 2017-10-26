@@ -35,7 +35,7 @@
         {% set scss_source %}
             {% include 'includes/scss_mixin.njk' %}
         {% endset %}
-        {{ esds_doc.code_snippet(source=scss_source) }}
+        {{ esds_doc.code_snippet(source=scss_source, language="scss", class="esds-doc-code-snippet--no-max-height") }}
         <pre>
             <code id="scss-code">
             </code>
