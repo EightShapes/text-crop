@@ -62,8 +62,6 @@ a {
     display: flex;
     max-width: 100vw;
     min-height: 100vh;
-    width: 100%;
-    overflow-x: hidden;
 
     .es-code-toggle--visible & {
         display: none;
@@ -366,12 +364,6 @@ body {
     z-index: -1;
 }
 
-// input,
-// select {
-//     font-size: $font-size-default;
-//     width: 100%;
-// }
-
 .typeface-action {
     margin-bottom: $spacing-sm;
 }
@@ -386,6 +378,8 @@ body {
     font-weight: bold;
 }
 
+//sass-lint:disable no-ids id-name-format
+// Mapping input field id colors to their corresponding locations in the code snippet
 .code-size,
 #size {
     color: $color-green;
@@ -397,6 +391,7 @@ body {
     color: $color-red;
     font-weight: bold;
 }
+//sass-lint:enable no-ids id-name-format
 
 .typeface-action--hidden {
     display: none;

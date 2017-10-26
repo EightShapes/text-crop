@@ -14,7 +14,7 @@
 }
 
 .es-tabs__label-text {
-    background: #DAD6D6;
+    background: $color-tab-background;
     border-right: solid 1px $color-gray-30;
     cursor: pointer;
     display: block;
@@ -32,7 +32,7 @@
     }
 
     .es-tabs__label:last-child & {
-        border-right: 0;
         border-radius: 0 $border-radius-default $border-radius-default 0;
+        border-right: 0;
     }
 }
