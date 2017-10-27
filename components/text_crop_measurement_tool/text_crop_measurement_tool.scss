@@ -83,6 +83,12 @@
     width: $font-size-default;
 }
 
+.measurement-fine-tune__increment-icon {
+    fill: $esds-color-white;
+    height: 21px;
+    width: 21px;
+}
+
 .measurement-fine-tune__grip,
 .measurement-fine-tune__increment {
     align-items: center;
@@ -90,16 +96,21 @@
     display: flex;
     height: 30px;
     justify-content: center;
-    width: 30px;
+    width: 26px;
 
     .text-crop-measurement__line--bottom & {
         background: $esds-text-color-link-on-white;
     }
 }
 
+.measurement-fine-tune__increment {
+    cursor: pointer;
+    height: 20px;
+}
+
 .measurement-fine-tune__grip {
-    border-bottom: solid 1px $color-white;
-    border-top: solid 1px $color-white;
+    // border-bottom: solid 1px $color-white;
+    // border-top: solid 1px $color-white;
     cursor: grab;
 }
 
@@ -155,4 +166,9 @@
     left: 0;
     position: absolute;
     z-index: -1;
+}
+
+.text-crop-measurement__instructions {
+    font-size: $esds-font-size-xs;
+    margin: $esds-space-stack-half-x;
 }

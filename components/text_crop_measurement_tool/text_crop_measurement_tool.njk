@@ -1,40 +1,37 @@
 {% macro text_crop_measurement_tool(sample_text="ABCDEFGHIJKLMNOPQRSTUVWXYZ &ldquo; &rdquo; $ & 1234567890 abcdefghijklmnopqrstuvwxyz. Type your own sample text") %}
     <div class="text-crop-measurement tool-section">
         <div class="text-crop-measurement-wrap">
+            <p class="text-crop-measurement__instructions">
+                Align <strong>Top Crop</strong> with <a href="https://en.wikipedia.org/wiki/Cap_height">Cap Height</a> of top row and <strong>Bottom Crop</strong> to <a href="https://en.wikipedia.org/wiki/Baseline_(typography)">Baseline</a> of bottom row.
+            </p>
             <div class="text-crop-measurement__actions">
+
                 <div class="text-crop-measurement__line text-crop-measurement__line--top">
                     <div class="measurement-fine-tune measurement-fine-tune--top">
                         <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
-                            {{ icon(icon_name="arrow-circle-up", class="measurement-fine-tune__increment-icon") }}
+                            {{ esds.icon(name="caret-up", class="measurement-fine-tune__increment-icon") }}
                         </div>
                         <div class="measurement-fine-tune__grip">{{ icon(icon_name="bars", class="measurement-fine-tune__grip-icon") }}</div>
                         <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
-                            {{ icon(icon_name="arrow-circle-down", class="measurement-fine-tune__increment-icon") }}
+                            {{ esds.icon(name="caret-down", class="measurement-fine-tune__increment-icon") }}
                         </div>
                     </div>
-{#                     <div class="text-crop-measurement__offset">
-                        0
-                    </div> #}
                     <label for="top-measurement" class="offset-input-label">Top Measurement</label>
                     <input class="offset-input" type="number" id="top-measurement" name="top-measurement" value="0">
                 </div>
                 <div class="text-crop-measurement__sample-text" contenteditable="true" spellcheck="false">
                     {{ sample_text | safe }}
-                    {# ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstu &ldquo;ascenders&rdquo; descending (1).#}
                 </div>
                 <div class="text-crop-measurement__line text-crop-measurement__line--bottom">
                     <div class="measurement-fine-tune measurement-fine-tune--bottom">
                         <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
-                            {{ icon(icon_name="arrow-circle-up", class="measurement-fine-tune__increment-icon") }}
+                            {{ esds.icon(name="caret-up", class="measurement-fine-tune__increment-icon") }}
                         </div>
                         <div class="measurement-fine-tune__grip">{{ icon(icon_name="bars", class="measurement-fine-tune__grip-icon") }}</div>
                         <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
-                            {{ icon(icon_name="arrow-circle-down", class="measurement-fine-tune__increment-icon") }}
+                            {{ esds.icon(name="caret-down", class="measurement-fine-tune__increment-icon") }}
                         </div>
                     </div>
-{#                     <div class="text-crop-measurement__offset">
-                        0
-                    </div> #}
                     <label for="bottom-measurement" class="offset-input-label">Bottom Measurement</label>
                     <input class="offset-input" type="number" id="bottom-measurement" name="bottom-measurement" value="0">
                 </div>

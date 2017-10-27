@@ -823,9 +823,6 @@
 .esds-doc-code-snippet__pre {
   margin: 0; }
 
-.esds-doc-code-snippet--show-copied-notification .esds-doc-code-snippet__copied-notification {
-  visibility: visible; }
-
 .esds-form__label {
   display: block;
   font-size: 12px;
@@ -1528,6 +1525,11 @@
   height: 16px;
   width: 16px; }
 
+.measurement-fine-tune__increment-icon {
+  fill: #FFFFFF;
+  height: 21px;
+  width: 21px; }
+
 .measurement-fine-tune__grip,
 .measurement-fine-tune__increment {
   -webkit-box-align: center;
@@ -1541,14 +1543,16 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  width: 30px; }
+  width: 26px; }
   .text-crop-measurement__line--bottom .measurement-fine-tune__grip, .text-crop-measurement__line--bottom
   .measurement-fine-tune__increment {
     background: #068194; }
 
+.measurement-fine-tune__increment {
+  cursor: pointer;
+  height: 20px; }
+
 .measurement-fine-tune__grip {
-  border-bottom: solid 1px #FFFFFF;
-  border-top: solid 1px #FFFFFF;
   cursor: -webkit-grab;
   cursor: grab; }
 
@@ -1608,6 +1612,10 @@
   position: absolute;
   z-index: -1; }
 
+.text-crop-measurement__instructions {
+  font-size: 12px;
+  margin: 0 0 8px; }
+
 html,
 body {
   -webkit-box-sizing: border-box;
@@ -1625,10 +1633,10 @@ body {
           box-sizing: inherit; }
 
 a {
-  color: #1E62AB;
+  color: #068194;
   text-decoration: none; }
   a:hover {
-    color: #0f3054; }
+    color: #068194; }
 
 .es-web-tool__flex-container {
   display: -webkit-box;

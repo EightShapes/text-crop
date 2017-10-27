@@ -47,11 +47,9 @@
 }
 
 
-// Shouldn't need either one of these, defects in esds-doc
+
+
+// Shouldn't need this, defect in esds-doc
 .esds-doc-code-snippet__pre {
     margin: 0;
-}
-
-.esds-doc-code-snippet--show-copied-notification .esds-doc-code-snippet__copied-notification {
-    visibility: visible;
 }

@@ -213,14 +213,20 @@
             
     <div class="text-crop-measurement tool-section">
         <div class="text-crop-measurement-wrap">
+            <p class="text-crop-measurement__instructions">
+                Align <strong>Top Crop</strong> with <a href="https://en.wikipedia.org/wiki/Cap_height">Cap Height</a> of top row and <strong>Bottom Crop</strong> to <a href="https://en.wikipedia.org/wiki/Baseline_(typography)">Baseline</a> of bottom row.
+            </p>
             <div class="text-crop-measurement__actions">
+
                 <div class="text-crop-measurement__line text-crop-measurement__line--top">
                     <div class="measurement-fine-tune measurement-fine-tune--top">
                         <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
                             
-    <svg  class="measurement-fine-tune__increment-icon"  aria-labelledby="title">
-        <title>arrow-circle-up</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#arrow-circle-up"></use>
+    
+
+    <svg class="esds-icon measurement-fine-tune__increment-icon">
+        
+        <use xlink:href="/icons/esds.svg#caret-up"></use>
     </svg>
 
                         </div>
@@ -232,28 +238,30 @@
 </div>
                         <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
                             
-    <svg  class="measurement-fine-tune__increment-icon"  aria-labelledby="title">
-        <title>arrow-circle-down</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#arrow-circle-down"></use>
+    
+
+    <svg class="esds-icon measurement-fine-tune__increment-icon">
+        
+        <use xlink:href="/icons/esds.svg#caret-down"></use>
     </svg>
 
                         </div>
                     </div>
-
                     <label for="top-measurement" class="offset-input-label">Top Measurement</label>
                     <input class="offset-input" type="number" id="top-measurement" name="top-measurement" value="0">
                 </div>
                 <div class="text-crop-measurement__sample-text" contenteditable="true" spellcheck="false">
                     ABCDEFGHIJKLMNOPQRSTUVWXYZ &ldquo; &rdquo; $ & 1234567890 abcdefghijklmnopqrstuvwxyz. Type your own sample text
-                    
                 </div>
                 <div class="text-crop-measurement__line text-crop-measurement__line--bottom">
                     <div class="measurement-fine-tune measurement-fine-tune--bottom">
                         <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
                             
-    <svg  class="measurement-fine-tune__increment-icon"  aria-labelledby="title">
-        <title>arrow-circle-up</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#arrow-circle-up"></use>
+    
+
+    <svg class="esds-icon measurement-fine-tune__increment-icon">
+        
+        <use xlink:href="/icons/esds.svg#caret-up"></use>
     </svg>
 
                         </div>
@@ -265,14 +273,15 @@
 </div>
                         <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
                             
-    <svg  class="measurement-fine-tune__increment-icon"  aria-labelledby="title">
-        <title>arrow-circle-down</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#arrow-circle-down"></use>
+    
+
+    <svg class="esds-icon measurement-fine-tune__increment-icon">
+        
+        <use xlink:href="/icons/esds.svg#caret-down"></use>
     </svg>
 
                         </div>
                     </div>
-
                     <label for="bottom-measurement" class="offset-input-label">Bottom Measurement</label>
                     <input class="offset-input" type="number" id="bottom-measurement" name="bottom-measurement" value="0">
                 </div>
@@ -483,7 +492,7 @@
             
             
                 
-    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--64234--scss">
+    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--65638--scss">
         
         <pre class="esds-doc-code-snippet__pre"><code class="language-scss">@mixin text-crop($line-height: !!LINE-HEIGHT!!, $top-adjustment: 0px, $bottom-adjustment: 0px) {
     $offset-top: max((!!TOP-CROP!! + ($line-height - !!LINE-HEIGHT!!) * (!!FONT-SIZE!! / 2)), 0) / !!FONT-SIZE!!;

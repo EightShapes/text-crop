@@ -50,11 +50,11 @@ body {
 }
 
 a {
-    color: $color-link;
+    color: $esds-text-color-link-on-white;
     text-decoration: none;
 
     &:hover {
-        color: $color-link-hover;
+        color: $esds-text-color-link-on-white;
     }
 }
 
