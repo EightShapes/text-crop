@@ -42,18 +42,6 @@ TextCrop = function() {
     }
 
     function processTopCropAdjustment() {
-        // console.log("SYNC TOP");
-        // let topValue;
-        // trigger = typeof trigger === 'undefined' ? 'slider' : trigger;
-
-        // if (trigger === 'slider') {
-        //     topValue = $("#top-measurement").val();
-        // } else {
-        //     topValue = $("#top-crop").val();
-        // }
-
-        // $("#top-measurement").val(topValue);
-        // $(".code-top-measurement").text(topValue);
         const topValue = $("#top-crop").val();
         $(".text-crop-measurement__line--top").css('top', topValue + "px");
         updateInlineStyles();
@@ -117,19 +105,6 @@ TextCrop = function() {
             $formField.val(parseInt($formField.val(), 10) + 1);
             processBottomCropAdjustment();
         }
-        //     $measurementLine = $target.closest(".text-crop-measurement__line"),
-        //     $offsetInput = $measurementLine.find(".offset-input"),
-        //     currentPosition = $offsetInput.val(),
-        //     newPosition = parseInt(currentPosition, 10) + 1,
-        //     heightOfSampleBox = $(".text-crop-measurement__sample-text").outerHeight() - 1;
-
-        // // $offsetIndicator.text(newPosition);
-        // $offsetInput.val(newPosition).trigger("change");
-        // if ($measurementLine.hasClass("text-crop-measurement__line--bottom")) {
-        //     newPosition = heightOfSampleBox - newPosition;
-        // }
-
-        // $measurementLine.css({top: newPosition + "px"});
     }
 
     function decreaseAdjustment(event) {
@@ -213,7 +188,7 @@ TextCrop = function() {
             lineHeight = $("#line-height").val(),
             weightAndStyle = parseWeightAndStyle($("#weight-and-style").val()),
             useCustomTypeface = $("#use-custom-typeface").is(":checked"),
-            style = "";    
+            style = "";
 
 
         if (useCustomTypeface) {
