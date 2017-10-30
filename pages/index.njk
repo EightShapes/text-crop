@@ -31,7 +31,6 @@
         <script src="/scripts/dependencies/draggable.js"></script>
         <script src="/scripts/dependencies/jquery.ui.touch-punch.js"></script> <!-- allows touch events to trigger jquery UI interactions -->
         <!-- End draggable jQuery UI dependencies -->
-
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
         <script src="/scripts/dependencies/svg4everybody.min.js"></script>
         <script>
@@ -57,12 +56,14 @@
                 Want to rid your components of that pesky space above and below a block of text due to line height? Use our tool to create a mixin for your typography.
             </p>
         {% endcall %}
-        {% call esds.row(background="light", class="eswt-step-row") %}
-            <h4 class="eswt-step-row__step-number">Step 1</h4>
-            <h2 class="eswt-step-row__title">Configure the Crop</h2>
-            {{ components.font_form() }}
-            {{ components.text_crop_measurement_tool() }}
-        {% endcall %}
+        <div class="es-text-crop-configuration-row-fixed-wrap">
+          {% call esds.row(background="light", class="eswt-step-row es-text-crop-configuration-row") %}
+              <h4 class="eswt-step-row__step-number">Step 1</h4>
+              <h2 class="eswt-step-row__title">Configure the Crop</h2>
+              {{ components.font_form() }}
+              {{ components.text_crop_measurement_tool() }}
+          {% endcall %}
+        </div>
         {% call esds.row(background="white", class="eswt-step-row") %}
             <h4 class="eswt-step-row__step-number">Step 2</h4>
             <h2 class="eswt-step-row__title">Confirm the Result</h2>
@@ -104,6 +105,7 @@
                            &copy; Copyright Eightshapes, LLC 2017
                        </p>
                    </div> #}
+        <script src="/scripts/dependencies/scrollmonitor.js"></script>
         <script type="text/javascript">
           var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
           document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

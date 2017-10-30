@@ -186,3 +186,33 @@ $esds-form-input-min-height: 37px;
     flex-grow: 0;
     width: 6em;
 }
+
+
+
+// Configuration Row Fixed Mode
+.es-text-crop-configuration-row--fixed {
+    .es-text-crop-configuration-row {
+        box-shadow: 0 2px 3px rgba(0,0,0, .4);
+        left: 0;
+        padding-bottom: 8px;
+        padding-top: 8px;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 900;
+    }
+
+    .eswt-step-row__step-number,
+    .eswt-step-row__title {
+        display: none;
+    }
+
+    .text-crop-measurement-wrap {
+        padding: 24px 0;
+    }
+
+    .text-crop-measurement-wrap,
+    .es-text-crop-configuration-row {
+        transition: padding .4s;
+    }
+}

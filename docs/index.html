@@ -31,7 +31,6 @@
         <script src="/scripts/dependencies/draggable.js"></script>
         <script src="/scripts/dependencies/jquery.ui.touch-punch.js"></script> <!-- allows touch events to trigger jquery UI interactions -->
         <!-- End draggable jQuery UI dependencies -->
-
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
         <script src="/scripts/dependencies/svg4everybody.min.js"></script>
         <script>
@@ -93,17 +92,18 @@
 </div>
 
 
-        
+        <div class="es-text-crop-configuration-row-fixed-wrap">
+          
 
-<div class="esds-row esds-container--light eswt-step-row"
+<div class="esds-row esds-container--light eswt-step-row es-text-crop-configuration-row"
     
     >
     <div class="esds-row__inner">
         
             
-            <h4 class="eswt-step-row__step-number">Step 1</h4>
-            <h2 class="eswt-step-row__title">Configure the Crop</h2>
-            
+              <h4 class="eswt-step-row__step-number">Step 1</h4>
+              <h2 class="eswt-step-row__title">Configure the Crop</h2>
+              
     <form method="GET" class="es-text-crop-font-form">
         <div class="typeface-action typeface-action--tabbed-selector">
             <div class="es-text-crop-label-tabs">
@@ -191,7 +191,7 @@
         
         <div class="typeface-action typeface-action--size">
             <label class="esds-form__label" for="size">Size</label>
-            <input class="esds-form__input" name="size" id="size" type="number" value="36" step="10">
+            <input class="esds-form__input" name="size" id="size" type="number" value="36" step="10" min="1">
         </div>
         
         <div class="typeface-action typeface-action--line-height">
@@ -210,7 +210,7 @@
         </div>
     </form>
 
-            
+              
     <div class="text-crop-measurement tool-section">
         <div class="text-crop-measurement-wrap">
             <p class="text-crop-measurement__instructions">
@@ -289,12 +289,13 @@
         </div>
     </div>
 
-        
+          
         
     </div>
 </div>
 
 
+        </div>
         
 
 <div class="esds-row esds-container--white eswt-step-row"
@@ -491,7 +492,7 @@
             
             
                 
-    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--44515--scss">
+    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--8361--scss">
         
         <pre class="esds-doc-code-snippet__pre"><code class="language-scss">@mixin text-crop($line-height: 1.3, $top-adjustment: 0px, $bottom-adjustment: 0px) {
     // These static values are determined when configuring the crop. 
@@ -604,7 +605,7 @@
             
             
                 
-    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--54691--less">
+    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--51158--less">
         
         <pre class="esds-doc-code-snippet__pre"><code class="language-less">.text-crop(@line-height: 1.3, @top-adjustment: 0px, @bottom-adjustment: 0px) {
     // These static values are determined when configuring the crop. 
@@ -717,7 +718,7 @@
             
             
                 
-    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--72221--stylus">
+    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--6253--stylus">
         
         <pre class="esds-doc-code-snippet__pre"><code class="language-stylus">text-crop($line-height = 1.3, $top-adjustment = 0px, $bottom-adjustment = 0px) {
     // These static values are determined when configuring the crop. 
@@ -799,6 +800,7 @@
 
 
         
+        <script src="/scripts/dependencies/scrollmonitor.js"></script>
         <script type="text/javascript">
           var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
           document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));

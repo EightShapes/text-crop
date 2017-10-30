@@ -146,8 +146,8 @@ CapHeightAlignmentTool = function() {
     }
 
     function setEventHandlers() {
-        $("#line-height").on('keyup change', syncLineHeight);
-        $("#size").on('keyup change', syncFontSize);
+        $("#line-height").on('keyup change click', syncLineHeight);
+        $("#size").on('keyup change click', syncFontSize);
         $("#top-measurement").on('keyup change', syncTopMeasurement);
         $("#bottom-measurement").on('keyup change', syncBottomMeasurement);
         $("#typeface").on('change', buildWeightAndStyleSelectBox);
@@ -159,6 +159,8 @@ CapHeightAlignmentTool = function() {
         $("#custom-typeface-url").on('keyup change', setSampleTextStyles);
         $(".measurement-fine-tune__increment--increase").on('click', increaseAdjustment);
         $(".measurement-fine-tune__increment--decrease").on('click', decreaseAdjustment);
+        // $("#top-crop").on('keyup change click', syncTopMeasurement);
+        // $("#bottom-crop").on('keyup change click', syncBottomMeasurement);
 
         $(".text-crop-measurement__line").draggable({ 
             axis: 'y', 
@@ -306,13 +308,35 @@ CapHeightAlignmentTool = function() {
         });
     }
 
+    function setConfigurationRowFixedPosition($configurationRow, elementWatcher) {
+        var fixedClass = "es-text-crop-configuration-row--fixed";
+
+        if (elementWatcher.isAboveViewport && !$configurationRow.hasClass(fixedClass)) {
+            $configurationRow.height($configurationRow.height());
+            $configurationRow.addClass(fixedClass);
+        } else if (!elementWatcher.isAboveViewport && $configurationRow.hasClass(fixedClass)) {
+            $configurationRow.height('auto');
+            $configurationRow.removeClass(fixedClass);
+        }
+    }
+
+    function monitorConfigurationFixedStatus() {
+        var $configurationRow = $(".es-text-crop-configuration-row-fixed-wrap"),
+            elementWatcher = scrollMonitor.create($configurationRow[0], {top: -96});
+
+        // setFixedPosition(pageNavigation, elementWatcher);
+        elementWatcher.stateChange(function(){
+            setConfigurationRowFixedPosition($configurationRow, elementWatcher);
+        });
+    }
+
 
     var initialize = function initialize() {
         highlightCode();
-        // Prism.highlightAll(false, setDynamicCodeHooks);
         buildFontSelectBox();
         setEventHandlers();
         syncValuesOnLoad();
+        monitorConfigurationFixedStatus();
     };
 
     return {
