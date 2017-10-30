@@ -2,7 +2,7 @@
     global $
 */
 
-CapHeightAlignmentTool = function() {
+TextCrop = function() {
     "use strict";
     var measurementLineLockedClass = "text-crop-measurement__line--locked",
         topMeasurementLineListClass = "text-crop-measurement__lines--top",
@@ -12,47 +12,61 @@ CapHeightAlignmentTool = function() {
         draggableInstance;
 
     function syncLineHeight() {
-        $(".code-line-height").text($("#line-height").val());
         setSampleTextStyles();
         updateInlineStyles();
+        updateCodeSnippet();
+        resetBottomSlider();
     }
 
     function syncFontSize() {
-        $(".code-size").text($("#size").val());
         setSampleTextStyles();
         updateInlineStyles();
+        updateCodeSnippet();
+        resetBottomSlider();
+    }
 
+    function resetBottomSlider() {
         // If font is sized down after being large, the drag handle can be hanging outside the sample box, check for that and move it
         var sampleBoxHeight = $(".text-crop-measurement__actions").height();
         var bottomLineMeasurePosition = parseInt($(".text-crop-measurement__line--bottom").css("top"), 10);
         if (bottomLineMeasurePosition > sampleBoxHeight) {
-            $(".text-crop-measurement__line--bottom").css("top", sampleBoxHeight + "px");
+            $(".text-crop-measurement__line--bottom").css("top", sampleBoxHeight - 1 + "px");
         }
     }
 
-    function syncTopMeasurement(trigger) {
-        console.log("SYNC TOP");
-        let topValue;
-        trigger = typeof trigger === 'undefined' ? 'slider' : trigger;
+    function updateCodeSnippet() {
+        $(".code-line-height").text($("#line-height").val());
+        $(".code-size").text($("#size").val());
+        $(".code-top-measurement").text($("#top-crop").val());
+        $(".code-bottom-measurement").text($("#bottom-crop").val());
+    }
 
-        if (trigger === 'slider') {
-            topValue = $("#top-measurement").val();
-        } else {
-            topValue = $("#top-crop").val();
-        }
+    function processTopCropAdjustment() {
+        // console.log("SYNC TOP");
+        // let topValue;
+        // trigger = typeof trigger === 'undefined' ? 'slider' : trigger;
 
-        $("#top-measurement").val(topValue);
-        $(".code-top-measurement").text(topValue);
-        $("#top-crop").val(topValue);
+        // if (trigger === 'slider') {
+        //     topValue = $("#top-measurement").val();
+        // } else {
+        //     topValue = $("#top-crop").val();
+        // }
+
+        // $("#top-measurement").val(topValue);
+        // $(".code-top-measurement").text(topValue);
+        const topValue = $("#top-crop").val();
         $(".text-crop-measurement__line--top").css('top', topValue + "px");
         updateInlineStyles();
+        updateCodeSnippet();
     }
 
-    function syncBottomMeasurement() {
-        const bottomValue = $("#bottom-measurement").val();
-        $(".code-bottom-measurement").text(bottomValue);
-        $("#bottom-crop").val(bottomValue);
+    function processBottomCropAdjustment() {
+        const bottomValue = $("#bottom-crop").val(),
+                heightOfSampleBox = $(".text-crop-measurement__sample-text").outerHeight() - 1,
+                newPositionOfSlider = heightOfSampleBox - bottomValue;
+        $(".text-crop-measurement__line--bottom").css('top', newPositionOfSlider + "px");
         updateInlineStyles();
+        updateCodeSnippet();
     }
 
     function updateInlineStyles() {
@@ -63,8 +77,8 @@ CapHeightAlignmentTool = function() {
         var fontSize = parseInt($("#size").val(), 10),
             lineHeight = parseFloat($("#line-height").val(), 10),
             measuredLineHeight = lineHeight,
-            topMeasurement = parseInt($("#top-measurement").val(), 10),
-            bottomMeasurement = parseInt($("#bottom-measurement").val(), 10),
+            topMeasurement = parseInt($("#top-crop").val(), 10),
+            bottomMeasurement = parseInt($("#bottom-crop").val(), 10),
             topOffsetEm = Math.max((topMeasurement + (lineHeight - measuredLineHeight) * (fontSize / 2)), 0) / fontSize,
             bottomOffsetEm = Math.max((bottomMeasurement + (lineHeight - measuredLineHeight) * (fontSize / 2)), 0) / fontSize,
             inlineStyle = ".text-crop { line-height: " + lineHeight + " } .text-crop::before { margin-bottom: -" + topOffsetEm + "em; } .text-crop::after { margin-top: -" + bottomOffsetEm + "em; }";
@@ -72,76 +86,64 @@ CapHeightAlignmentTool = function() {
         $("#text-crop-inline-styles").html(inlineStyle);
     }
 
-    function moveFineTuneAdjustment($lockedLine, $lineList) {
-        var $fineTuneAdjustment = $lineList.find("." + fineTuneAdjustmentClass);
-        $fineTuneAdjustment.appendTo($lockedLine);
-    }
-
-    function lockMeasurementLine(event) {
-        var $target = $(event.target),
-            $lineList = $target.closest(".text-crop-measurement__lines");
-        $lineList.find("." + measurementLineLockedClass).removeClass(measurementLineLockedClass);
-        $target.addClass(measurementLineLockedClass);
-
-        moveFineTuneAdjustment($target, $lineList);
-
-        if ($lineList.hasClass(topMeasurementLineListClass)) {
-            // Update the top measurement input
-            var measurement = $target.index() + 1;
-            $("#top-measurement").val(measurement).trigger("change");
-        } else {
-            // Update the bottom measurement input
-            var measurement = $target.index() + 1;
-            $("#bottom-measurement").val(measurement).trigger("change");
-        }
-    }
-
-    function updateIndicator(event, ui) {
-        var $target = $(event.target),
-            $hiddenFormField = $target.closest(".text-crop-measurement__line").find(".offset-input");
+    function processSliderMeasurement(event, ui) {
+        const $target = $(event.target);
+        let $formField;
 
             if ($target.closest(".text-crop-measurement__line--bottom").length > 0) {
                 var offset = ui.position.top,
                     heightOfSampleBox = $(".text-crop-measurement__sample-text").outerHeight() - 1,
                     value = parseInt(heightOfSampleBox - offset, 10);
+                $formField = $("#bottom-crop");
             } else {
                 value = parseInt(ui.position.top, 10);
+                $formField = $("#top-crop");
             }
 
-            $hiddenFormField.val(value).trigger("change");
+        $formField.val(value).trigger("change");
+        updateInlineStyles();
+        updateCodeSnippet();
     }
 
     function increaseAdjustment(event) {
-        var $target = $(event.target),
-            $measurementLine = $target.closest(".text-crop-measurement__line"),
-            $offsetInput = $measurementLine.find(".offset-input"),
-            currentPosition = $offsetInput.val(),
-            newPosition = parseInt(currentPosition, 10) + 1,
-            heightOfSampleBox = $(".text-crop-measurement__sample-text").outerHeight() - 1;
+        const $target = $(event.target);
 
-        // $offsetIndicator.text(newPosition);
-        $offsetInput.val(newPosition).trigger("change");
-        if ($measurementLine.hasClass("text-crop-measurement__line--bottom")) {
-            newPosition = heightOfSampleBox - newPosition;
+        if ($target.closest(".text-crop-measurement__line--top").length > 0) {
+            const $formField = $("#top-crop");
+            $formField.val(parseInt($formField.val(), 10) + 1);
+            processTopCropAdjustment();
+        } else {
+            const $formField = $("#bottom-crop");
+            $formField.val(parseInt($formField.val(), 10) + 1);
+            processBottomCropAdjustment();
         }
+        //     $measurementLine = $target.closest(".text-crop-measurement__line"),
+        //     $offsetInput = $measurementLine.find(".offset-input"),
+        //     currentPosition = $offsetInput.val(),
+        //     newPosition = parseInt(currentPosition, 10) + 1,
+        //     heightOfSampleBox = $(".text-crop-measurement__sample-text").outerHeight() - 1;
 
-        $measurementLine.css({top: newPosition + "px"});
+        // // $offsetIndicator.text(newPosition);
+        // $offsetInput.val(newPosition).trigger("change");
+        // if ($measurementLine.hasClass("text-crop-measurement__line--bottom")) {
+        //     newPosition = heightOfSampleBox - newPosition;
+        // }
+
+        // $measurementLine.css({top: newPosition + "px"});
     }
 
     function decreaseAdjustment(event) {
-        var $target = $(event.target),
-            $measurementLine = $target.closest(".text-crop-measurement__line"),
-            $offsetInput = $measurementLine.find(".offset-input"),
-            currentPosition = $offsetInput.val(),
-            newPosition = Math.max(0, parseInt(currentPosition, 10) - 1),
-            heightOfSampleBox = $(".text-crop-measurement__sample-text").outerHeight() - 1;
+        const $target = $(event.target);
 
-        $offsetInput.val(newPosition).trigger("change");
-        if ($measurementLine.hasClass("text-crop-measurement__line--bottom")) {
-            newPosition = heightOfSampleBox - newPosition;
+        if ($target.closest(".text-crop-measurement__line--top").length > 0) {
+            const $formField = $("#top-crop");
+            $formField.val(parseInt($formField.val(), 10) - 1);
+            processTopCropAdjustment();
+        } else {
+            const $formField = $("#bottom-crop");
+            $formField.val(parseInt($formField.val(), 10) - 1);
+            processBottomCropAdjustment();
         }
-
-        $measurementLine.css({top: newPosition + "px"});
     }
 
     function toggleTypefaceInputVisiblity() {
@@ -158,8 +160,9 @@ CapHeightAlignmentTool = function() {
     function setEventHandlers() {
         $("#line-height").on('keyup change click', syncLineHeight);
         $("#size").on('keyup change click', syncFontSize);
-        $("#top-measurement").on('keyup change', syncTopMeasurement);
-        $("#bottom-measurement").on('keyup change', syncBottomMeasurement);
+        $(".text-crop-measurement__sample-text").on('keyup', resetBottomSlider);
+        // $("#top-measurement").on('keyup change', processTopCropAdjustment);
+        // $("#bottom-measurement").on('keyup change', processBottomCropAdjustment);
         $("#typeface").on('change', buildWeightAndStyleSelectBox);
         $("#weight-and-style").on('change', setSampleTextStyles);
         $("input[name='typeface-selection']").on('change', toggleTypefaceInputVisiblity);
@@ -169,17 +172,16 @@ CapHeightAlignmentTool = function() {
         $("#custom-typeface-url").on('keyup change', setSampleTextStyles);
         $(".measurement-fine-tune__increment--increase").on('click', increaseAdjustment);
         $(".measurement-fine-tune__increment--decrease").on('click', decreaseAdjustment);
-        $("#top-crop").on('keyup change click', function(){
-            syncTopMeasurement('form');
-        });
-        // $("#bottom-crop").on('keyup change click', syncBottomMeasurement);
+        $("#top-crop").on('keyup change click', processTopCropAdjustment);
+        $("#bottom-crop").on('keyup change click', processBottomCropAdjustment);
+        $(window).on('resize', resetBottomSlider);
 
         $(".text-crop-measurement__line").draggable({ 
             axis: 'y', 
             containment: 'parent', 
             handle: ".measurement-fine-tune__grip",
-            drag: updateIndicator,
-            stop: updateIndicator
+            drag: processSliderMeasurement,
+            stop: processSliderMeasurement
         });
     }
 
@@ -241,6 +243,7 @@ CapHeightAlignmentTool = function() {
 
         $(".text-crop-measurement__sample-text").css({fontSize: fontSize, fontFamily: fontFamily + ", monospace", lineHeight: lineHeight, fontWeight: weightAndStyle.weight, fontStyle: weightAndStyle.style});
         $(".sample-font-result").css({fontFamily: fontFamily + ", monospace", fontWeight: weightAndStyle.weight, fontStyle: weightAndStyle.style });
+        resetBottomSlider();
     }
 
     function getWeightAndStyleVariants() {
@@ -294,8 +297,8 @@ CapHeightAlignmentTool = function() {
     function syncValuesOnLoad() {
         syncLineHeight();
         syncFontSize();
-        syncTopMeasurement();
-        syncBottomMeasurement();
+        processTopCropAdjustment();
+        processBottomCropAdjustment();
         buildWeightAndStyleSelectBox();
         setSampleTextStyles();
     }
@@ -353,4 +356,4 @@ CapHeightAlignmentTool = function() {
     };
 }();
 
-$(document).ready(CapHeightAlignmentTool.initialize);
+$(document).ready(TextCrop.initialize);
