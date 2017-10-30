@@ -27,11 +27,26 @@ TextCrop = function() {
         resetBottomSlider();
     }
 
-    function updateUrl() {
-        if (initialLoadComplete) {
-            window.history.pushState(false, false, '/?' + $configureForm.serialize());
-        }
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
     }
+
+    var updateUrl = debounce(function(){
+            if (initialLoadComplete) {
+                window.history.pushState(false, false, '/?' + $configureForm.serialize());
+            }
+        }, 500, true);
 
     function resetBottomSlider() {
         // If font is sized down after being large, the drag handle can be hanging outside the sample box, check for that and move it
@@ -281,13 +296,15 @@ TextCrop = function() {
     }
 
     function syncValuesOnLoad() {
+        loadFormDataFromUrl();
         syncLineHeight();
         syncFontSize();
         processTopCropAdjustment();
         processBottomCropAdjustment();
-        buildWeightAndStyleSelectBox();
-        setSampleTextStyles();
         toggleTypefaceInputVisiblity();
+        buildWeightAndStyleSelectBox();
+        loadFormDataFromUrl();
+        setSampleTextStyles();
         initialLoadComplete = true;
     }
 
@@ -342,7 +359,6 @@ TextCrop = function() {
         highlightCode();
         buildFontSelectBox();
         setEventHandlers();
-        loadFormDataFromUrl();
         syncValuesOnLoad();
         monitorConfigurationFixedStatus();
     };
