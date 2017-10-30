@@ -44,7 +44,9 @@ TextCrop = function() {
 
     var updateUrl = debounce(function(){
             if (initialLoadComplete) {
-                window.history.pushState(false, false, '/?' + $configureForm.serialize());
+                var serializedForm = $configureForm.serialize();
+                $(".code-serialized-form").text(serializedForm);
+                window.history.pushState(false, false, '/?' + serializedForm);
             }
         }, 500, true);
 
@@ -319,6 +321,7 @@ TextCrop = function() {
                 replacedHtml = replacedHtml.replace(/!!BOTTOMCROP!!/g, '<span class="code-bottom-measurement"></span>');
                 replacedHtml = replacedHtml.replace(/!!FONTSIZE!!/g, '<span class="code-size"></span>');
                 replacedHtml = replacedHtml.replace(/!!LINEHEIGHT!!/g, '<span class="code-line-height"></span>');
+                replacedHtml = replacedHtml.replace(/!!SERIALIZEDFORM!!/g, '<span class="code-serialized-form"></span>');
 
                 $snippet.html(replacedHtml);
             });
