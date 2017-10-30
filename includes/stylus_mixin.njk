@@ -1,37 +1,45 @@
-<span class="code-mixin-name">
-text-crop</span>($line-height = <span class="code-line-height">1.2</span>, $top-adjustment = 0px, $bottom-adjustment = 0px) {
-    $offset-top = max((<span class="code-top-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
-    $offset-bottom = max((<span class="code-bottom-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
+text-crop($line-height = 1.3, $top-adjustment = 0px, $bottom-adjustment = 0px) {
+    // These static values are determined when configuring the crop. 
+    // These are used to calculate the dynamic crop that works with any line-height or font-size.
+    $top-crop: !!TOPCROP!!;
+    $bottom-crop: !!BOTTOMCROP!!;
+    $crop-font-size: !!FONTSIZE!!; // This is the size of the font when the top crop and the bottom crop were measured. This is a static value.
+    $crop-line-height: !!LINEHEIGHT!!; // This is the line height of the font when the top and bottom crop were measured. This is a static value.
 
-    <span class="code-property">line-height</span>: $line-height;
+    // Use the static values to calculate em-based margins that work with any font size
+    $dynamic-top-crop = max(($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+    $dynamic-bottom-crop = max(($bottom-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
 
-    <span class="code-selector">&::before,
-    &::after</span> {
-        <span class="code-property">content</span>: '';
-        <span class="code-property">display</span>: block;
-        <span class="code-property">height</span>: 0;
-        <span class="code-property">width</span>: 0;
+    // Output starts here
+    line-height: $line-height;
+
+    &::before,
+    &::after {
+        content: '';
+        display: block;
+        height: 0;
+        width: 0;
     }
 
-    <span class="code-selector">&::before</span> {
-        <span class="code-property">margin-bottom</span>: "calc(-%sem + %s)" % ($offset-top $top-adjustment)
+    &::before {
+        margin-bottom: "calc(-%sem + %s)" % ($dynamic-top-crop $top-adjustment)
     }
 
-    <span class="code-selector">&::after</span> {
-        <span class="code-property">margin-top</span>: "calc(-%sem + %s)" % ($offset-bottom $bottom-adjustment)
+    &::after {
+        margin-top: "calc(-%sem + %s)" % ($dynamic-bottom-crop $bottom-adjustment)
     }
 }
-<span class="code-comment">// Mixin generated at: http://text-crop.eightshapes.com
+// Mixin generated at: http://text-crop.eightshapes.com
 
 /* Usage Examples
     .my-level-1-heading-class {
-        text-crop(); // Will use default line height of <span class="code-line-height">1.2</span>
+        text-crop(); // Will use default line height of 1.3
         font-size: 48px;
         margin: 0 0 0 16px;
     }
 
     .my-level-2-heading-class {
-        text-crop(); // Will use default line height of <span class="code-line-height">1.2</span>
+        text-crop(); // Will use default line height of 1.3
         font-size: 32px; // Don't need to change any settings, will work with any font size automatically
         margin: 0 0 0 16px;
     }
@@ -55,4 +63,3 @@ text-crop</span>($line-height = <span class="code-line-height">1.2</span>, $top-
         line-height: 3; // DO NOT set line height outside of the mixin, the mixin needs the line height value to calculate the crop correctly
     }
 */
-</span>

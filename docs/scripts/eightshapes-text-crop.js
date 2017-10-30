@@ -286,8 +286,30 @@ CapHeightAlignmentTool = function() {
         setSampleTextStyles();
     }
 
+    function highlightCode() {
+        var $codeSnippets = $(".esds-doc-code-snippet code");
+        $codeSnippets.each(function(){
+            var $snippet = $(this);
+            Prism.highlightElement($snippet[0], false, function(){
+                var html = $snippet.html(),
+                    replacedHtml;
+                console.log(html);
+                replacedHtml = html.replace(/!!TOPCROP!!/g, '<span class="code-top-measurement">FOO</span>');
+                replacedHtml = replacedHtml.replace(/!!BOTTOMCROP!!/g, '<span class="code-bottom-measurement"></span>');
+                replacedHtml = replacedHtml.replace(/!!FONTSIZE!!/g, '<span class="code-size"></span>');
+                replacedHtml = replacedHtml.replace(/!!LINEHEIGHT!!/g, '<span class="code-line-height"></span>');
+
+                console.log(replacedHtml);
+
+                $snippet.html(replacedHtml);
+            });
+        });
+    }
+
 
     var initialize = function initialize() {
+        highlightCode();
+        // Prism.highlightAll(false, setDynamicCodeHooks);
         buildFontSelectBox();
         setEventHandlers();
         syncValuesOnLoad();

@@ -15,7 +15,7 @@
 }
 
 .es-text-crop-sample-table__row-header {
-    @include esds-eyebrow-heading;
+    // @include esds-eyebrow-heading;
     padding: $esds-space-inset-1-x;
     padding-right: $esds-space-generic-2-x * 2;
     text-align: left;
@@ -69,7 +69,7 @@
 }
 
 .visible-padded-box {
-    box-shadow: inset 20px 20px 0 $color-gray-53, inset -20px -20px 0 $color-gray-53;
+    box-shadow: inset 20px 20px 0 $color-gray-53, inset -20px -20px 0 $color-gray-53;  // TODO: Add Chrome's padding highlight color insteado f the gray, add to button too
     display: inline-block;
     font-size: 16px;
     margin: 0;

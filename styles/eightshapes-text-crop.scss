@@ -226,36 +226,6 @@ a {
     text-align: center;
 }
 
-
-
-
-
-
-.code-top-measurement {
-    color: $esds-color-orange-82;
-    font-weight: bold;
-}
-
-.code-bottom-measurement {
-    color: $color-blue;
-    font-weight: bold;
-}
-
-//sass-lint:disable no-ids id-name-format
-// Mapping input field id colors to their corresponding locations in the code snippet
-.code-size,
-#size {
-    color: $color-green;
-    font-weight: bold;
-}
-
-.code-line-height,
-#line-height {
-    color: $color-red;
-    font-weight: bold;
-}
-//sass-lint:enable no-ids id-name-format
-
 .typeface-action--hidden {
     display: none;
 }

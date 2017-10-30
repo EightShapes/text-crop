@@ -31,34 +31,23 @@
     </div>
     
     <div id="style-preprocessor-scss" class="mixin-code-tab-pane">
-        {# {{ copy_code_button("#scss-code") }} #}
         {% set scss_source %}
             {% include 'includes/scss_mixin.njk' %}
         {% endset %}
-        {{ esds_doc.code_snippet(source=scss_source, language="scss", class="esds-doc-code-snippet--no-max-height") }}
-        <pre>
-            <code id="scss-code">
-            </code>
-        </pre>
+        {{ esds_doc.code_snippet(source=scss_source, language="scss", preformatted="true", class="esds-doc-code-snippet--tall") }}
     </div>
 
     <div id="style-preprocessor-less" class="mixin-code-tab-pane">
-        {{ copy_code_button("#less-code") }}
-
-        <pre>
-            <code id="less-code">
-                {% include 'includes/less_mixin.njk' %}
-            </code>
-        </pre>
+        {% set less_source %}
+            {% include 'includes/less_mixin.njk' %}
+        {% endset %}
+        {{ esds_doc.code_snippet(source=less_source, language="less", preformatted="true", class="esds-doc-code-snippet--tall") }}
     </div>
 
     <div id="style-preprocessor-stylus" class="mixin-code-tab-pane">
-        {{ copy_code_button("#stylus-code") }}
-
-        <pre>
-            <code id="stylus-code">
-                {% include 'includes/stylus_mixin.njk' %}
-            </code>
-        </pre>
+        {% set stylus_source %}
+            {% include 'includes/stylus_mixin.njk' %}
+        {% endset %}
+        {{ esds_doc.code_snippet(source=stylus_source, language="stylus", preformatted="true", class="esds-doc-code-snippet--tall") }}
     </div>
 {% endmacro %}

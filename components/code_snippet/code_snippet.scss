@@ -2,52 +2,9 @@
     text-align: center;
 }
 
-.code-comment {
-    color: $color-gray-53;
-
-    .code-line-height {
-        color: $color-gray-53;
-    }
-}
-
-.code-selector {
-    color: $color-purple;
-}
-
-.code-mixin-name,
-.code-property {
-    color: $color-golden;
-}
-
-.code-keyword {
-    color: $color-dark-orange;
-}
-
 .mixin-code-tab-pane {
     position: relative;
 }
-
-.es-code-snippet__copy-button-icon {
-    fill: $color-link;
-    height: $font-size-default;
-    margin-right: $spacing-xs / 2;
-    width: $font-size-default;
-}
-
-.es-code-snippet__copy-button {
-    align-items: center;
-    display: inline-flex;
-    position: absolute;
-    right: 24px;
-    top: 0;
-
-    &:focus {
-        outline: none;
-    }
-}
-
-
-
 
 // Shouldn't need this, defect in esds-doc
 .esds-doc-code-snippet__pre {

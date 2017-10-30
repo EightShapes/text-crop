@@ -783,42 +783,8 @@
 .es-text-crop-code-snippet__tabs-wrap {
   text-align: center; }
 
-.code-comment {
-  color: #888888; }
-  .code-comment .code-line-height {
-    color: #888888; }
-
-.code-selector {
-  color: #8276AA; }
-
-.code-mixin-name,
-.code-property {
-  color: #B09631; }
-
-.code-keyword {
-  color: #7C430E; }
-
 .mixin-code-tab-pane {
   position: relative; }
-
-.es-code-snippet__copy-button-icon {
-  fill: #1E62AB;
-  height: 16px;
-  margin-right: 4px;
-  width: 16px; }
-
-.es-code-snippet__copy-button {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  position: absolute;
-  right: 24px;
-  top: 0; }
-  .es-code-snippet__copy-button:focus {
-    outline: none; }
 
 .esds-doc-code-snippet__pre {
   margin: 0; }
@@ -1118,33 +1084,10 @@
     width: 30%; }
 
 .es-text-crop-sample-table__row-header {
-  font-family: "Lato", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  letter-spacing: 0;
-  line-height: 1.3;
-  text-decoration: none;
-  text-indent: 0;
-  text-shadow: none;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.67px;
-  line-height: 1.2;
-  text-transform: uppercase;
   padding: 16px;
   padding-right: 64px;
   text-align: left;
   vertical-align: middle; }
-  .esds-container--white .es-text-crop-sample-table__row-header {
-    color: #6B6B6B; }
-  .esds-container--light .es-text-crop-sample-table__row-header {
-    color: #6B6B6B; }
-  .esds-container--dark .es-text-crop-sample-table__row-header {
-    color: #CCCACA; }
-  .esds-container--black .es-text-crop-sample-table__row-header {
-    color: #B3B1B1; }
-  .esds-container--brand .es-text-crop-sample-table__row-header {
-    color: #E6E3E3; }
 
 .es-text-crop-sample-table__cell {
   padding: 16px;
@@ -1613,7 +1556,7 @@
   z-index: -1; }
 
 .text-crop-measurement__instructions {
-  font-size: 12px;
+  font-size: 20px;
   margin: 0 0 8px; }
 
 html,
@@ -1829,24 +1772,6 @@ a {
   font-size: 14px;
   margin: 0;
   text-align: center; }
-
-.code-top-measurement {
-  color: #D24B00;
-  font-weight: bold; }
-
-.code-bottom-measurement {
-  color: #1E62AB;
-  font-weight: bold; }
-
-.code-size,
-#size {
-  color: #55C81D;
-  font-weight: bold; }
-
-.code-line-height,
-#line-height {
-  color: #D72044;
-  font-weight: bold; }
 
 .typeface-action--hidden {
   display: none; }
