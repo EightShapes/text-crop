@@ -31,10 +31,21 @@ CapHeightAlignmentTool = function() {
         }
     }
 
-    function syncTopMeasurement() {
-        const topValue = $("#top-measurement").val();
+    function syncTopMeasurement(trigger) {
+        console.log("SYNC TOP");
+        let topValue;
+        trigger = typeof trigger === 'undefined' ? 'slider' : trigger;
+
+        if (trigger === 'slider') {
+            topValue = $("#top-measurement").val();
+        } else {
+            topValue = $("#top-crop").val();
+        }
+
+        $("#top-measurement").val(topValue);
         $(".code-top-measurement").text(topValue);
         $("#top-crop").val(topValue);
+        $(".text-crop-measurement__line--top").css('top', topValue + "px");
         updateInlineStyles();
     }
 
@@ -159,7 +170,9 @@ CapHeightAlignmentTool = function() {
         $("#custom-typeface-url").on('keyup change', setSampleTextStyles);
         $(".measurement-fine-tune__increment--increase").on('click', increaseAdjustment);
         $(".measurement-fine-tune__increment--decrease").on('click', decreaseAdjustment);
-        // $("#top-crop").on('keyup change click', syncTopMeasurement);
+        $("#top-crop").on('keyup change click', function(){
+            syncTopMeasurement('form');
+        });
         // $("#bottom-crop").on('keyup change click', syncBottomMeasurement);
 
         $(".text-crop-measurement__line").draggable({ 
@@ -295,13 +308,10 @@ CapHeightAlignmentTool = function() {
             Prism.highlightElement($snippet[0], false, function(){
                 var html = $snippet.html(),
                     replacedHtml;
-                console.log(html);
                 replacedHtml = html.replace(/!!TOPCROP!!/g, '<span class="code-top-measurement">FOO</span>');
                 replacedHtml = replacedHtml.replace(/!!BOTTOMCROP!!/g, '<span class="code-bottom-measurement"></span>');
                 replacedHtml = replacedHtml.replace(/!!FONTSIZE!!/g, '<span class="code-size"></span>');
                 replacedHtml = replacedHtml.replace(/!!LINEHEIGHT!!/g, '<span class="code-line-height"></span>');
-
-                console.log(replacedHtml);
 
                 $snippet.html(replacedHtml);
             });
