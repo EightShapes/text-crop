@@ -16,10 +16,11 @@
     "esds-build": "^0.25.0"
   },
   "dependencies": {
-    "@eightshapes/esds-library": "^0.3.2",
+    "@eightshapes/esds-library": "^0.4.0-alpha.1",
     "clipboard": "^1.7.1",
     "esds-doc": "^0.10.0-alpha.2",
     "jquery": "^3.2.1",
+    "jquery-deserialize": "^2.0.0-rc1",
     "jquery-ui": "^1.12.1",
     "jquery-ui-touch-punch": "^0.2.3",
     "svg4everybody": "^2.1.9"

@@ -2,6 +2,7 @@ $browser-padding-color: rgba(yellow, .3);
 
 .es-text-crop-sample-table {
     border-collapse: collapse;
+    width: 100%;
 }
 
 .es-text-crop-sample-table__head-cell {
@@ -96,10 +97,12 @@ $browser-padding-color: rgba(yellow, .3);
 }
 
 .es-text-crop-samples__flexbox-image {
+    flex: 1 1 0%;
     margin-right: $spacing-sm;
 }
 
 .es-text-crop-samples__flexbox-text {
+    flex: 1 1 0%;
     font-size: $font-size-lg;
     margin: 0;
     padding: 0;

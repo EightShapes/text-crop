@@ -1032,9 +1032,11 @@
   visibility: hidden; }
 
 .esds-tabs__label {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1; }
+  display: block;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  width: 100%; }
 
 .esds-tabs__label-text {
   background: #F3F1F1;
@@ -1074,7 +1076,8 @@
     border-right: 0; }
 
 .es-text-crop-sample-table {
-  border-collapse: collapse; }
+  border-collapse: collapse;
+  width: 100%; }
 
 .es-text-crop-sample-table__head-cell {
   font-family: "Lato", sans-serif;
@@ -1187,9 +1190,15 @@
   width: 100%; }
 
 .es-text-crop-samples__flexbox-image {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
   margin-right: 15px; }
 
 .es-text-crop-samples__flexbox-text {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0%;
+          flex: 1 1 0%;
   font-size: 20px;
   margin: 0;
   padding: 0; }

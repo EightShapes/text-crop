@@ -25,6 +25,7 @@
                         "node_modules/svg4everybody/dist/svg4everybody.min.js",
                         "node_modules/scrollmonitor/scrollMonitor.js",
                         "node_modules/scrollmonitor/scrollMonitor.js.map",
+                        "node_modules/jquery-deserialize/src/jquery.deserialize.js",
                         "node_modules/esds-doc/dist/esds-doc.js"],
             "destination": "docs/scripts/dependencies"
         },

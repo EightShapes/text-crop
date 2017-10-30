@@ -10,7 +10,9 @@
 }
 
 .esds-tabs__label {
-    flex: 1;
+    display: block;
+    flex: 0 1 auto;
+    width: 100%;
 }
 
 .esds-tabs__label-text {

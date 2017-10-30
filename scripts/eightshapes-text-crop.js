@@ -9,7 +9,9 @@ TextCrop = function() {
         bottomMeasurementLineListClass = "text-crop-measurement__lines--bottom",
         fineTuneAdjustmentClass = "measurement-fine-tune",
         typefaceVariantMapping = {},
-        draggableInstance;
+        $configureForm,
+        draggableInstance,
+        initialLoadComplete = false;
 
     function syncLineHeight() {
         setSampleTextStyles();
@@ -23,6 +25,12 @@ TextCrop = function() {
         updateInlineStyles();
         updateCodeSnippet();
         resetBottomSlider();
+    }
+
+    function updateUrl() {
+        if (initialLoadComplete) {
+            window.history.pushState(false, false, '/?' + $configureForm.serialize());
+        }
     }
 
     function resetBottomSlider() {
@@ -72,6 +80,7 @@ TextCrop = function() {
             inlineStyle = ".text-crop { line-height: " + lineHeight + " } .text-crop::before { margin-bottom: -" + topOffsetEm + "em; } .text-crop::after { margin-top: -" + bottomOffsetEm + "em; }";
 
         $("#text-crop-inline-styles").html(inlineStyle);
+        updateUrl();
     }
 
     function processSliderMeasurement(event, ui) {
@@ -218,7 +227,9 @@ TextCrop = function() {
 
         $(".text-crop-measurement__sample-text").css({fontSize: fontSize, fontFamily: fontFamily + ", monospace", lineHeight: lineHeight, fontWeight: weightAndStyle.weight, fontStyle: weightAndStyle.style});
         $(".sample-font-result").css({fontFamily: fontFamily + ", monospace", fontWeight: weightAndStyle.weight, fontStyle: weightAndStyle.style });
+        $(".text-crop-measurement__sample-text")[0].offsetHeight; // Force redraw so resetBottomSlider() will work correctly
         resetBottomSlider();
+        updateUrl();
     }
 
     function getWeightAndStyleVariants() {
@@ -276,6 +287,8 @@ TextCrop = function() {
         processBottomCropAdjustment();
         buildWeightAndStyleSelectBox();
         setSampleTextStyles();
+        toggleTypefaceInputVisiblity();
+        initialLoadComplete = true;
     }
 
     function highlightCode() {
@@ -317,11 +330,19 @@ TextCrop = function() {
         });
     }
 
+    function loadFormDataFromUrl() {
+        if (location.search.substr(1).length > 0) {
+            $configureForm.deserialize(location.search.substr(1));
+        }
+    }
+
 
     var initialize = function initialize() {
+        $configureForm = $(".es-text-crop-font-form");
         highlightCode();
         buildFontSelectBox();
         setEventHandlers();
+        loadFormDataFromUrl();
         syncValuesOnLoad();
         monitorConfigurationFixedStatus();
     };
