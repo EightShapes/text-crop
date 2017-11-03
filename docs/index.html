@@ -493,14 +493,14 @@
             
             
                 
-    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--38380--scss">
+    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--30401--scss">
         
         <pre class="esds-doc-code-snippet__pre"><code class="language-scss">@mixin text-crop($line-height: 1.3, $top-adjustment: 0px, $bottom-adjustment: 0px) {
     // Configured in Step 1
-    $top-crop: !!TOPCROP!!;
-    $bottom-crop: !!BOTTOMCROP!!;
-    $crop-font-size: !!FONTSIZE!!; // This is the size of the font when the top crop and the bottom crop were measured. This is a static value.
-    $crop-line-height: !!LINEHEIGHT!!; // This is the line height of the font when the top and bottom crop were measured. This is a static value.
+    $top-crop: TOPCROP;
+    $bottom-crop: BOTTOMCROP;
+    $crop-font-size: FONTSIZE; // This is the size of the font when the top crop and the bottom crop were measured. This is a static value.
+    $crop-line-height: LINEHEIGHT; // This is the line height of the font when the top and bottom crop were measured. This is a static value.
 
     // Apply values to calculate em-based margins that work with any font size
     $dynamic-top-crop: max(($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
@@ -525,7 +525,7 @@
         margin-top: calc(-#{$dynamic-bottom-crop}em + #{$bottom-adjustment});
     }
 }
-// Mixin generated at: http://text-crop.eightshapes.com/?!!SERIALIZEDFORM!!
+// Mixin generated at: http://text-crop.eightshapes.com/?SERIALIZEDFORM
 
 /* Usage Examples
     .my-level-1-heading-class {
@@ -605,14 +605,14 @@
             
             
                 
-    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--35678--less">
+    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--70419--less">
         
         <pre class="esds-doc-code-snippet__pre"><code class="language-less">.text-crop(@line-height: 1.3, @top-adjustment: 0px, @bottom-adjustment: 0px) {
     // Configured in Step 1
-    @top-crop: !!TOPCROP!!;
-    @bottom-crop: !!BOTTOMCROP!!;
-    @crop-font-size: !!FONTSIZE!!; // This is the size of the font when the top crop and the bottom crop were measured. This is a static value.
-    @crop-line-height: !!LINEHEIGHT!!; // This is the line height of the font when the top and bottom crop were measured. This is a static value.
+    @top-crop: TOPCROP;
+    @bottom-crop: BOTTOMCROP;
+    @crop-font-size: FONTSIZE; // This is the size of the font when the top crop and the bottom crop were measured. This is a static value.
+    @crop-line-height: LINEHEIGHT; // This is the line height of the font when the top and bottom crop were measured. This is a static value.
 
     // Apply values to calculate em-based margins that work with any font size
     @dynamic-top-crop: max((@top-crop + (@line-height - @crop-line-height) * (@crop-font-size / 2)), 0) / @crop-font-size;
@@ -637,7 +637,7 @@
         margin-top: calc(unit(-@dynamic-bottom-crop, em) ~&quot;+&quot; @bottom-adjustment);
     }
 }
-// Mixin generated at: http://text-crop.eightshapes.com/?!!SERIALIZEDFORM!!
+// Mixin generated at: http://text-crop.eightshapes.com/?SERIALIZEDFORM
 
 /* Usage Examples
     .my-level-1-heading-class {
@@ -717,14 +717,14 @@
             
             
                 
-    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--99941--stylus">
+    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--53110--stylus">
         
         <pre class="esds-doc-code-snippet__pre"><code class="language-stylus">text-crop($line-height = 1.3, $top-adjustment = 0px, $bottom-adjustment = 0px) {
     // Configured in Step 1
-    $top-crop: !!TOPCROP!!;
-    $bottom-crop: !!BOTTOMCROP!!;
-    $crop-font-size: !!FONTSIZE!!; // This is the size of the font when the top crop and the bottom crop were measured. This is a static value.
-    $crop-line-height: !!LINEHEIGHT!!; // This is the line height of the font when the top and bottom crop were measured. This is a static value.
+    $top-crop = TOPCROP;
+    $bottom-crop = BOTTOMCROP;
+    $crop-font-size = FONTSIZE; // This is the size of the font when the top crop and the bottom crop were measured. This is a static value.
+    $crop-line-height = LINEHEIGHT; // This is the line height of the font when the top and bottom crop were measured. This is a static value.
 
     // Apply values to calculate em-based margins that work with any font size
     $dynamic-top-crop = max(($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
@@ -749,7 +749,7 @@
         margin-top: &quot;calc(-%sem + %s)&quot; % ($dynamic-bottom-crop $bottom-adjustment)
     }
 }
-// Mixin generated at: http://text-crop.eightshapes.com/?!!SERIALIZEDFORM!!
+// Mixin generated at: http://text-crop.eightshapes.com/?SERIALIZEDFORM
 
 /* Usage Examples
     .my-level-1-heading-class {

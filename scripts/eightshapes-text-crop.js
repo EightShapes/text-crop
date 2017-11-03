@@ -322,11 +322,11 @@ var TextCrop = function() {
             Prism.highlightElement($snippet[0], false, function(){
                 var html = $snippet.html(),
                     replacedHtml;
-                replacedHtml = html.replace(/!!TOPCROP!!/g, '<span class="code-top-measurement">FOO</span>');
-                replacedHtml = replacedHtml.replace(/!!BOTTOMCROP!!/g, '<span class="code-bottom-measurement"></span>');
-                replacedHtml = replacedHtml.replace(/!!FONTSIZE!!/g, '<span class="code-size"></span>');
-                replacedHtml = replacedHtml.replace(/!!LINEHEIGHT!!/g, '<span class="code-line-height"></span>');
-                replacedHtml = replacedHtml.replace(/!!SERIALIZEDFORM!!/g, '<span class="code-serialized-form"></span>');
+                replacedHtml = html.replace(/TOPCROP/g, '<span class="code-top-measurement">FOO</span>');
+                replacedHtml = replacedHtml.replace(/BOTTOMCROP/g, '<span class="code-bottom-measurement"></span>');
+                replacedHtml = replacedHtml.replace(/FONTSIZE/g, '<span class="code-size"></span>');
+                replacedHtml = replacedHtml.replace(/LINEHEIGHT/g, '<span class="code-line-height"></span>');
+                replacedHtml = replacedHtml.replace(/SERIALIZEDFORM/g, '<span class="code-serialized-form"></span>');
 
                 $snippet.html(replacedHtml);
             });
