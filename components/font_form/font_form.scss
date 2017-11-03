@@ -1,6 +1,8 @@
 // ESDS Form Component Candidates
 $esds-form-input-min-height: 37px;
 
+$esds-text-crop-drop-shadow: 0 2px 3px rgba(0, 0, 0, .4);
+
 .esds-form__label {
     @include esds-text-color('primary');
     display: block;
@@ -195,7 +197,7 @@ $esds-form-input-min-height: 37px;
 // Configuration Row Fixed Mode
 .es-text-crop-configuration-row--fixed {
     .es-text-crop-configuration-row {
-        box-shadow: 0 2px 3px rgba(0,0,0, .4);
+        box-shadow: $esds-text-crop-drop-shadow;
         left: 0;
         padding-bottom: 8px;
         padding-top: 8px;

@@ -1,4 +1,5 @@
-$browser-padding-color: rgba(#C7DEB8, .8);
+$browser-padding-base-color: #C7DEB8;
+$browser-padding-color: rgba($browser-padding-base-color, .8);
 
 .es-text-crop-sample-table {
     border-collapse: collapse;
