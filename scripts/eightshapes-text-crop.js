@@ -1,131 +1,155 @@
-CapHeightAlignmentTool = function() {
-    "use strict";
-    var measurementLineLockedClass = "cap-height-measurement__line--locked",
-        topMeasurementLineListClass = "cap-height-measurement__lines--top",
-        bottomMeasurementLineListClass = "cap-height-measurement__lines--bottom",
-        fineTuneAdjustmentClass = "measurement-fine-tune",
-        typefaceVariantMapping = {},
-        draggableInstance;
+/*
+    global $
+    global WebFont
+    global googleFonts
+    global Prism
+    global scrollMonitor
+*/
+
+"use strict";
+
+var TextCrop = function() {
+    var typefaceVariantMapping = {},
+        $configureForm,
+        initialLoadComplete = false;
 
     function syncLineHeight() {
-        $(".code-line-height").text($("#line-height").val());
         setSampleTextStyles();
         updateInlineStyles();
+        updateCodeSnippet();
+        resetBottomSlider();
     }
 
     function syncFontSize() {
-        $(".code-size").text($("#size").val());
         setSampleTextStyles();
         updateInlineStyles();
-        
+        updateCodeSnippet();
+        resetBottomSlider();
+    }
+
+    function debounce(func, wait, immediate) {
+        var timeout;
+        return function() {
+            // eslint-disable-next-line consistent-this
+            var context = this, args = arguments;
+            var later = function() {
+                timeout = null;
+                if (!immediate) {
+                    func.apply(context, args);
+                }
+            };
+            var callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) {
+                func.apply(context, args);
+            }
+        };
+    }
+
+    var updateUrl = debounce(function(){
+            if (initialLoadComplete) {
+                var serializedForm = $configureForm.serialize();
+                $(".code-serialized-form").text(serializedForm);
+                window.history.pushState(false, false, '/?' + serializedForm);
+            }
+        }, 500, true);
+
+    function resetBottomSlider() {
         // If font is sized down after being large, the drag handle can be hanging outside the sample box, check for that and move it
-        var sampleBoxHeight = $(".cap-height-measurement__actions").height();
-        var bottomLineMeasurePosition = parseInt($(".cap-height-measurement__line--bottom").css("top"), 10);
+        var sampleBoxHeight = $(".text-crop-measurement__actions").height();
+        var bottomLineMeasurePosition = parseInt($(".text-crop-measurement__line--bottom").css("top"), 10);
         if (bottomLineMeasurePosition > sampleBoxHeight) {
-            $(".cap-height-measurement__line--bottom").css("top", sampleBoxHeight + "px");
+            $(".text-crop-measurement__line--bottom").css("top", sampleBoxHeight - 1 + "px");
         }
     }
 
-    function syncTopMeasurement() {
-        $(".code-top-measurement").text($("#top-measurement").val());
-        updateInlineStyles();
+    function updateCodeSnippet() {
+        $(".code-line-height").text($("#line-height").val());
+        $(".code-size").text($("#size").val());
+        $(".code-top-measurement").text($("#top-crop").val());
+        $(".code-bottom-measurement").text($("#bottom-crop").val());
     }
 
-    function syncBottomMeasurement() {
-        $(".code-bottom-measurement").text($("#bottom-measurement").val());
+    function processTopCropAdjustment() {
+        const topValue = $("#top-crop").val();
+        $(".text-crop-measurement__line--top").css('top', topValue + "px");
         updateInlineStyles();
+        updateCodeSnippet();
+    }
+
+    function processBottomCropAdjustment() {
+        const bottomValue = $("#bottom-crop").val(),
+                heightOfSampleBox = $(".text-crop-measurement__sample-text").outerHeight() - 1,
+                newPositionOfSlider = heightOfSampleBox - bottomValue;
+        $(".text-crop-measurement__line--bottom").css('top', newPositionOfSlider + "px");
+        updateInlineStyles();
+        updateCodeSnippet();
     }
 
     function updateInlineStyles() {
-        if ($("style#cap-aligned-line-height-inline-styles").length === 0) {
-            $("head").append("<style id='cap-aligned-line-height-inline-styles'>");
+        if ($("style#text-crop-inline-styles").length === 0) {
+            $("head").append("<style id='text-crop-inline-styles'>");
         }
 
         var fontSize = parseInt($("#size").val(), 10),
             lineHeight = parseFloat($("#line-height").val(), 10),
             measuredLineHeight = lineHeight,
-            topMeasurement = parseInt($("#top-measurement").val(), 10),
-            bottomMeasurement = parseInt($("#bottom-measurement").val(), 10),
-            topOffsetEm = Math.max((topMeasurement + (lineHeight - measuredLineHeight) * (fontSize / 2)), 0) / fontSize,
-            bottomOffsetEm = Math.max((bottomMeasurement + (lineHeight - measuredLineHeight) * (fontSize / 2)), 0) / fontSize,
-            inlineStyle = ".cap-aligned-line-height { line-height: " + lineHeight + " } .cap-aligned-line-height::before { margin-bottom: -" + topOffsetEm + "em; } .cap-aligned-line-height::after { margin-top: -" + bottomOffsetEm + "em; }";
+            topMeasurement = parseInt($("#top-crop").val(), 10),
+            bottomMeasurement = parseInt($("#bottom-crop").val(), 10),
+            topOffsetEm = Math.max(topMeasurement + (lineHeight - measuredLineHeight) * (fontSize / 2), 0) / fontSize,
+            bottomOffsetEm = Math.max(bottomMeasurement + (lineHeight - measuredLineHeight) * (fontSize / 2), 0) / fontSize,
+            inlineStyle = ".text-crop { line-height: " + lineHeight + " } .text-crop::before { margin-bottom: -" + topOffsetEm + "em; } .text-crop::after { margin-top: -" + bottomOffsetEm + "em; }";
 
-        $("#cap-aligned-line-height-inline-styles").html(inlineStyle);
+        $("#text-crop-inline-styles").html(inlineStyle);
+        updateUrl();
     }
 
-    function moveFineTuneAdjustment($lockedLine, $lineList) {
-        var $fineTuneAdjustment = $lineList.find("." + fineTuneAdjustmentClass);
-        $fineTuneAdjustment.appendTo($lockedLine);
-    }
+    function processSliderMeasurement(event, ui) {
+        const $target = $(event.target);
+        let $formField;
 
-    function lockMeasurementLine(event) {
-        var $target = $(event.target),
-            $lineList = $target.closest(".cap-height-measurement__lines");
-        $lineList.find("." + measurementLineLockedClass).removeClass(measurementLineLockedClass);
-        $target.addClass(measurementLineLockedClass);
-
-        moveFineTuneAdjustment($target, $lineList);
-
-        if ($lineList.hasClass(topMeasurementLineListClass)) {
-            // Update the top measurement input
-            var measurement = $target.index() + 1;
-            $("#top-measurement").val(measurement).trigger("change");
-        } else {
-            // Update the bottom measurement input
-            var measurement = $target.index() + 1;
-            $("#bottom-measurement").val(measurement).trigger("change");
-        }
-    }
-
-    function updateIndicator(event, ui) {
-        var $target = $(event.target);
-
-            if ($target.closest(".cap-height-measurement__line--bottom").length > 0) {
+            if ($target.closest(".text-crop-measurement__line--bottom").length > 0) {
                 var offset = ui.position.top,
-                    heightOfSampleBox = $(".cap-height-measurement__sample-text").outerHeight() - 1,
-                    value = parseInt(heightOfSampleBox - offset, 10);                
+                    heightOfSampleBox = $(".text-crop-measurement__sample-text").outerHeight() - 1,
+                    value = parseInt(heightOfSampleBox - offset, 10);
+                $formField = $("#bottom-crop");
             } else {
                 value = parseInt(ui.position.top, 10);
+                $formField = $("#top-crop");
             }
 
-            $target.closest(".cap-height-measurement__line").find(".cap-height-measurement__offset").text(value);
-            $target.closest(".cap-height-measurement__line").find(".offset-input").val(value).trigger("change");
+        $formField.val(value).trigger("change");
+        updateInlineStyles();
+        updateCodeSnippet();
     }
 
     function increaseAdjustment(event) {
-        var $target = $(event.target),
-            $offsetIndicator = $target.closest(".cap-height-measurement__line").find(".cap-height-measurement__offset"),
-            currentPosition = $offsetIndicator.text(),
-            $measurementLine = $target.closest(".cap-height-measurement__line"),
-            $offsetInput = $measurementLine.find(".offset-input"),
-            newPosition = parseInt(currentPosition, 10) + 1,
-            heightOfSampleBox = $(".cap-height-measurement__sample-text").outerHeight() - 1;
+        const $target = $(event.target);
 
-        $offsetIndicator.text(newPosition);
-        $offsetInput.val(newPosition).trigger("change");
-        if ($measurementLine.hasClass("cap-height-measurement__line--bottom")) {
-            newPosition = heightOfSampleBox - newPosition;
+        if ($target.closest(".text-crop-measurement__line--top").length > 0) {
+            const $formField = $("#top-crop");
+            $formField.val(parseInt($formField.val(), 10) + 1);
+            processTopCropAdjustment();
+        } else {
+            const $formField = $("#bottom-crop");
+            $formField.val(parseInt($formField.val(), 10) + 1);
+            processBottomCropAdjustment();
         }
-
-        $measurementLine.css({top: newPosition + "px"});
     }
 
     function decreaseAdjustment(event) {
-        var $target = $(event.target),
-            $offsetIndicator = $target.closest(".cap-height-measurement__line").find(".cap-height-measurement__offset"),
-            currentPosition = $offsetIndicator.text(),
-            $measurementLine = $target.closest(".cap-height-measurement__line"),
-            $offsetInput = $measurementLine.find(".offset-input"),
-            newPosition = Math.max(0, parseInt(currentPosition, 10) - 1),
-            heightOfSampleBox = $(".cap-height-measurement__sample-text").outerHeight() - 1;
+        const $target = $(event.target);
 
-        $offsetIndicator.text(newPosition);
-        $offsetInput.val(newPosition).trigger("change");
-        if ($measurementLine.hasClass("cap-height-measurement__line--bottom")) {
-            newPosition = heightOfSampleBox - newPosition;
+        if ($target.closest(".text-crop-measurement__line--top").length > 0) {
+            const $formField = $("#top-crop");
+            $formField.val(parseInt($formField.val(), 10) - 1);
+            processTopCropAdjustment();
+        } else {
+            const $formField = $("#bottom-crop");
+            $formField.val(parseInt($formField.val(), 10) - 1);
+            processBottomCropAdjustment();
         }
-
-        $measurementLine.css({top: newPosition + "px"});
     }
 
     function toggleTypefaceInputVisiblity() {
@@ -134,16 +158,17 @@ CapHeightAlignmentTool = function() {
         if ($("#use-custom-typeface").is(":checked")) {
             $(".typeface-action--typeface, .typeface-action--weight-and-style").addClass("typeface-action--hidden");
         } else {
-            $(".typeface-action--custom-typeface-name, .typeface-action--custom-typeface-url, .typeface-action--custom-typeface-weight, .typeface-action--custom-typeface-style").addClass("typeface-action--hidden")
+            $(".typeface-action--custom-typeface-name, .typeface-action--custom-typeface-url, .typeface-action--custom-typeface-weight, .typeface-action--custom-typeface-style").addClass("typeface-action--hidden");
         }
         setSampleTextStyles();
     }
 
     function setEventHandlers() {
-        $("#line-height").on('keyup change', syncLineHeight);
-        $("#size").on('keyup change', syncFontSize);
-        $("#top-measurement").on('keyup change', syncTopMeasurement);
-        $("#bottom-measurement").on('keyup change', syncBottomMeasurement);
+        $("#line-height").on('keyup change click', syncLineHeight);
+        $("#size").on('keyup change click', syncFontSize);
+        $(".text-crop-measurement__sample-text").on('keyup', resetBottomSlider);
+        // $("#top-measurement").on('keyup change', processTopCropAdjustment);
+        // $("#bottom-measurement").on('keyup change', processBottomCropAdjustment);
         $("#typeface").on('change', buildWeightAndStyleSelectBox);
         $("#weight-and-style").on('change', setSampleTextStyles);
         $("input[name='typeface-selection']").on('change', toggleTypefaceInputVisiblity);
@@ -153,13 +178,16 @@ CapHeightAlignmentTool = function() {
         $("#custom-typeface-url").on('keyup change', setSampleTextStyles);
         $(".measurement-fine-tune__increment--increase").on('click', increaseAdjustment);
         $(".measurement-fine-tune__increment--decrease").on('click', decreaseAdjustment);
+        $("#top-crop").on('keyup change click', processTopCropAdjustment);
+        $("#bottom-crop").on('keyup change click', processBottomCropAdjustment);
+        $(window).on('resize', resetBottomSlider);
 
-        $(".cap-height-measurement__line").draggable({ 
-            axis: 'y', 
-            containment: 'parent', 
+        $(".text-crop-measurement__line").draggable({
+            axis: 'y',
+            containment: 'parent',
             handle: ".measurement-fine-tune__grip",
-            drag: updateIndicator,
-            stop: updateIndicator
+            drag: processSliderMeasurement,
+            stop: processSliderMeasurement
         });
     }
 
@@ -191,18 +219,18 @@ CapHeightAlignmentTool = function() {
             lineHeight = $("#line-height").val(),
             weightAndStyle = parseWeightAndStyle($("#weight-and-style").val()),
             useCustomTypeface = $("#use-custom-typeface").is(":checked"),
-            style = "";    
+            fontUrl;
 
 
         if (useCustomTypeface) {
-            var fontUrl = false;
+            fontUrl = false;
 
             fontFamily = $("#custom-typeface-name").val();
             weightAndStyle = {
                 weight: $("#custom-typeface-weight").val(),
                 style: $("#custom-typeface-style").val()
             };
-    
+
             if ($("#custom-typeface-url").length > 0) {
                 fontUrl = $("#custom-typeface-url").val();
             }
@@ -211,16 +239,20 @@ CapHeightAlignmentTool = function() {
                 $("head").append("<link rel='stylesheet' href='" + fontUrl + "'>");
             }
         } else {
-            var fontUrl = "https://fonts.googleapis.com/css?family=" + fontFamily.replace(/ /g, '+') + ':' + weightAndStyle.originalString;
+            fontUrl = "https://fonts.googleapis.com/css?family=" + fontFamily.replace(/ /g, '+') + ':' + weightAndStyle.originalString;
             WebFont.load({
               google: {
                 families: [fontFamily + ":" + weightAndStyle.originalString]
-              }
+              },
+              active: resetBottomSlider
             });
         }
 
-        $(".cap-height-measurement__sample-text").css({fontSize: fontSize, fontFamily: fontFamily + ", monospace", lineHeight: lineHeight, fontWeight: weightAndStyle.weight, fontStyle: weightAndStyle.style});
+        $(".text-crop-measurement__sample-text").css({fontSize: fontSize, fontFamily: fontFamily + ", monospace", lineHeight: lineHeight, fontWeight: weightAndStyle.weight, fontStyle: weightAndStyle.style});
         $(".sample-font-result").css({fontFamily: fontFamily + ", monospace", fontWeight: weightAndStyle.weight, fontStyle: weightAndStyle.style });
+        $(".text-crop-measurement__sample-text")[0].offsetHeight; // Force redraw so resetBottomSlider() will work correctly
+        resetBottomSlider();
+        updateUrl();
     }
 
     function getWeightAndStyleVariants() {
@@ -234,7 +266,6 @@ CapHeightAlignmentTool = function() {
             options = "";
 
         for (var style in variants) {
-            var filepath = variants[style];
             options += '<option value="' + style + '">' + style + '</option>';
         }
 
@@ -272,24 +303,77 @@ CapHeightAlignmentTool = function() {
     }
 
     function syncValuesOnLoad() {
+        loadFormDataFromUrl();
         syncLineHeight();
         syncFontSize();
-        syncTopMeasurement();
-        syncBottomMeasurement();
+        processTopCropAdjustment();
+        processBottomCropAdjustment();
+        toggleTypefaceInputVisiblity();
         buildWeightAndStyleSelectBox();
+        loadFormDataFromUrl();
         setSampleTextStyles();
+        initialLoadComplete = true;
+    }
+
+    function highlightCode() {
+        var $codeSnippets = $(".esds-doc-code-snippet code");
+        $codeSnippets.each(function(){
+            var $snippet = $(this);
+            Prism.highlightElement($snippet[0], false, function(){
+                var html = $snippet.html(),
+                    replacedHtml;
+                replacedHtml = html.replace(/TOPCROP/g, '<span class="code-top-measurement">FOO</span>');
+                replacedHtml = replacedHtml.replace(/BOTTOMCROP/g, '<span class="code-bottom-measurement"></span>');
+                replacedHtml = replacedHtml.replace(/FONTSIZE/g, '<span class="code-size"></span>');
+                replacedHtml = replacedHtml.replace(/LINEHEIGHT/g, '<span class="code-line-height"></span>');
+                replacedHtml = replacedHtml.replace(/SERIALIZEDFORM/g, '<span class="code-serialized-form"></span>');
+
+                $snippet.html(replacedHtml);
+            });
+        });
+    }
+
+    function setConfigurationRowFixedPosition($configurationRow, elementWatcher) {
+        var fixedClass = "es-text-crop-configuration-row--fixed";
+
+        if (elementWatcher.isAboveViewport && !$configurationRow.hasClass(fixedClass)) {
+            $configurationRow.height($configurationRow.height());
+            $configurationRow.addClass(fixedClass);
+        } else if (!elementWatcher.isAboveViewport && $configurationRow.hasClass(fixedClass)) {
+            $configurationRow.height('auto');
+            $configurationRow.removeClass(fixedClass);
+        }
+    }
+
+    function monitorConfigurationFixedStatus() {
+        var $configurationRow = $(".es-text-crop-configuration-row-fixed-wrap"),
+            elementWatcher = scrollMonitor.create($configurationRow[0], {top: -96});
+
+        // setFixedPosition(pageNavigation, elementWatcher);
+        elementWatcher.stateChange(function(){
+            setConfigurationRowFixedPosition($configurationRow, elementWatcher);
+        });
+    }
+
+    function loadFormDataFromUrl() {
+        if (location.search.substr(1).length > 0) {
+            $configureForm.deserialize(location.search.substr(1));
+        }
     }
 
 
     var initialize = function initialize() {
+        $configureForm = $(".es-text-crop-font-form");
+        highlightCode();
         buildFontSelectBox();
         setEventHandlers();
         syncValuesOnLoad();
+        monitorConfigurationFixedStatus();
     };
 
     return {
-        "initialize": initialize
+        initialize: initialize
     };
 }();
 
-$(document).ready(CapHeightAlignmentTool.initialize);
+$(document).ready(TextCrop.initialize);

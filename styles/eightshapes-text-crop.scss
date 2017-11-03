@@ -1,8 +1,35 @@
-@import 'variables';
+@import '@eightshapes/esds-library/tokens/tokens';
+@import 'esds-doc/tokens/tokens';
+@import 'variables'; // Deprecate when possible
+
+@import '@eightshapes/esds-library/styles/shared/color';
+@import '@eightshapes/esds-library/styles/shared/typography';
+
+@import '@eightshapes/esds-library/components/icon/icon';
+@import '@eightshapes/esds-library/components/button/button';
+@import '@eightshapes/esds-library/components/container/container';
+@import '@eightshapes/esds-library/components/row/row';
+@import '@eightshapes/esds-library/components/card/card';
+
+@import 'esds-doc-theming';
+@import 'esds-doc/styles/shared/utils';
+@import 'esds-doc/components/container/container';
+@import 'esds-doc/components/button/button';
+@import 'esds-doc/components/code_snippet/code_snippet';
+@import 'esds-doc/components/html_example_list/html_example_list';
+@import 'esds-doc/components/code_example_pair/code_example_pair';
+@import 'esds-doc/components/page_navigation/page_navigation';
+@import 'esds-doc/components/reference_table/reference_table';
+@import 'esds-doc/components/tint_stack/tint_stack';
+
 @import 'code_snippet/code_snippet';
 @import 'font_form/font_form';
 @import 'tabs/tabs';
 @import 'text_crop_samples/text_crop_samples';
+@import 'headcrumb/headcrumb';
+@import 'hero/hero';
+@import 'step_row/step_row';
+@import 'text_crop_measurement_tool/text_crop_measurement_tool';
 
 $sidebar-shadow: -3px 0 3px rgba($color-black, .15);
 $sidebar-width: 320px;
@@ -10,7 +37,7 @@ $sidebar-width: 320px;
 html,
 body {
     box-sizing: border-box;
-    font-family: $font-family-default;
+    font-family: $esds-font-family-sans-serif;
     font-weight: $font-weight-normal;
     margin: 0;
     min-height: 100vh;
@@ -24,11 +51,11 @@ body {
 }
 
 a {
-    color: $color-link;
+    color: $esds-text-color-link-on-white;
     text-decoration: none;
 
     &:hover {
-        color: $color-link-hover;
+        color: $esds-text-color-link-on-white;
     }
 }
 
@@ -200,211 +227,34 @@ a {
     text-align: center;
 }
 
-
-
-
-
-
-
-body {
-    background: $color-white;
-    color: $color-text-default;
-}
-
-.tool-section {
-    margin-bottom: 32px;
-    padding: 0 $spacing-sm 0 0;
-}
-
-.tool-section__title {
-    text-align: left;
-}
-
-.cap-height-measurement__sample-text {
-    background: $color-white;
-    border: solid 1px $color-gray-20;
-    box-sizing: content-box;
-    color: $color-text-default;
-    font-family: monospace;
-    margin: 0 0 0 60px;
-    overflow: hidden;
-    text-align: center;
-    word-break: break-word;
-
-    &:focus {
-        outline: none;
-    }
-}
-
-.cap-height-measurement__actions {
-    // overflow: hidden;
-    position: relative;
-}
-
-.cap-height-measurement-wrap {
-    padding: 48px 0;
-}
-
-.measurement-fine-tune__increment--increase {
-    border-radius: $border-radius-default $border-radius-default 0 0;
-
-    .cap-height-measurement__line--top & {
-        border-radius: 0 0 $border-radius-default $border-radius-default;
-    }
-}
-
-.measurement-fine-tune__increment--decrease {
-    border-radius: 0 0 $border-radius-default $border-radius-default;
-
-    .cap-height-measurement__line--top & {
-        border-radius: $border-radius-default $border-radius-default 0 0;
-    }
-}
-
-.cap-height-measurement__line {
-    background: $color-orange-light;
-    display: block;
-    height: 1px;
-    position: absolute;
-    top: 0;
-    width: 100%;
-
-    &:after {
-        background: $color-white;
-        border: solid 1px $color-orange-light;
-        color: $color-text-default;
-        content: counter(stripes);
-        display: none;
-        font-family: monospace;
-        font-size: $font-size-sm;
-        height: 20px;
-        left: 30px;
-        margin-top: -10px;
-        padding: 2px;
-        position: absolute;
-        top: 50%;
-        z-index: 100;
-    }
-
-    &.cap-height-measurement__line--bottom {
-        background: $color-blue;
-        bottom: 0;
-        left: 30px;
-        top: auto;
-        width: calc(100% - 30px);
-    }
-}
-
-.measurement-fine-tune__grip-icon,
-.measurement-fine-tune__increment-icon {
-    fill: $color-white;
-    height: $font-size-default;
-    width: $font-size-default;
-}
-
-.measurement-fine-tune__grip,
-.measurement-fine-tune__increment {
-    align-items: center;
-    background: $color-orange-light;
-    display: flex;
-    height: 30px;
-    justify-content: center;
-    width: 30px;
-
-    .cap-height-measurement__line--bottom & {
-        background: $color-blue;
-    }
-}
-
-.measurement-fine-tune__grip {
-    border-bottom: solid 1px $color-white;
-    border-top: solid 1px $color-white;
-    cursor: grab;
-}
-
-.measurement-fine-tune {
-    display: inline-block;
-    left: 0;
-    margin-top: -45px;
-    position: absolute;
-    top: 50%;
-    z-index: 200;
-}
-
-.cap-height-measurement__offset {
-    align-items: center;
-    background: $color-white;
-    border: solid 1px $color-orange-light;
-    color: $color-orange-light;
-    display: flex;
-    font-family: monospace;
-    height: 30px;
-    justify-content: center;
-    margin-top: -15px;
-    padding: $spacing-sm;
-    position: absolute;
-    right: 30px;
-    top: 50%;
-    user-select: none; 
-    width: 30px;
-    z-index: 20;
-
-    .cap-height-measurement__line--bottom & {
-        border-color: $color-blue;
-        color: $color-blue;
-        right: 0;
-    }
-}
-
-.offset-input,
-.offset-input-label {
-    clip: rect(0 0 0 0);
-    left: 0;
-    position: absolute;
-    z-index: -1;
-}
-
-.typeface-action {
-    margin-bottom: $spacing-sm;
-}
-
-.code-top-measurement {
-    color: $color-orange-light;
-    font-weight: bold;
-}
-
-.code-bottom-measurement {
-    color: $color-blue;
-    font-weight: bold;
-}
-
-//sass-lint:disable no-ids id-name-format
-// Mapping input field id colors to their corresponding locations in the code snippet
-.code-size,
-#size {
-    color: $color-green;
-    font-weight: bold;
-}
-
-.code-line-height,
-#line-height {
-    color: $color-red;
-    font-weight: bold;
-}
-//sass-lint:enable no-ids id-name-format
-
 .typeface-action--hidden {
     display: none;
 }
 
-.cap-aligned-line-height {
-    line-height: 1.2;
-
+// Used by the dynamic examples, sets some defaults
+.text-crop {
     &::before,
     &::after {
         content: '';
         display: block;
         height: 0;
         width: 0;
+    }
+}
+
+// ESDS Overrides
+.esds-row__inner {
+    max-width: 1000px;
+}
+
+// Override ESDS-library defaults
+.esds-row--hero-inset { 
+    padding: $esds-space-inset-1-x;
+    padding-bottom: 70px;
+    padding-top: 70px;
+    
+    @media screen and (min-width: 768px) {
+        padding-bottom: 70px;
+        padding-top: 70px;
     }
 }

@@ -1,0 +1,20 @@
+.eswt-hero {
+    @include esds-text-color('primary');
+    @include esds-font-reset;
+}
+
+.eswt-hero__title {
+    @include esds-text-crop;
+    @include esds-level-1-heading;
+    margin: $esds-space-stack-2-x;
+    text-align: center;
+}
+
+.eswt-hero__lead {
+    @include esds-text-crop;
+    @include esds-text-color('primary');
+    font-size: $esds-font-size-lead;
+    font-weight: $esds-font-weight-light;
+    margin: 0 auto;
+    max-width: 640px;
+}

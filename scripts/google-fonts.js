@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Retrieved via https://www.googleapis.com/webfonts/v1/webfonts?key=[Super secret API Key Here]
 // Get API Key at: https://console.developers.google.com/apis/credentials
 var googleFonts = {

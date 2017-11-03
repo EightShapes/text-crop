@@ -1,5 +1,7 @@
 
 
+
+
 <html>
     <head>
         <title>EightShapes Text Crop</title>
@@ -18,7 +20,6 @@
         <script src="/scripts/dependencies/data.js"></script>
         <script src="/scripts/dependencies/scroll-parent.js"></script>
         <script src="/scripts/dependencies/mouse.js"></script>
-
         <script src="/scripts/dependencies/plugin.js"></script>
         <script src="/scripts/dependencies/safe-active-element.js"></script>
         <script src="/scripts/dependencies/safe-blur.js"></script>
@@ -26,119 +27,163 @@
         <script src="/scripts/dependencies/jquery.ui.touch-punch.js"></script> <!-- allows touch events to trigger jquery UI interactions -->
         <!-- End draggable jQuery UI dependencies -->
 
+        <script src="/scripts/dependencies/jquery.deserialize.js"></script>
+        <script src="/scripts/dependencies/prism.js" data-manual></script>
+        <script src="/scripts/dependencies/prism-less.min.js"></script>
+        <script src="/scripts/dependencies/prism-scss.min.js"></script>
+        <script src="/scripts/dependencies/prism-stylus.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
         <script src="/scripts/dependencies/svg4everybody.min.js"></script>
         <script>
             svg4everybody();
         </script>
+        <script src="/scripts/dependencies/esds-doc.js"></script>
         <script src="/scripts/eightshapes-text-crop.js"></script>
     </head>
     <body>
-        <div class="es-web-tool__flex-container">
-            <div class="es-web-tool__outer-wrap">
-                <div class="es-web-tool__body">
-                    <div class="es-web-tool__configurator">
-                        <div class="es-web-tool__sidebar">
-                            <h1 class="es-web-tool__title">
-                                <a href="http://eightshapes.com">
-                                    
-    <svg  class="es-web-tool__title-logo"  aria-labelledby="title">
+        
+
+<div class="esds-row esds-container--brand eswt-headcrumb"
+    
+    >
+    <div class="esds-row__inner">
+        
+            
+            <h1 class="eswt-headcrumb__brand">
+                <a href="http://eightshapes.com/design-systems.html" class="eswt-headcrumb__link">
+                    
+    <svg  class="eswt-headcrumb__brand-mark"  aria-labelledby="title">
         <title>eightshapes-mark</title>
         <use xlink:href="/icons/eightshapes-text-crop.svg#eightshapes-mark"></use>
     </svg>
 
-                                </a>
-                                <span class="es-web-tool__title-text">Text Crop</span>
-                            </h1>
-                            
-    <form method="GET" class="es-font-form">
-        <div class="es-font-form__content">
-            <p class="es-font-form__copy">
-                Generate style mixins to crop vertical white space of text to cap height and baseline.
+                    <span class="eswt-headcrumb__brand-name">eightshapes</span>
+                    
+    
+
+    <svg class="esds-icon eswt-headcrumb__delimiter">
+        
+        <use xlink:href="/icons/esds.svg#angle-right"></use>
+    </svg>
+
+                    <span class="eswt-headcrumb__crumb-text">Design Systems</span>
+                </a>
+            </h1>
+        
+        
+    </div>
+</div>
+
+
+        
+
+<div class="esds-row esds-container--dark esds-row--hero-inset eswt-hero"
+    
+    >
+    <div class="esds-row__inner">
+        
+            
+            <h1 class="eswt-hero__title">Text Crop</h1>
+            <p class="eswt-hero__lead">
+                Want to rid your components of that pesky space above and below a block of text due to line height? Use our tool to create a mixin for your typography.
             </p>
-            <p class="es-font-form__copy">
-                Select font attributes, then drag the sliders to crop as much or as little white space as you want.
-            </p>
-        </div>
-        <div class="es-tabs">
-            <label class="es-tabs__label" for="select-google-font">
-                <input type="radio" id="select-google-font" name="typeface-selection" class="es-tabs__label-input" checked>
-                <span class="es-tabs__label-text">
-                    Google Font
+        
+        
+    </div>
+</div>
+
+
+        <div class="es-text-crop-configuration-row-fixed-wrap">
+          
+
+<div class="esds-row esds-container--light eswt-step-row es-text-crop-configuration-row"
+    
+    >
+    <div class="esds-row__inner">
+        
+            
+              <h4 class="eswt-step-row__step-number">Step 1</h4>
+              <h2 class="eswt-step-row__title">Configure the Crop</h2>
+              
+    <form method="GET" class="es-text-crop-font-form">
+        <div class="typeface-action typeface-action--tabbed-selector">
+            <div class="es-text-crop-label-tabs">
+                <span class="esds-form__label es-text-crop-label-tabs__label">
+                    Font Family:
                 </span>
-            </label>
-            <label class="es-tabs__label" for="use-custom-typeface">
-                <input type="radio" id="use-custom-typeface" name="typeface-selection" class="es-tabs__label-input">
-                <span class="es-tabs__label-text">
-                    Custom Typeface
-                </span>
-            </label>
-        </div>
-        <div class="typeface-action typeface-action--typeface">
-            <label class="es-font-form__label" for="typeface">Select a Google Font</label>
-            <div class="es-font-form__select">
-                <select class="es-font-form__select-input" name="typeface" id="typeface">
+                <label class="es-text-crop-label-tabs__tab" for="select-google-font">
+                    <input type="radio" id="select-google-font" name="typeface-selection" class="es-text-crop-label-tabs__input" value="google-font" checked>
+                    <span class="es-text-crop-label-tabs__tab-text">
+                        Google Font
+                    </span>
+                </label>
+                <span class="es-text-crop-label-tabs__delimiter">|</span>
+                <label class="es-text-crop-label-tabs__tab" for="use-custom-typeface">
+                    <input type="radio" id="use-custom-typeface" name="typeface-selection" class="es-text-crop-label-tabs__input" value="custom-font">
+                    <span class="es-text-crop-label-tabs__tab-text">
+                        Custom Font
+                    </span>
+                </label>
+            </div>
+            <div class="esds-form__select typeface-action typeface-action--typeface">
+                <select class="esds-form__select-input" name="typeface" id="typeface">
                     <!-- Built out dynamically with JS -->
                 </select>
-                <div class="es-font-form__select-visual-wrap"></div>
-                <span class="es-font-form__select-open-indicator">
+                <div class="esds-form__select-visual-wrap"></div>
+                <span class="esds-form__select-open-indicator">
                     
-    <svg  class="es-font-form__select-open-icon"  aria-labelledby="title">
-        <title>caret-down</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#caret-down"></use>
+    
+
+    <svg class="esds-icon esds-form__select-open-icon">
+        
+        <use xlink:href="/icons/esds.svg#caret-down"></use>
     </svg>
 
                 </span>
             </div>
-        </div>
-        
-
-        <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-name">
-            <label class="es-font-form__label" for="custom-typeface-name">
-                Typeface Name
-            </label>
-            <input class="es-font-form__input" type="text" id="custom-typeface-name" name="custom-typeface-name" value="Helvetica">
-            <span class="es-font-form__microcopy">CSS font-family</span>
+            <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-name">
+                <input class="esds-form__input" type="text" id="custom-typeface-name" name="custom-typeface-name" value="Helvetica">
+            </div>
         </div>
 
         <div class="typeface-action typeface-action--hidden  typeface-action--custom-typeface-url">
-            <label class="es-font-form__label" for="custom-typeface-url">
+            <label class="esds-form__label" for="custom-typeface-url">
                 Typeface Url (optional)
             </label>
-            <input class="es-font-form__input" type="text" id="custom-typeface-url" name="custom-typeface-url" placeholder="https://my-link-to-hosted-webfont.example.com/?font=Font+Name">
+            <input class="esds-form__input" type="text" id="custom-typeface-url" name="custom-typeface-url" placeholder="https://my-link-to-hosted-webfont.example.com/?font=Font+Name">
         </div>
 
         <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-weight">
-            <label class="es-font-form__label" for="custom-typeface-weight">
-                Typeface Weight (optional)
+            <label class="esds-form__label" for="custom-typeface-weight">
+                Weight
             </label>
-            <input class="es-font-form__input" type="text" id="custom-typeface-weight" name="custom-typeface-weight" value="400">
-            <span class="es-font-form__microcopy">CSS font-weight</span>
+            <input class="esds-form__input" type="text" id="custom-typeface-weight" name="custom-typeface-weight" value="400">
         </div>
 
         <div class="typeface-action typeface-action--hidden typeface-action--custom-typeface-style">
-            <label class="es-font-form__label" for="custom-typeface-style">
-                Typeface Style (optional)
+            <label class="esds-form__label" for="custom-typeface-style">
+                Style
             </label>
-            <input class="es-font-form__input" type="text" id="custom-typeface-style" name="custom-typeface-style" value="normal">
-            <span class="es-font-form__microcopy">CSS font-style</span>
+            <input class="esds-form__input" type="text" id="custom-typeface-style" name="custom-typeface-style" value="normal">
         </div>
         
         <div class="typeface-action typeface-action--weight-and-style">
-            <label class="es-font-form__label" for="weight-and-style">Weight &amp; Style</label>
+            <label class="esds-form__label" for="weight-and-style">Weight &amp; Style</label>
 
-            <div class="es-font-form__select">
-                <select class="es-font-form__select-input" name="weight-and-style" id="weight-and-style">
+            <div class="esds-form__select">
+                <select class="esds-form__select-input" name="weight-and-style" id="weight-and-style">
                     <option value="400">400 (normal)</option>
                     <option value="400i">400 Italic (normal)</option>
                     <option value="700">700 (bold)</option>
                 </select>
-                <div class="es-font-form__select-visual-wrap"></div>
-                <span class="es-font-form__select-open-indicator">
+                <div class="esds-form__select-visual-wrap"></div>
+                <span class="esds-form__select-open-indicator">
                     
-    <svg  class="es-font-form__select-open-icon"  aria-labelledby="title">
-        <title>caret-down</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#caret-down"></use>
+    
+
+    <svg class="esds-icon esds-form__select-open-icon">
+        
+        <use xlink:href="/icons/esds.svg#caret-down"></use>
     </svg>
 
                 </span>
@@ -146,71 +191,43 @@
         </div>
         
         <div class="typeface-action typeface-action--size">
-            <label class="es-font-form__label" for="size">Size</label>
-            <input class="es-font-form__input" name="size" id="size" type="text" value="36">
+            <label class="esds-form__label" for="size">Size</label>
+            <input class="esds-form__input" name="size" id="size" type="number" value="36" step="10" min="1">
         </div>
         
         <div class="typeface-action typeface-action--line-height">
-            <label class="es-font-form__label" for="line-height">Default Line Height</label>
-            <input class="es-font-form__input" name="line-height" id="line-height" type="text" value="1.2">
+            <label class="esds-form__label" for="line-height">Line Height</label>
+            <input class="esds-form__input" name="line-height" id="line-height" type="number" value="1.2" step=".1" min="0">
+        </div>
+        
+        <div class="typeface-action typeface-action--top-crop">
+            <label class="esds-form__label" for="top-crop">Top Crop</label>
+            <input class="esds-form__input" name="top-crop" id="top-crop" type="number" value="9" step="1" min="0">
+        </div>
+        
+        <div class="typeface-action typeface-action--bottom-crop">
+            <label class="esds-form__label" for="bottom-crop">Bottom Crop</label>
+            <input class="esds-form__input" name="bottom-crop" id="bottom-crop" type="number" value="8" step="1" min="0">
         </div>
     </form>
 
-                            <div class="es-web-tool__sidebar-actions">
-                                <div class="es-web-tool__sidebar-ctas">
-                                    
-                                    <a class="es-button es-web-tool__external-link--twitter" id="es-share-on-twitter-link" href="http://twitter.com/home?status=Crop%20top%20and%20bottom%20whitespace%20surrounding%20text%20on%20the%20web.%20http://text-crop.eightshapes.com%20@eightshapes&amp;source=webclient">
-                                        
-    <svg  class="es-web-tool__external-link-logo es-button__icon"  aria-labelledby="title">
-        <title>twitter</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#twitter"></use>
-    </svg>
+              
+    <div class="text-crop-measurement tool-section">
+        <div class="text-crop-measurement-wrap">
+            <p class="text-crop-measurement__instructions">
+                Align <strong>Top Crop</strong> with <a href="https://en.wikipedia.org/wiki/Cap_height">Cap Height</a> of top row and <strong>Bottom Crop</strong> to <a href="https://en.wikipedia.org/wiki/Baseline_(typography)">Baseline</a> of bottom row.
+            </p>
+            <div class="text-crop-measurement__actions">
 
-                                        <span class="es-web-tool__external-link-text">
-                                            Tweet This Tool
-                                        </span>
-                                    </a>
-                                </div>
-                                
-                                
-                                <div class="es-web-tool__external-links-wrap">
-                                    <a class="es-web-tool__external-link es-web-tool__external-link--github" href="http://www.eightshapes.com/design-systems.html">
-                                        <span class="es-web-tool__external-link-text">
-                                            By Eightshapes
-                                        </span>
-                                    </a>    
-                                    <div class="es-web-tool__external-link-separator">
-                                    </div>                  
-                                    <a class="es-web-tool__external-link es-web-tool__external-link--github" href="https://github.com/EightShapes/text-crop">
-                                        
-    <svg  class="es-web-tool__external-link-logo"  aria-labelledby="title">
-        <title>github</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#github"></use>
-    </svg>
-
-                                        <span class="es-web-tool__external-link-text">
-                                            On Github
-                                        </span>
-                                    </a>
-                                </div>
-                                
-                                <p class="es-web-tool__legal">
-                                    &copy; Copyright Eightshapes, LLC 2017
-                                </p>
-                            </div>
-                        </div>
-                        <div class="es-web-tool__results">
-                            
-    <div class="cap-height-measurement tool-section">
-        <div class="cap-height-measurement-wrap">
-            <div class="cap-height-measurement__actions">
-                <div class="cap-height-measurement__line cap-height-measurement__line--top">
+                <div class="text-crop-measurement__line text-crop-measurement__line--top">
                     <div class="measurement-fine-tune measurement-fine-tune--top">
                         <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
                             
-    <svg  class="measurement-fine-tune__increment-icon"  aria-labelledby="title">
-        <title>arrow-circle-up</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#arrow-circle-up"></use>
+    
+
+    <svg class="esds-icon measurement-fine-tune__increment-icon">
+        
+        <use xlink:href="/icons/esds.svg#caret-up"></use>
     </svg>
 
                         </div>
@@ -222,30 +239,30 @@
 </div>
                         <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
                             
-    <svg  class="measurement-fine-tune__increment-icon"  aria-labelledby="title">
-        <title>arrow-circle-down</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#arrow-circle-down"></use>
+    
+
+    <svg class="esds-icon measurement-fine-tune__increment-icon">
+        
+        <use xlink:href="/icons/esds.svg#caret-down"></use>
     </svg>
 
                         </div>
-                    </div>
-                    <div class="cap-height-measurement__offset">
-                        0
                     </div>
                     <label for="top-measurement" class="offset-input-label">Top Measurement</label>
                     <input class="offset-input" type="number" id="top-measurement" name="top-measurement" value="0">
                 </div>
-                <div class="cap-height-measurement__sample-text" contenteditable="true" spellcheck="false">
-                    ABCDEFGHIJKLMNOPQRSTUVWXYZ &ldquo; &rdquo; $ & 1234567890 abcdefghijklmnopqrstuvwxyz
-                    
+                <div class="text-crop-measurement__sample-text" contenteditable="true" spellcheck="false">
+                    ABCDEFGHIJKLMNOPQRSTUVWXYZ &ldquo; &rdquo; $ & 1234567890 abcdefghijklmnopqrstuvwxyz. Type your own sample text
                 </div>
-                <div class="cap-height-measurement__line cap-height-measurement__line--bottom">
+                <div class="text-crop-measurement__line text-crop-measurement__line--bottom">
                     <div class="measurement-fine-tune measurement-fine-tune--bottom">
                         <div class="measurement-fine-tune__increment measurement-fine-tune__increment--increase">
                             
-    <svg  class="measurement-fine-tune__increment-icon"  aria-labelledby="title">
-        <title>arrow-circle-up</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#arrow-circle-up"></use>
+    
+
+    <svg class="esds-icon measurement-fine-tune__increment-icon">
+        
+        <use xlink:href="/icons/esds.svg#caret-up"></use>
     </svg>
 
                         </div>
@@ -257,15 +274,14 @@
 </div>
                         <div class="measurement-fine-tune__increment measurement-fine-tune__increment--decrease">
                             
-    <svg  class="measurement-fine-tune__increment-icon"  aria-labelledby="title">
-        <title>arrow-circle-down</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#arrow-circle-down"></use>
+    
+
+    <svg class="esds-icon measurement-fine-tune__increment-icon">
+        
+        <use xlink:href="/icons/esds.svg#caret-down"></use>
     </svg>
 
                         </div>
-                    </div>
-                    <div class="cap-height-measurement__offset">
-                        0
                     </div>
                     <label for="bottom-measurement" class="offset-input-label">Bottom Measurement</label>
                     <input class="offset-input" type="number" id="bottom-measurement" name="bottom-measurement" value="0">
@@ -274,157 +290,253 @@
         </div>
     </div>
 
-                            
-    <div class="es-text-crop-samples typeface-actions tool-section">
-        <div class="es-text-crop-samples__header">
-            <h2 class="es-text-crop-samples__title">Examples</h2>
-            <label for="es-text-crop-toggle" class="es-text-crop-samples__crop-toggle">
-                <input id="es-text-crop-toggle" type="checkbox" checked>
-                <span class="es-text-crop-toggle__text">
-                    Enable Text Crop Mixin
-                </span>
-            </label>
+          
+        
+    </div>
+</div>
+
+
         </div>
+        
 
-        <div class="es-text-crop-samples__row">
-            <div class="es-text-crop__sample">
-                <label class="es-text-crop__sample-label">Button</label>
-                <button class="es-text-crop-samples__button cap-aligned-line-height sample-font-result">
-                    Click Me
-                </button>
-            </div>
-
-            <div class="es-text-crop__sample">
-                <label class="es-text-crop__sample-label">Button With Icon</label>
-                <button class="es-text-crop-samples__button es-text-crop-samples__button--with-icon">
-                    
+<div class="esds-row esds-container--white eswt-step-row"
+    
+    >
+    <div class="esds-row__inner">
+        
+            
+            <h4 class="eswt-step-row__step-number">Step 2</h4>
+            <h2 class="eswt-step-row__title">Confirm the Result</h2>
+            
+    <table class="es-text-crop-sample-table">
+        <thead class="es-text-crop-sample-table__head">
+            <tr class="es-text-crop-sample-table__head-row">
+                <th class="es-text-crop-sample-table__head-cell">Example</th>
+                <th class="es-text-crop-sample-table__head-cell">Without Text Crop</th>
+                <th class="es-text-crop-sample-table__head-cell">With Text Crop</th>
+            </tr>
+        </thead>
+        <tbody class="es-text-crop-sample-table__body">
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Button
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <button class="es-text-crop-samples__button text-crop text-crop--no-crop sample-font-result">
+                        Click Me
+                    </button>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <button class="es-text-crop-samples__button text-crop sample-font-result">
+                        Click Me
+                    </button>
+                </td>
+            </tr>
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Button with Icon
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <button class="es-text-crop-samples__button es-text-crop-samples__button--with-icon">
+                        
     <svg  class="es-text-crop-samples__button-with-icon-icon"  aria-labelledby="title">
         <title>stopwatch</title>
         <use xlink:href="/icons/eightshapes-text-crop.svg#stopwatch"></use>
     </svg>
 
-                    <span class="es-text-crop-samples__button-with-icon-text cap-aligned-line-height sample-font-result">
-                        Start Timer
-                    </span>
-                </button>
-            </div>
-
-            <div class="es-text-crop__sample">
-                <label class="es-text-crop__sample-label">Flexbox Top aligned Text with Image</label>
-                <div class="es-text-crop-samples__flexbox">
-                    <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
-                    <p class="cap-aligned-line-height sample-font-result es-text-crop-samples__flexbox-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis.
-                    </p>
-                </div>
-            </div>
-
-            <div class="es-text-crop__sample">
-                <label class="es-text-crop__sample-label">Flexbox Bottom aligned Text with Image</label>
-                <div class="es-text-crop-samples__flexbox es-text-crop-samples__flexbox--bottom-aligned">
-                    <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
-                    <p class="cap-aligned-line-height sample-font-result es-text-crop-samples__flexbox-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam itaque inventore, placeat, mollitia unde reiciendis.
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        <div class="es-text-crop-samples__row">
-            <div class="es-text-crop__sample">
-                <div class="visible-padded-box cap-aligned-line-height sample-font-result">
-                    16px font with 20px padding
-                </div>
-            </div>
-
-            <div class="es-text-crop__sample">
-                <div class="visible-padded-box visible-padded-box--large cap-aligned-line-height sample-font-result">
-                    32px font with 20px padding
-                </div>
-            </div>
-
-            <div class="es-text-crop__sample">
-                <div class="visible-padded-box visible-padded-box--extra-large cap-aligned-line-height sample-font-result">
-                    64px font with 20px padding
-                </div>
-            </div>
-        </div>
-    </div>
-
-                            
-        <div class="generated-code tool-section">
-            <h2 class="tool-section__title">Mixin Code</h2> 
-            <div class="es-tabs es-tabs--code-snippets">
-                <label class="es-tabs__label" for="scss">
-                    <input type="radio" id="scss" name="style-preprocessor" class="es-tabs__label-input" checked>
-                    <span class="es-tabs__label-text">
-                        SCSS
-                    </span>
-                </label>
-                <label class="es-tabs__label" for="less">
-                    <input type="radio" id="less" name="style-preprocessor" class="es-tabs__label-input">
-                    <span class="es-tabs__label-text">
-                        LESS
-                    </span>
-                </label>
-                <label class="es-tabs__label" for="stylus">
-                    <input type="radio" id="stylus" name="style-preprocessor" class="es-tabs__label-input">
-                    <span class="es-tabs__label-text">
-                        Stylus
-                    </span>
-                </label>
-            </div>
-            
-            <div id="style-preprocessor-scss" class="mixin-code-tab-pane">
-                
-    <a href="#" class="es-code-snippet__copy-button" data-clipboard-target="#scss-code">
-        
-    <svg  class="es-code-snippet__copy-button-icon"  aria-labelledby="title">
-        <title>clipboard</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#clipboard"></use>
+                        <span class="es-text-crop-samples__button-with-icon-text  text-crop text-crop--no-crop sample-font-result">
+                            Start Timer
+                        </span>
+                    </button>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <button class="es-text-crop-samples__button es-text-crop-samples__button--with-icon">
+                        
+    <svg  class="es-text-crop-samples__button-with-icon-icon"  aria-labelledby="title">
+        <title>stopwatch</title>
+        <use xlink:href="/icons/eightshapes-text-crop.svg#stopwatch"></use>
     </svg>
 
-        <span class="es-code-snippet__copy-button-text">Copy to Clipboard</span>
-        <span class="es-code-snippet__copy-response">Press Ctrl + C to copy</span>
-    </a>
+                        <span class="es-text-crop-samples__button-with-icon-text text-crop sample-font-result">
+                            Start Timer
+                        </span>
+                    </button>
+                </td>
+            </tr>
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Flexbox Top aligned Text with Image
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="es-text-crop-samples__flexbox">
+                        <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
+                        <p class=" text-crop text-crop--no-crop sample-font-result es-text-crop-samples__flexbox-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam.
+                        </p>
+                    </div>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="es-text-crop-samples__flexbox">
+                        <img class="es-text-crop-samples__flexbox-image" src="http://placehold.it/100x100" alt="">
+                        <p class="text-crop sample-font-result es-text-crop-samples__flexbox-text">
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt incidunt veniam.
+                        </p>
+                    </div>
+                </td>
+            </tr>
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Small Padded Box
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="visible-padded-box sample-font-result text-crop text-crop--no-crop ">
+                        16px size in 20px inset
+                    </div>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="visible-padded-box text-crop sample-font-result">
+                        16px size in 20px inset
+                    </div>
+                </td>
+            </tr>
+            <tr class="es-text-crop-sample-table__row">
+                <th class="es-text-crop-sample-table__row-header">
+                    Large Padded Box
+                </th>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="visible-padded-box visible-padded-box--extra-large text-crop text-crop--no-crop sample-font-result">
+                        64px size in 20px inset
+                    </div>
+                </td>
+                <td class="es-text-crop-sample-table__cell">
+                    <div class="visible-padded-box visible-padded-box--extra-large text-crop sample-font-result">
+                        64px size in 20px inset
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
 
-                <pre>
-                    <code id="scss-code">
-                        <span class="code-keyword">
-@mixin</span> <span class="code-mixin-name">text-crop</span>($line-height: <span class="code-line-height">1.2</span>, $top-adjustment: 0px, $bottom-adjustment: 0px) {
-    $offset-top: max((<span class="code-top-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
-    $offset-bottom: max((<span class="code-bottom-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
+        
+        
+    </div>
+</div>
 
-    <span class="code-property">line-height</span>: $line-height;
 
-    <span class="code-selector">&::before,
-    &::after</span> {
-        <span class="code-property">content</span>: '';
-        <span class="code-property">display</span>: block;
-        <span class="code-property">height</span>: 0;
-        <span class="code-property">width</span>: 0;
+        
+
+<div class="esds-row esds-container--light eswt-step-row"
+    
+    >
+    <div class="esds-row__inner">
+        
+            
+            <h4 class="eswt-step-row__step-number">Step 3</h4>
+            <h2 class="eswt-step-row__title">Copy the Code</h2>
+            
+    <div class="es-text-crop-code-snippet__tabs-wrap">
+        <div class="esds-tabs esds-tabs--code-snippets">
+            <label class="esds-tabs__label" for="scss">
+                <input type="radio" id="scss" name="style-preprocessor" class="esds-tabs__label-input" checked>
+                <span class="esds-tabs__label-text">
+                    SCSS
+                </span>
+            </label>
+            <label class="esds-tabs__label" for="less">
+                <input type="radio" id="less" name="style-preprocessor" class="esds-tabs__label-input">
+                <span class="esds-tabs__label-text">
+                    LESS
+                </span>
+            </label>
+            <label class="esds-tabs__label" for="stylus">
+                <input type="radio" id="stylus" name="style-preprocessor" class="esds-tabs__label-input">
+                <span class="esds-tabs__label-text">
+                    Stylus
+                </span>
+            </label>
+        </div>
+    </div>
+    
+    <div id="style-preprocessor-scss" class="mixin-code-tab-pane">
+        
+        
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+
+    
+
+    <div class="esds-doc-code-snippet esds-doc-code-snippet--tall">
+        
+        
+
+        <div class="esds-doc-code-snippet__sources-wrap">
+            
+                <div class="esds-doc-code-snippet__copy-code-wrap">
+                    <div class="esds-doc-code-snippet__copied-notification">
+                        Copied to clipboard
+                    </div>
+                    
+                        
+    <button class="esds-doc-button">Copy Code</button>
+
+                    
+                </div>
+            
+            
+            
+                
+    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--24869--scss">
+        
+        <pre class="esds-doc-code-snippet__pre"><code class="language-scss">@mixin text-crop($line-height: 1.3, $top-adjustment: 0px, $bottom-adjustment: 0px) {
+    // Configured in Step 1
+    $top-crop: TOPCROP;
+    $bottom-crop: BOTTOMCROP;
+    $crop-font-size: FONTSIZE;
+    $crop-line-height: LINEHEIGHT;
+
+    // Apply values to calculate em-based margins that work with any font size
+    $dynamic-top-crop: max(($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+    $dynamic-bottom-crop: max(($bottom-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+
+    // Mixin output
+    line-height: $line-height;
+
+    &amp;::before,
+    &amp;::after {
+        content: &#39;&#39;;
+        display: block;
+        height: 0;
+        width: 0;
     }
 
-    <span class="code-selector">&::before</span> {
-        <span class="code-property">margin-bottom</span>: calc(-#{$offset-top}em + #{$top-adjustment});
+    &amp;::before {
+        margin-bottom: calc(-#{$dynamic-top-crop}em + #{$top-adjustment});
     }
 
-    <span class="code-selector">&::after</span> {
-        <span class="code-property">margin-top</span>: calc(-#{$offset-bottom}em + #{$bottom-adjustment});
+    &amp;::after {
+        margin-top: calc(-#{$dynamic-bottom-crop}em + #{$bottom-adjustment});
     }
 }
-<span class="code-comment">// Mixin generated at: http://text-crop.eightshapes.com
+// Mixin generated at: http://text-crop.eightshapes.com/?SERIALIZEDFORM
 
 /* Usage Examples
     .my-level-1-heading-class {
-        @include text-crop; // Will use default line height of <span class="code-line-height">1.2</span>
+        @include text-crop; // Will use default line height of 1.3
         font-size: 48px;
         margin: 0 0 0 16px;
     }
 
     .my-level-2-heading-class {
-        @include text-crop; // Will use default line height of <span class="code-line-height">1.2</span>
-        font-size: 32px; // Don't need to change any settings, will work with any font size automatically
+        @include text-crop; // Will use default line height of 1.3
+        font-size: 32px; // Don&#39;t need to change any settings, will work with any font size automatically
         margin: 0 0 0 16px;
     }
 
@@ -446,64 +558,97 @@
         font-size: 16px;
         line-height: 3; // DO NOT set line height outside of the mixin, the mixin needs the line height value to calculate the crop correctly
     }
-*/
-</span>
+*/</code></pre>
+    </div>
 
-                    </code>
-                </pre>
-            </div>
+            
+        </div>
+    </div>
 
-            <div id="style-preprocessor-less" class="mixin-code-tab-pane">
-                
-    <a href="#" class="es-code-snippet__copy-button" data-clipboard-target="#less-code">
+    </div>
+
+    <div id="style-preprocessor-less" class="mixin-code-tab-pane">
         
-    <svg  class="es-code-snippet__copy-button-icon"  aria-labelledby="title">
-        <title>clipboard</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#clipboard"></use>
-    </svg>
+        
 
-        <span class="es-code-snippet__copy-button-text">Copy to Clipboard</span>
-        <span class="es-code-snippet__copy-response">Press Ctrl + C to copy</span>
-    </a>
+    
+    
+    
+    
+    
+    
 
+    
+    
 
-                <pre>
-                    <code id="less-code">
-                        <span class="code-mixin-name">
-.text-crop</span>(@line-height: <span class="code-line-height">1.2</span>, @top-adjustment: 0px, @bottom-adjustment: 0px) {
-    @offset-top: max((<span class="code-top-measurement">0</span> + (@line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">36</span> / 2)), 0) / <span class="code-size">36</span>;
-    @offset-bottom: max((<span class="code-bottom-measurement">0</span> + (@line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">36</span> / 2)), 0) / <span class="code-size">36</span>;
+    
+        
+    
 
-    <span class="code-property">line-height</span>: @line-height;
+    <div class="esds-doc-code-snippet esds-doc-code-snippet--tall">
+        
+        
 
-    <span class="code-selector">&::before,
-    &::after</span> {
-        <span class="code-property">content</span>: '';
-        <span class="code-property">display</span>: block;
-        <span class="code-property">height</span>: 0;
-        <span class="code-property">width</span>: 0;
+        <div class="esds-doc-code-snippet__sources-wrap">
+            
+                <div class="esds-doc-code-snippet__copy-code-wrap">
+                    <div class="esds-doc-code-snippet__copied-notification">
+                        Copied to clipboard
+                    </div>
+                    
+                        
+    <button class="esds-doc-button">Copy Code</button>
+
+                    
+                </div>
+            
+            
+            
+                
+    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--54910--less">
+        
+        <pre class="esds-doc-code-snippet__pre"><code class="language-less">.text-crop(@line-height: 1.3, @top-adjustment: 0px, @bottom-adjustment: 0px) {
+    // Configured in Step 1
+    @top-crop: TOPCROP;
+    @bottom-crop: BOTTOMCROP;
+    @crop-font-size: FONTSIZE;
+    @crop-line-height: LINEHEIGHT;
+
+    // Apply values to calculate em-based margins that work with any font size
+    @dynamic-top-crop: max((@top-crop + (@line-height - @crop-line-height) * (@crop-font-size / 2)), 0) / @crop-font-size;
+    @dynamic-bottom-crop: max((@bottom-crop + (@line-height - @crop-line-height) * (@crop-font-size / 2)), 0) / @crop-font-size;
+
+    // Mixin output
+    line-height: @line-height;
+
+    &amp;::before,
+    &amp;::after {
+        content: &#39;&#39;;
+        display: block;
+        height: 0;
+        width: 0;
     }
 
-    <span class="code-selector">&::before</span> {
-        <span class="code-property">margin-bottom</span>: calc(unit(-@offset-top, em) ~"+" @top-adjustment);
+    &amp;::before {
+        margin-bottom: calc(unit(-@dynamic-top-crop, em) ~&quot;+&quot; @top-adjustment);
     }
 
-    <span class="code-selector">&::after</span> {
-        <span class="code-property">margin-top</span>: calc(unit(-@offset-bottom, em) ~"+" @bottom-adjustment);
+    &amp;::after {
+        margin-top: calc(unit(-@dynamic-bottom-crop, em) ~&quot;+&quot; @bottom-adjustment);
     }
 }
-<span class="code-comment">// Mixin generated at: http://text-crop.eightshapes.com
+// Mixin generated at: http://text-crop.eightshapes.com/?SERIALIZEDFORM
 
 /* Usage Examples
     .my-level-1-heading-class {
-        .text-crop; // Will use default line height of <span class="code-line-height">1.2</span>
+        .text-crop; // Will use default line height of 1.3
         font-size: 48px;
         margin: 0 0 0 16px;
     }
 
     .my-level-2-heading-class {
-        .text-crop; // Will use default line height of <span class="code-line-height">1.2</span>
-        font-size: 32px; // Don't need to change any settings, will work with any font size automatically
+        .text-crop; // Will use default line height of 1.3
+        font-size: 32px; // Don&#39;t need to change any settings, will work with any font size automatically
         margin: 0 0 0 16px;
     }
 
@@ -525,64 +670,97 @@
         font-size: 16px;
         line-height: 3; // DO NOT set line height outside of the mixin, the mixin needs the line height value to calculate the crop correctly
     }
-*/
-</span>
+*/</code></pre>
+    </div>
 
-                    </code>
-                </pre>
-            </div>
+            
+        </div>
+    </div>
 
-            <div id="style-preprocessor-stylus" class="mixin-code-tab-pane">
-                
-    <a href="#" class="es-code-snippet__copy-button" data-clipboard-target="#stylus-code">
+    </div>
+
+    <div id="style-preprocessor-stylus" class="mixin-code-tab-pane">
         
-    <svg  class="es-code-snippet__copy-button-icon"  aria-labelledby="title">
-        <title>clipboard</title>
-        <use xlink:href="/icons/eightshapes-text-crop.svg#clipboard"></use>
-    </svg>
+        
 
-        <span class="es-code-snippet__copy-button-text">Copy to Clipboard</span>
-        <span class="es-code-snippet__copy-response">Press Ctrl + C to copy</span>
-    </a>
+    
+    
+    
+    
+    
+    
 
+    
+    
 
-                <pre>
-                    <code id="stylus-code">
-                        <span class="code-mixin-name">
-text-crop</span>($line-height = <span class="code-line-height">1.2</span>, $top-adjustment = 0px, $bottom-adjustment = 0px) {
-    $offset-top = max((<span class="code-top-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
-    $offset-bottom = max((<span class="code-bottom-measurement">0</span> + ($line-height - <span class="code-line-height">1.2</span>) * (<span class="code-size">60</span> / 2)), 0) / <span class="code-size">60</span>;
+    
+        
+    
 
-    <span class="code-property">line-height</span>: $line-height;
+    <div class="esds-doc-code-snippet esds-doc-code-snippet--tall">
+        
+        
 
-    <span class="code-selector">&::before,
-    &::after</span> {
-        <span class="code-property">content</span>: '';
-        <span class="code-property">display</span>: block;
-        <span class="code-property">height</span>: 0;
-        <span class="code-property">width</span>: 0;
+        <div class="esds-doc-code-snippet__sources-wrap">
+            
+                <div class="esds-doc-code-snippet__copy-code-wrap">
+                    <div class="esds-doc-code-snippet__copied-notification">
+                        Copied to clipboard
+                    </div>
+                    
+                        
+    <button class="esds-doc-button">Copy Code</button>
+
+                    
+                </div>
+            
+            
+            
+                
+    <div class="esds-doc-code-snippet__source" id="esds-doc-code-snippet--29270--stylus">
+        
+        <pre class="esds-doc-code-snippet__pre"><code class="language-stylus">text-crop($line-height = 1.3, $top-adjustment = 0px, $bottom-adjustment = 0px) {
+    // Configured in Step 1
+    $top-crop = TOPCROP;
+    $bottom-crop = BOTTOMCROP;
+    $crop-font-size = FONTSIZE;
+    $crop-line-height = LINEHEIGHT;
+
+    // Apply values to calculate em-based margins that work with any font size
+    $dynamic-top-crop = max(($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+    $dynamic-bottom-crop = max(($bottom-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
+
+    // Mixin output
+    line-height: $line-height;
+
+    &amp;::before,
+    &amp;::after {
+        content: &#39;&#39;;
+        display: block;
+        height: 0;
+        width: 0;
     }
 
-    <span class="code-selector">&::before</span> {
-        <span class="code-property">margin-bottom</span>: "calc(-%sem + %s)" % ($offset-top $top-adjustment)
+    &amp;::before {
+        margin-bottom: &quot;calc(-%sem + %s)&quot; % ($dynamic-top-crop $top-adjustment)
     }
 
-    <span class="code-selector">&::after</span> {
-        <span class="code-property">margin-top</span>: "calc(-%sem + %s)" % ($offset-bottom $bottom-adjustment)
+    &amp;::after {
+        margin-top: &quot;calc(-%sem + %s)&quot; % ($dynamic-bottom-crop $bottom-adjustment)
     }
 }
-<span class="code-comment">// Mixin generated at: http://text-crop.eightshapes.com
+// Mixin generated at: http://text-crop.eightshapes.com/?SERIALIZEDFORM
 
 /* Usage Examples
     .my-level-1-heading-class {
-        text-crop(); // Will use default line height of <span class="code-line-height">1.2</span>
+        text-crop(); // Will use default line height of 1.3
         font-size: 48px;
         margin: 0 0 0 16px;
     }
 
     .my-level-2-heading-class {
-        text-crop(); // Will use default line height of <span class="code-line-height">1.2</span>
-        font-size: 32px; // Don't need to change any settings, will work with any font size automatically
+        text-crop(); // Will use default line height of 1.3
+        font-size: 32px; // Don&#39;t need to change any settings, will work with any font size automatically
         margin: 0 0 0 16px;
     }
 
@@ -604,19 +782,23 @@ text-crop</span>($line-height = <span class="code-line-height">1.2</span>, $top-
         font-size: 16px;
         line-height: 3; // DO NOT set line height outside of the mixin, the mixin needs the line height value to calculate the crop correctly
     }
-*/
-</span>
+*/</code></pre>
+    </div>
 
-                    </code>
-                </pre>
-            </div>
+            
         </div>
+    </div>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    </div>
+
+        
+        
+    </div>
+</div>
+
+
+        
+        <script src="/scripts/dependencies/scrollmonitor.js"></script>
         <script type="text/javascript">
           var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
           document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
@@ -625,6 +807,9 @@ text-crop</span>($line-height = <span class="code-line-height">1.2</span>, $top-
           var pageTracker = _gat._getTracker("UA-1201194-1");
           pageTracker._initData();
           pageTracker._trackPageview();
+        </script>
+        <script>
+          Esds.CodeSnippet.init();
         </script>
     </body>
 </html>

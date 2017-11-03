@@ -1,0 +1,10 @@
+.eswt-step-row__step-number {
+    @include esds-eyebrow-heading;
+    text-align: center;
+}
+
+.eswt-step-row__title {
+    @include esds-text-color('primary');
+    @include esds-level-2-heading;
+    text-align: center;
+}

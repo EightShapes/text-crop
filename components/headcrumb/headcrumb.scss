@@ -1,0 +1,43 @@
+.eswt-headcrumb {
+    @include esds-text-color('primary');
+    @include esds-font-reset;
+}
+
+.eswt-headcrumb__link {
+    @include esds-text-color('primary');
+    align-items: baseline;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    text-decoration: none;
+    top: -6px;
+
+    &:hover {
+        text-decoration: none;
+    }
+}
+
+.eswt-headcrumb__delimiter {
+    fill: $esds-color-white;
+    position: relative;
+    top: 4px;
+}
+
+.eswt-headcrumb__brand-mark {
+    fill: $esds-color-white;
+    height: 30px;
+    margin-right: $esds-space-generic-half-x;
+    position: relative;
+    top: 6px;
+    width: 30px;
+}
+
+.eswt-headcrumb__brand-name {
+    @include esds-text-crop;
+    font-size: $esds-font-size-lead;
+}
+
+.eswt-headcrumb__crumb-text {
+    @include esds-text-crop;
+    font-size: $esds-font-size-m;
+}
