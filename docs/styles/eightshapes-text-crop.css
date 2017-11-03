@@ -1598,7 +1598,8 @@
 
 .text-crop-measurement__instructions {
   font-size: 20px;
-  margin: 0 0 8px; }
+  margin: 0 0 8px;
+  padding-right: 200px; }
 
 html,
 body {
