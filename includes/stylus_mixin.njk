@@ -1,16 +1,15 @@
 text-crop($line-height = 1.3, $top-adjustment = 0px, $bottom-adjustment = 0px) {
-    // These static values are determined when configuring the crop. 
-    // These are used to calculate the dynamic crop that works with any line-height or font-size.
+    // Configured in Step 1
     $top-crop: !!TOPCROP!!;
     $bottom-crop: !!BOTTOMCROP!!;
     $crop-font-size: !!FONTSIZE!!; // This is the size of the font when the top crop and the bottom crop were measured. This is a static value.
     $crop-line-height: !!LINEHEIGHT!!; // This is the line height of the font when the top and bottom crop were measured. This is a static value.
 
-    // Use the static values to calculate em-based margins that work with any font size
+    // Apply values to calculate em-based margins that work with any font size
     $dynamic-top-crop = max(($top-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
     $dynamic-bottom-crop = max(($bottom-crop + ($line-height - $crop-line-height) * ($crop-font-size / 2)), 0) / $crop-font-size;
 
-    // Output starts here
+    // Mixin output
     line-height: $line-height;
 
     &::before,

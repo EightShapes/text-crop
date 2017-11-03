@@ -11,6 +11,7 @@
 @import '@eightshapes/esds-library/components/row/row';
 @import '@eightshapes/esds-library/components/card/card';
 
+@import 'esds-doc-theming';
 @import 'esds-doc/styles/shared/utils';
 @import 'esds-doc/components/container/container';
 @import 'esds-doc/components/button/button';
@@ -36,7 +37,7 @@ $sidebar-width: 320px;
 html,
 body {
     box-sizing: border-box;
-    font-family: $font-family-default;
+    font-family: $esds-font-family-sans-serif;
     font-weight: $font-weight-normal;
     margin: 0;
     min-height: 100vh;
@@ -238,5 +239,22 @@ a {
         display: block;
         height: 0;
         width: 0;
+    }
+}
+
+// ESDS Overrides
+.esds-row__inner {
+    max-width: 1000px;
+}
+
+// Override ESDS-library defaults
+.esds-row--hero-inset { 
+    padding: $esds-space-inset-1-x;
+    padding-bottom: 70px;
+    padding-top: 70px;
+    
+    @media screen and (min-width: 768px) {
+        padding-bottom: 70px;
+        padding-top: 70px;
     }
 }

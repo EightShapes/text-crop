@@ -1,4 +1,4 @@
-$browser-padding-color: rgba(yellow, .3);
+$browser-padding-color: rgba(#C7DEB8, .8);
 
 .es-text-crop-sample-table {
     border-collapse: collapse;
@@ -96,7 +96,7 @@ $browser-padding-color: rgba(yellow, .3);
 }
 
 .es-text-crop-samples__flexbox-image {
-    flex: 1 1 0%;
+    flex: 0 0 100px;
     margin-right: $spacing-sm;
 }
 

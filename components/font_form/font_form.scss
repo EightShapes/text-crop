@@ -149,7 +149,7 @@ $esds-form-input-min-height: 37px;
 .typeface-action--line-height,
 .typeface-action--size {
     flex-grow: 0;
-    width: 6em;
+    width: 4em;
 }
 
 .typeface-action--tabbed-selector {
@@ -181,10 +181,13 @@ $esds-form-input-min-height: 37px;
     margin-right: 0;
 }
 
-.typeface-action--custom-typeface-weight,
+.typeface-action--custom-typeface-weight {
+    width: 4em;
+}
+
 .typeface-action--custom-typeface-style {
     flex-grow: 0;
-    width: 6em;
+    width: 5em;
 }
 
 
@@ -208,7 +211,7 @@ $esds-form-input-min-height: 37px;
     }
 
     .text-crop-measurement-wrap {
-        padding: 24px 0 40px;
+        padding-top: 24px;
     }
 
     .text-crop-measurement-wrap,
