@@ -1,6 +1,6 @@
 {
   "name": "eightshapes-text-crop",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This tool generates scss, less, and stylus mixins to remove the extra whitespace above and below text on the web.",
   "main": "docs/index.html",
   "scripts": {
@@ -13,7 +13,7 @@
   ],
   "license": "MIT",
   "devDependencies": {
-    "esds-build": "^0.25.0"
+    "esds-build": "^0.28.1"
   },
   "dependencies": {
     "@eightshapes/esds-library": "^0.4.0-alpha.1",
