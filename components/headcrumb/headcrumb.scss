@@ -34,10 +34,10 @@
 
 .eswt-headcrumb__brand-name {
     @include esds-text-crop;
-    font-size: $esds-font-size-lead;
+    font-size: $esds-font-size-heading-level-2-default;
 }
 
 .eswt-headcrumb__crumb-text {
     @include esds-text-crop;
-    font-size: $esds-font-size-m;
+    font-size: $esds-font-size-body-l-default;
 }

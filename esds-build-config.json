@@ -1,6 +1,6 @@
 {
-    "docsPath": "pages",      
-    "webroot": "docs",        
+    "docsPath": "pages",
+    "webroot": "docs",
     "versionedDocs": false,
     "latestVersionPath": "",
     "copyTasks": [
@@ -41,17 +41,17 @@
         },
         {
             "name": "esds-library-icon-sprite",
-            "sources": ["node_modules/@eightshapes/esds-library/dist/esds.svg"],
+            "sources": ["node_modules/esds-library/dist/esds.svg"],
             "destination": "docs/icons",
             "watch": true
         }
     ],
     "dependencies": [
         {
-            "moduleName": "@eightshapes/esds-library"
+            "moduleName": "esds-library"
         },
         {
             "moduleName": "esds-doc"
         }
-    ]  
+    ]
 }

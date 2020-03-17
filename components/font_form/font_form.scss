@@ -6,7 +6,7 @@ $esds-text-crop-drop-shadow: 0 2px 3px rgba(0, 0, 0, .4);
 .esds-form__label {
     @include esds-text-color('primary');
     display: block;
-    font-size: $esds-font-size-xs;
+    font-size: $esds-font-size-body-s-at-480;
     letter-spacing: .02em;
     margin: $esds-space-stack-quarter-x;
 }
@@ -14,8 +14,8 @@ $esds-text-crop-drop-shadow: 0 2px 3px rgba(0, 0, 0, .4);
 .esds-form__input {
     border: $esds-border-control-on-white;
     border-radius: $esds-border-radius-default;
-    font-family: 'Lato', sans-serif; 
-    font-size: $esds-font-size-s;
+    font-family: 'Lato', sans-serif;
+    font-size: $esds-font-size-body-s-at-768;
     margin: 0;
     min-height: $esds-form-input-min-height;
     padding: $esds-space-inset-half-x;
@@ -32,8 +32,8 @@ $esds-text-crop-drop-shadow: 0 2px 3px rgba(0, 0, 0, .4);
     background: none;
     border: 0;
     display: inline-block;
-    font-family: 'Lato', sans-serif; 
-    font-size: $esds-font-size-s;
+    font-family: 'Lato', sans-serif;
+    font-size: $esds-font-size-body-s-at-768;
     height: 37px;
     position: relative;
     width: 100%;
@@ -111,7 +111,7 @@ $esds-text-crop-drop-shadow: 0 2px 3px rgba(0, 0, 0, .4);
 
 .es-text-crop-label-tabs {
     display: flex;
-    font-size: $esds-font-size-xs;
+    font-size: $esds-font-size-body-s-at-480;
 }
 
 .es-text-crop-label-tabs__delimiter {

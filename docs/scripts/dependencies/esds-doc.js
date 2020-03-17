@@ -159,7 +159,7 @@ var Esds = Esds || {};
 
 Esds.PageNavigation = function() {
     const pageNavigationSelector = ".esds-doc-page-navigation",
-            pageNavigationListSelector = ".esds-doc-page-navigation__inner",
+            pageNavigationListSelector = ".esds-doc-page-navigation__list",
             listItemTemplateSelector = ".esds-doc-page-navigation__item--template",
             listItemLinkSelector = ".esds-doc-page-navigation__link",
             listItemLinkActiveClass = "esds-doc-page-navigation__link--active",
@@ -169,11 +169,24 @@ Esds.PageNavigation = function() {
             suppressScrollMonitoringClass = "esds-doc-page-navigation--no-scroll-monitor";
 
     let pageNavigationComponents,
-        listItemTemplate;
+        listItemTemplate,
+        listItemModifierClasses = false,
+        scrollPositionWatchers = [],
+        resizeCallback;
 
     function getArrayOfDomElements(selector, parent) {
         parent = typeof parent === 'undefined' ? document : parent;
         return Array.prototype.slice.call(parent.querySelectorAll(selector), 0);
+    }
+
+    function getListItemModifierClasses() {
+        const pageNavigation = document.querySelector(pageNavigationSelector);
+        let modifierClasses = false;
+        if (pageNavigation && pageNavigation.dataset.esdsDocListItemModifierClasses) {
+            modifierClasses = JSON.parse(pageNavigation.dataset.esdsDocListItemModifierClasses);
+        }
+
+        return modifierClasses;
     }
 
     function getPageNavigationComponents() {
@@ -222,6 +235,22 @@ Esds.PageNavigation = function() {
             listItemTemplate = getListItemTemplate(pageNavigation);
             anchorLinkItems.forEach(function(ali) {
                 let listItem = createListItemElement(listItemTemplate, ali);
+                if (listItemModifierClasses) {
+                    const selectors = Object.keys(listItemModifierClasses);
+                    let match = false;
+                    for (var i = 0; i < selectors.length; i++) {
+                        const s = selectors[i];
+                        if (ali.matches(s)) {
+                            match = s;
+                        }
+                    }
+                    if (match) {
+                        const modifierClasses = listItemModifierClasses[match].split(' ');
+                        modifierClasses.forEach(function(c) {
+                            listItem.classList.add(c);
+                        });
+                    }
+                }
                 pageNavigationList.appendChild(listItem);
             });
         }
@@ -265,7 +294,7 @@ Esds.PageNavigation = function() {
     }
 
     function setListItemActive(linkHref) {
-        const activeLink = document.querySelector("a[href='" + linkHref + "']"),
+        const activeLink = document.querySelector(".esds-doc-page-navigation a[href='" + linkHref + "']"),
                 pageNavigation = activeLink.closest(pageNavigationSelector),
                 highlightedLinks = getArrayOfDomElements("." + listItemLinkActiveClass, pageNavigation);
 
@@ -278,12 +307,25 @@ Esds.PageNavigation = function() {
 
     function getTopOffset(pageNavigation) {
         const topOffset = pageNavigation.getAttribute(fixedDistanceFromTopDataAttribute);
-        return topOffset === null ? 0 : topOffset;
+        return topOffset === null ? 0 : topOffset.replace('px', '');
     }
 
     function monitorPageSectionsForActiveLinkHighlighting(pageNavigation, debug) {
-        const pageAnchorLinks = pageNavigation.querySelectorAll(listItemLinkSelector),
+        const pageAnchorLinks = Array.from(pageNavigation.querySelectorAll(listItemLinkSelector)).filter(l => l.href.includes('#')),
                 topOffset = getTopOffset(pageNavigation);
+
+        for (var i = 0; i < scrollPositionWatchers.length; i++) {
+            scrollPositionWatchers[i].destroy();
+        }
+        scrollPositionWatchers = [];
+
+
+        // Delete debug markers if they exist
+        const debugMarkers = document.querySelectorAll('.esds-doc-page-navigation-debug-marker');
+        for (var i = 0; i < debugMarkers.length; i++) {
+            const marker = debugMarkers[i];
+            marker.parentNode.removeChild(marker);
+        }
 
         for (var i = 0; i < pageAnchorLinks.length; i++) {
             let anchorLink = pageAnchorLinks[i],
@@ -295,6 +337,8 @@ Esds.PageNavigation = function() {
                 sectionTop = target.offsetTop - topOffset,
                 sectionBottom = nextTarget ? nextTarget.offsetTop - 1 - topOffset : document.body.offsetHeight,
                 elementWatcher = scrollMonitor.create({top: sectionTop, bottom: sectionBottom});
+
+            scrollPositionWatchers.push(elementWatcher);
 
             // When a section spans the entire viewport
             elementWatcher.stateChange(function(){
@@ -342,19 +386,22 @@ Esds.PageNavigation = function() {
         let topMarker = document.createElement('div'),
             bottomMarker = document.createElement('div');
 
+        topMarker.classList.add('esds-doc-page-navigation-debug-marker');
+        bottomMarker.classList.add('esds-doc-page-navigation-debug-marker');
+
         topMarker.style.width = "100%";
         topMarker.style.height = "1px";
         topMarker.style.backgroundColor = "red";
         topMarker.style.position = "absolute";
         topMarker.style.left = 0;
-        topMarker.style.top = topPosition;
+        topMarker.style.top = topPosition + 'px';
 
         bottomMarker.style.width = "100%";
         bottomMarker.style.height = "1px";
         bottomMarker.style.backgroundColor = "blue";
         bottomMarker.style.position = "absolute";
         bottomMarker.style.left = 0;
-        bottomMarker.style.top = bottomPosition;
+        bottomMarker.style.top = bottomPosition + 'px';
 
 
         document.body.appendChild(topMarker);
@@ -364,6 +411,15 @@ Esds.PageNavigation = function() {
     function initiateScrollMonitoring(pageNavigation, debug) {
         monitorPageNavigationFixedStatus(pageNavigation);
         monitorPageSectionsForActiveLinkHighlighting(pageNavigation, debug);
+        window.addEventListener('resize', function(){
+            if (resizeCallback) {
+                window.cancelAnimationFrame(resizeCallback);
+            }
+
+            resizeCallback = window.requestAnimationFrame(function() {
+                monitorPageSectionsForActiveLinkHighlighting(pageNavigation, debug);
+            });
+        });
     }
 
     function smoothScrollToSection(sectionSelector, pageNavigation) {
@@ -388,13 +444,15 @@ Esds.PageNavigation = function() {
 
         links.forEach(function(l){
             l.addEventListener('click', function(e){
-                e.preventDefault();
+                if (this.hash) {
+                    e.preventDefault();
 
-                const href = this.hash;
+                    const href = this.hash;
 
-                setListItemActive(href);
-                history.pushState(null, null, href);
-                smoothScrollToSection(href, pn);
+                    setListItemActive(href);
+                    history.pushState(null, null, href);
+                    smoothScrollToSection(href, pn);
+                }
             });
         });
     }
@@ -407,11 +465,14 @@ Esds.PageNavigation = function() {
         } else {
             // If no hash is set in the URL, highlight the first item in the navigation to start
             const links = getArrayOfDomElements(listItemLinkSelector, pageNavigation);
-            setListItemActive(links[0].getAttribute('href'));
+            if (links.length > 0) {
+                setListItemActive(links[0].getAttribute('href'));
+            }
         }
     }
 
     function initializePageNavigationComponents(debug) {
+        listItemModifierClasses = getListItemModifierClasses();
         pageNavigationComponents = getPageNavigationComponents();
 
         pageNavigationComponents.forEach(function(pn){

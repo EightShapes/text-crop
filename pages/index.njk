@@ -1,11 +1,11 @@
-{% import "@eightshapes/esds-library/components/esds.njk" as esds with context %}
+{% import "esds-library/components/esds.njk" as esds with context %}
 {% import "esds-doc/components/esds-doc.njk" as esds_doc with context %}
 {% import "components/eightshapes-text-crop.njk" as components with context %}
 
 <html>
     <head>
         <title>EightShapes Text Crop</title>
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="http://eightshapes.com/css/global.css">
         <link rel="stylesheet" href="/styles/eightshapes-text-crop.css">
         <meta name="HandheldFriendly" content="True" />
@@ -84,16 +84,16 @@
                                </span>
                            </a>
                        </div>
-                       
-                       
+
+
                        <div class="es-web-tool__external-links-wrap">
                            <a class="es-web-tool__external-link es-web-tool__external-link--github" href="http://www.eightshapes.com/design-systems.html">
                                <span class="es-web-tool__external-link-text">
                                    By Eightshapes
                                </span>
-                           </a>    
+                           </a>
                            <div class="es-web-tool__external-link-separator">
-                           </div>                  
+                           </div>
                            <a class="es-web-tool__external-link es-web-tool__external-link--github" href="https://github.com/EightShapes/text-crop">
                                {{ components.icon(icon_name="github", class="es-web-tool__external-link-logo") }}
                                <span class="es-web-tool__external-link-text">
@@ -101,7 +101,7 @@
                                </span>
                            </a>
                        </div>
-                       
+
                        <p class="es-web-tool__legal">
                            &copy; Copyright Eightshapes, LLC 2017
                        </p>
