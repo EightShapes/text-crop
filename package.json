@@ -19,7 +19,7 @@
   "dependencies": {
     "clipboard": "^1.7.1",
     "esds-doc": "^0.29.2",
-    "jquery": "^3.2.1",
+    "jquery": "^3.5.0",
     "jquery-deserialize": "^2.0.0-rc1",
     "jquery-ui": "^1.12.1",
     "jquery-ui-touch-punch": "^0.2.3",
