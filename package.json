@@ -21,7 +21,7 @@
     "esds-doc": "^0.29.2",
     "jquery": "^3.2.1",
     "jquery-deserialize": "^2.0.0-rc1",
-    "jquery-ui": "^1.12.1",
+    "jquery-ui": "^1.13.2",
     "jquery-ui-touch-punch": "^0.2.3",
     "svg4everybody": "^2.1.9"
   }
